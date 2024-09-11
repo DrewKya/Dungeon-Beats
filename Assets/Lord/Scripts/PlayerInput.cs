@@ -19,7 +19,6 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         CheckMovementInput();
-        Debug.Log(currentPositionTile.transform.position);
     }
 
     private void CheckMovementInput()

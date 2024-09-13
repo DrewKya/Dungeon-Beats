@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -11,8 +7,14 @@ public class PlayerInput : MonoBehaviour
 
     GameObject currentPositionTile;
 
+    MusicPlayer musicPlayer;
+    TMP_Text timingText;
+
     private void Start()
     {
+        musicPlayer = MusicPlayer.Instance;
+        timingText = musicPlayer.timingText;
+
         CheckGround(groundCheck.position);
     }
 
@@ -26,18 +28,22 @@ public class PlayerInput : MonoBehaviour
         Vector3 positionIncrement = new Vector3(0, 0, 0);
         if (Input.GetKeyDown(KeyCode.W)) //move up
         {
+            CheckTiming(musicPlayer.songPositionInBeats);
             positionIncrement = new Vector3(0, 0, 1);
         }
         else if (Input.GetKeyDown(KeyCode.S)) //move down
         {
+            CheckTiming(musicPlayer.songPositionInBeats);
             positionIncrement = new Vector3(0, 0, -1);
         }
         else if (Input.GetKeyDown(KeyCode.D)) //move right
         {
+            CheckTiming(musicPlayer.songPositionInBeats);
             positionIncrement = new Vector3(1, 0, 0);
         }
         else if (Input.GetKeyDown(KeyCode.A)) //move left
         {
+            CheckTiming(musicPlayer.songPositionInBeats);
             positionIncrement = new Vector3(-1, 0, 0);        
         }
 
@@ -64,28 +70,29 @@ public class PlayerInput : MonoBehaviour
 
         if (Physics.Raycast(origin, Vector3.down, out hit, 1f, LayerMask.GetMask("Ground")))
         {
-            //Debug.DrawRay(origin, Vector3.down * 1f, Color.yellow);
-
             GameObject obj = hit.collider.gameObject;
-            /*
-            if (currentPositionTile != null)
-            {
-                currentPositionTile.GetComponentInChildren<Renderer>().material.color = Color.white;
-            }
-            */
             currentPositionTile = obj;
-            /*
-            if (obj.CompareTag("Ground"))
-            {
-                Renderer renderer = obj.GetComponentInChildren<Renderer>();
-                if (renderer != null)
-                {
-                    renderer.material.color = Color.red;
-                }
-            }
-            */
-            
         }
 
+    }
+    public void CheckTiming(float inputTime)
+    {
+        float closestBeat = Mathf.Round(inputTime);
+
+        float timeDifference = Mathf.Abs(closestBeat - inputTime);
+
+        //Debug.Log(timeDifference);
+        if (timeDifference < 0.2f)
+        {
+            timingText.text = "Perfect";
+        }
+        else if (timeDifference < 0.3f)
+        {
+            timingText.text = "Good";
+        }
+        else
+        {
+            timingText.text = "Miss";
+        }
     }
 }

@@ -27,6 +27,7 @@ public class BeatVisualizer : MonoBehaviour
 
     private void SlideBeatContainer()
     {
+        slideSpeed = beatTravelDistance / musicPlayer.intervalLength;
         beatContainer.localPosition += Vector3.right * slideSpeed * Time.deltaTime;
         if(beatContainer.localPosition.x >= 400)
         {

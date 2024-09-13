@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MusicPlayer : MonoBehaviour
 {
     public static MusicPlayer Instance;
 
-    public AudioSource audioSource;
-
+    private AudioSource audioSource;
+    
     public float musicBPM;
-    public float secPerBeat;
-    public float songPositionInSeconds;
+    public Interval interval;
     public float songPositionInBeats;
 
-    public float dspSongTime; //seconds passed since the song started
+    public float intervalLength;
 
-    public Transform beatSpawnContainer;
-    public GameObject beatUI;
+    public TMP_Text timingText;
 
     private void Awake()
     {
@@ -25,33 +25,39 @@ public class MusicPlayer : MonoBehaviour
 
     private void Start()
     {
+        intervalLength = interval.GetIntervalLength(musicBPM);
         audioSource = GetComponent<AudioSource>();
-        secPerBeat = 60f / musicBPM;
-        dspSongTime = (float)AudioSettings.dspTime;
-
         audioSource.Play();
-        //StartCoroutine(SpawnBeatIndicator());
     }
 
     private void Update()
     {
-        songPositionInSeconds = (float)(AudioSettings.dspTime - dspSongTime);
-        songPositionInBeats = songPositionInSeconds / secPerBeat;
+        songPositionInBeats = audioSource.timeSamples / (audioSource.clip.frequency * intervalLength);
+        interval.CheckNewInterval(songPositionInBeats);
+    }
+}
+
+[System.Serializable]
+public class Interval
+{
+    [SerializeField] private UnityEvent trigger;
+
+    public int lastInterval; //track the last interval
+
+    public float GetIntervalLength(float bpm)
+    {
+        return 60f / bpm;
     }
 
-    IEnumerator SpawnBeatIndicator()
+    public void CheckNewInterval(float interval)
     {
-        while (true)
+        var roundedInterval = Mathf.FloorToInt(interval); //round down
+        
+        if(roundedInterval != lastInterval)
         {
-            Debug.Log("test");
-            var obj = Instantiate(beatUI, beatSpawnContainer);
-            obj.AddComponent<DelayedDestroy>().DelayInSeconds = secPerBeat / 2f;
-            yield return new WaitForSeconds(secPerBeat);
+            lastInterval = roundedInterval;
+            trigger.Invoke();
         }
-    }
 
-    void StopLoopingCoroutine()
-    {
-        StopCoroutine(nameof(SpawnBeatIndicator));
     }
 }

@@ -35,6 +35,11 @@ public class MusicPlayer : MonoBehaviour
         songPositionInBeats = audioSource.timeSamples / (audioSource.clip.frequency * intervalLength);
         interval.CheckNewInterval(songPositionInBeats);
     }
+
+    public void test()
+    {
+        Debug.Log("test");
+    }
 }
 
 [System.Serializable]

@@ -82,13 +82,9 @@ public class PlayerInput : MonoBehaviour
         float timeDifference = Mathf.Abs(closestBeat - inputTime);
 
         //Debug.Log(timeDifference);
-        if (timeDifference < 0.2f)
+        if (timeDifference < 0.3f)
         {
             timingText.text = "Perfect";
-        }
-        else if (timeDifference < 0.3f)
-        {
-            timingText.text = "Good";
         }
         else
         {

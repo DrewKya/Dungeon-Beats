@@ -49059,9 +49059,49 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
+      propertyPath: musicBPM
+      value: 152
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
       propertyPath: timingText
       value: 
       objectReference: {fileID: 566619492}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1765109936}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MusicPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6099599624977927421, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
       propertyPath: m_Name
@@ -49117,6 +49157,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7343265963305019838, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e11daa5bfe85445888007ee6f5d67f, type: 3}
+    - target: {fileID: 7343265963305019838, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 07e11daa5bfe85445888007ee6f5d67f, type: 3}
     - target: {fileID: 9117173818371959514, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
       propertyPath: beatContainer
@@ -49411,6 +49461,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56705ba59b1c16c46bcb601bdc4f6bfc, type: 3}
+--- !u!114 &1765109936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+    type: 3}
+  m_PrefabInstance: {fileID: 1759698296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0725baf677cbfc54497f369c82426a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1765301226
 PrefabInstance:
   m_ObjectHideFlags: 0

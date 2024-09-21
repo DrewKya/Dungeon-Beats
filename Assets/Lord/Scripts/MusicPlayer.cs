@@ -35,17 +35,12 @@ public class MusicPlayer : MonoBehaviour
         songPositionInBeats = audioSource.timeSamples / (audioSource.clip.frequency * intervalLength);
         interval.CheckNewInterval(songPositionInBeats);
     }
-
-    public void test()
-    {
-        Debug.Log("test");
-    }
 }
 
 [System.Serializable]
 public class Interval
 {
-    [SerializeField] private UnityEvent trigger;
+    [SerializeField] public UnityEvent trigger;
 
     public int lastInterval; //track the last interval
 

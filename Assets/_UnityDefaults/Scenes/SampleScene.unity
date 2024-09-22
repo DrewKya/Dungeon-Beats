@@ -1458,12 +1458,12 @@ PrefabInstance:
     - target: {fileID: 9159136917705052020, guid: fa1504cf5e7381d40a4af5e40cb5e11a,
         type: 3}
       propertyPath: durationOn
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9159136917705052020, guid: fa1504cf5e7381d40a4af5e40cb5e11a,
         type: 3}
       propertyPath: durationOff
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4934,7 +4934,7 @@ PrefabInstance:
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
       propertyPath: musicBPM
-      value: 28.75
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
@@ -4944,11 +4944,16 @@ PrefabInstance:
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
       propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
       propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
@@ -4958,7 +4963,17 @@ PrefabInstance:
       objectReference: {fileID: 746274354}
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 746274354}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
       propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
@@ -4968,12 +4983,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: InitializeBeatContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
       propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: BeatVisualizer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BeatVisualizer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
       propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 36413466720367763, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: interval.trigger.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6099599624977927421, guid: 80298b316d283764cb11e259ee039016,
@@ -5031,6 +5061,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7343265963305019838, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 49b9edb07a10757419ad4ca38e8801a7, type: 3}
+    - target: {fileID: 7343265963305019838, guid: 80298b316d283764cb11e259ee039016,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 49b9edb07a10757419ad4ca38e8801a7, type: 3}
     - target: {fileID: 9117173818371959514, guid: 80298b316d283764cb11e259ee039016,
         type: 3}
       propertyPath: beatContainer
@@ -5204,6 +5244,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4120629721470010628, guid: 138303a7c85c16146b75e72e94a2114f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4581115627564389568, guid: 138303a7c85c16146b75e72e94a2114f,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -5232,7 +5277,7 @@ PrefabInstance:
     - target: {fileID: 4979921638361758076, guid: 138303a7c85c16146b75e72e94a2114f,
         type: 3}
       propertyPath: m_ChildAlignment
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5699530625122945863, guid: 138303a7c85c16146b75e72e94a2114f,
         type: 3}
@@ -5273,6 +5318,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208220335806397163, guid: 138303a7c85c16146b75e72e94a2114f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208220335806397163, guid: 138303a7c85c16146b75e72e94a2114f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208220335806397163, guid: 138303a7c85c16146b75e72e94a2114f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208220335806397163, guid: 138303a7c85c16146b75e72e94a2114f,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7527011926272973836, guid: 138303a7c85c16146b75e72e94a2114f,
         type: 3}

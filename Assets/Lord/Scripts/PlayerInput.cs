@@ -79,7 +79,7 @@ public class PlayerInput : MonoBehaviour
     {
         float closestBeat = Mathf.Round(inputTime);
 
-        float timeDifference = Mathf.Abs(closestBeat - inputTime);
+        float timeDifference = Mathf.Abs(closestBeat - inputTime); //time difference in beats
 
         //Debug.Log(timeDifference);
         if (timeDifference < 0.3f)

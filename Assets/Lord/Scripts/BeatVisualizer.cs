@@ -15,17 +15,20 @@ public class BeatVisualizer : MonoBehaviour
     public float beatTravelDistance; //this can be calculated by (width of beatContainerUI) / (number of beat UIs in the container)
     public float slideSpeed;
 
+    private bool startSliding = false;
+
     private void Start()
     {
         musicPlayer = GetComponent<MusicPlayer>();
         slideSpeed = beatTravelDistance / musicPlayer.intervalLength; // travel distance divided by secPerBeat;
-
-
     }
 
     private void Update()
     {
-        SlideBeatContainer();
+        if (startSliding)
+        {
+            SlideBeatContainer();
+        }
     }
 
     public void PulseIndicatorUI()
@@ -62,5 +65,11 @@ public class BeatVisualizer : MonoBehaviour
             var temp = beatContainer.localPosition.x * 2;
             beatContainer.localPosition += Vector3.left * temp;
         }
+    }
+
+    public void InitializeBeatContainer()
+    {
+        beatContainer.localPosition = new Vector3(0f, 0f, 0f);
+        startSliding = true;
     }
 }

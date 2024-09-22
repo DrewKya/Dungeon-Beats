@@ -61,9 +61,10 @@ public class Spikes : MonoBehaviour, IActionable
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
+        IDamageable damageable = collider.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            collider.GetComponent<PlayerEntity>().TakeDamage(damage);
+            damageable.TakeDamage(damage);
         }
     }
 }

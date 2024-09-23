@@ -6,8 +6,15 @@ using UnityEngine;
 
 public class PlayerEntity : MonoBehaviour, IDamageable
 {
+    public int maxHealthPoint;
     public int healthPoint;
     public int defense;
+
+
+    private void Start()
+    {
+        healthPoint = maxHealthPoint;
+    }
 
     public void TakeDamage(int damage)
     {

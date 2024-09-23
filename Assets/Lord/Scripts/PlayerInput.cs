@@ -10,10 +10,13 @@ public class PlayerInput : MonoBehaviour
     MusicPlayer musicPlayer;
     TMP_Text timingText;
 
+    float inputTimeInBeats;
+
     private void Start()
     {
         musicPlayer = MusicPlayer.Instance;
         timingText = musicPlayer.timingText;
+        timingText.text = "";
 
         CheckGround(groundCheck.position);
     }
@@ -81,14 +84,16 @@ public class PlayerInput : MonoBehaviour
 
         float timeDifference = Mathf.Abs(closestBeat - inputTime); //time difference in beats
 
-        //Debug.Log(timeDifference);
-        if (timeDifference < 0.3f)
+        //Debug.Log(inputTime);
+        if (timeDifference <= 0.3f)
         {
-            timingText.text = "Perfect";
+            timingText.text = "Great!";
+            timingText.color = Color.yellow;
         }
         else
         {
             timingText.text = "Miss";
+            timingText.color = Color.gray;
         }
     }
 }

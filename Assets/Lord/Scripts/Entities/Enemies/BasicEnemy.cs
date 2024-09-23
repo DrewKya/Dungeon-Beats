@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class BasicEnemy : Enemy
 {
-    private void Update()
+    [SerializeField] private int actionCooldown = 2;
+
+    private int cooldown = 0;
+
+    public override void TakeAction()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(cooldown <= 0)
         {
-            TakeDamage(1);
+            cooldown = actionCooldown - 1;
+            Move();
+        }
+        else
+        {
+            cooldown--;
         }
     }
 }

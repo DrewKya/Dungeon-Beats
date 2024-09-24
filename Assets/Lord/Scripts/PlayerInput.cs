@@ -1,4 +1,6 @@
+using System;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -10,7 +12,7 @@ public class PlayerInput : MonoBehaviour
     MusicPlayer musicPlayer;
     TMP_Text timingText;
 
-    float inputTimeInBeats;
+    int lastInputBeat = -1; //this is to store in which beat the player last inputted an action
 
     private void Start()
     {
@@ -50,8 +52,10 @@ public class PlayerInput : MonoBehaviour
             positionIncrement = new Vector3(-1, 0, 0);        
         }
 
-        if(positionIncrement.magnitude > 0) //if a movement input is detected
+        if(positionIncrement.magnitude > 0) //if a movement input is detected and allowed
         {
+            RotatePlayer(positionIncrement);
+
             Vector3 targetTilePosition = groundCheck.position + positionIncrement;
             if (CheckIfWalkable(targetTilePosition))
             {
@@ -59,6 +63,12 @@ public class PlayerInput : MonoBehaviour
                 CheckGround(groundCheck.position);
             }
         }   
+    }
+
+    private void RotatePlayer(Vector3 direction)
+    {
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        gameObject.transform.rotation = rotation;
     }
 
     private bool CheckIfWalkable(Vector3 target)
@@ -84,7 +94,7 @@ public class PlayerInput : MonoBehaviour
 
         float timeDifference = Mathf.Abs(closestBeat - inputTime); //time difference in beats
 
-        //Debug.Log(inputTime);
+        //Debug.Log(timeDifference);
         if (timeDifference <= 0.3f)
         {
             timingText.text = "Great!";
@@ -95,5 +105,6 @@ public class PlayerInput : MonoBehaviour
             timingText.text = "Miss";
             timingText.color = Color.gray;
         }
+
     }
 }

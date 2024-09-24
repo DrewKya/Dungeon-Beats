@@ -12,10 +12,11 @@ public class Spikes : MonoBehaviour, IActionable
     [SerializeField] private int durationOn = 1; //how many beats the spikes are on
     [SerializeField] private int damage = 1;
 
-    public int cooldown; //this is a counter to determine when the spike is toggled on/off
+    private int cooldown; //this is a counter to determine when the spike is toggled on/off
     private bool isOn = true;
 
     private Collider hitBox;
+    private List<GameObject> objectsInTrigger = new List<GameObject>();
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class Spikes : MonoBehaviour, IActionable
     public void TakeAction()
     {
         CheckCooldown();
+        CheckObjectsInTrigger();
     }
 
     private void CheckCooldown()
@@ -56,15 +58,29 @@ public class Spikes : MonoBehaviour, IActionable
             spikeModel.SetActive(false);
             hitBox.enabled = false;
             cooldown = durationOff - 1;
+            objectsInTrigger.Clear();
+        }
+    }
+
+    private void CheckObjectsInTrigger()
+    {
+        foreach(GameObject obj in objectsInTrigger)
+        {
+            IDamageable damageable = obj.GetComponent<IDamageable>();
+            if(damageable != null)
+            {
+                damageable.TakeDamage(damage);
+            }
         }
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        IDamageable damageable = collider.GetComponent<IDamageable>();
-        if (damageable != null)
-        {
-            damageable.TakeDamage(damage);
-        }
+        objectsInTrigger.Add(collider.gameObject);
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        objectsInTrigger.Remove(collider.gameObject);
     }
 }

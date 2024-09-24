@@ -49,12 +49,19 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
 
             if (CheckIfWalkable(targetTilePosition))
             {
+                RotateEntity(positionIncrement);
                 transform.position += positionIncrement;
                 return;
             }
             
             availableDirections.Remove(direction);
         }  
+    }
+
+    private void RotateEntity(Vector3 direction)
+    {
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        gameObject.transform.rotation = rotation;
     }
 
     private Vector3 SetPositionIncrement(MoveDirection direction, Vector3 increment)

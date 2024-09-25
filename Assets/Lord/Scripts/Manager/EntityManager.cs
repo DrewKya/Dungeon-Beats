@@ -15,14 +15,14 @@ public class EntityManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if(instance != null)
         {
-            instance = this;
-        }
-        else
-        {
+            Debug.LogWarning($"More than one instance of {instance.GetType()} found!");
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -46,12 +46,21 @@ public class EntityManager : MonoBehaviour
         }
     }
 
+    public void RemoveEntity(IActionable entity)
+    {
+        actionableEntities.Remove(entity);
+    }
+
     public void NotifyAllEntityToTakeAction()
     {
-        foreach(IActionable entity in actionableEntities)
+        for (int i = actionableEntities.Count - 1; i >= 0; i--)
         {
-            entity.TakeAction();
+            if(actionableEntities[i] != null)
+            {
+                actionableEntities[i].TakeAction();
+            }
         }
     }
+
 
 }

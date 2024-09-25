@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -25,7 +26,27 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        CheckPauseInput();
+        if (Time.timeScale == 0f) return;
+
         CheckMovementInput();
+    }
+
+    private void CheckPauseInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Time.timeScale > 0)
+            {
+                PauseManager.instance.TogglePauseGame(true);
+                musicPlayer.audioSource.Pause();
+            }
+            else
+            {
+                PauseManager.instance.TogglePauseGame(false);
+                musicPlayer.audioSource.Play();
+            }
+        }
     }
 
     private void CheckMovementInput()

@@ -94,6 +94,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
 
     public virtual void Die()
     {
+        EntityManager.instance.RemoveEntity(this);
         Destroy(gameObject);
     }
 }

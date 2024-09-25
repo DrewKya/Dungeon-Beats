@@ -64,15 +64,23 @@ public class Spikes : MonoBehaviour, IActionable
 
     private void CheckObjectsInTrigger()
     {
-        foreach(GameObject obj in objectsInTrigger)
+        for (int i = objectsInTrigger.Count - 1; i >= 0; i--)
         {
+            GameObject obj = objectsInTrigger[i];
+            if (obj == null)
+            {
+                objectsInTrigger.RemoveAt(i);
+                continue;
+            }
+
             IDamageable damageable = obj.GetComponent<IDamageable>();
-            if(damageable != null)
+            if (damageable != null)
             {
                 damageable.TakeDamage(damage);
             }
         }
     }
+
 
     private void OnTriggerEnter(Collider collider)
     {

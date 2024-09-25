@@ -1,24 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
+
+    public enum SceneState
+    {
+        MainMenu, Ingame
+    };
 
     public PlayerManager playerManager;
     public int loadedSlotIndex = -1;
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance != null)
         {
-            instance = this;
+            Debug.LogWarning($"More than one instance of {instance.GetType()} found!");
+            Destroy(gameObject);
+            return;
         }
-        else
-        {
-            Destroy(this);
-        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        Debug.Log($"Loading scene : {sceneName}.");
+        SceneManager.LoadSceneAsync(sceneName);
     }
 
     public void InitializeNewData()

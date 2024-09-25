@@ -8,7 +8,7 @@ public class MusicPlayer : MonoBehaviour
 {
     public static MusicPlayer Instance;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     
     public float musicBPM;
     public Interval interval;
@@ -20,6 +20,12 @@ public class MusicPlayer : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Debug.LogWarning($"More than one instance of {Instance.GetType()} found!");
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
     }
 
@@ -52,12 +58,11 @@ public class Interval
     public void CheckNewInterval(float interval)
     {
         var roundedInterval = Mathf.FloorToInt(interval); //round down
-        
-        if(roundedInterval != lastInterval)
+
+        if (roundedInterval != lastInterval)
         {
             lastInterval = roundedInterval;
             trigger.Invoke();
         }
-
     }
 }

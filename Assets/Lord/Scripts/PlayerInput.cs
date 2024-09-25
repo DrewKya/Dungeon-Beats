@@ -78,7 +78,7 @@ public class PlayerInput : MonoBehaviour
             RotatePlayer(positionIncrement);
 
             Vector3 targetTilePosition = groundCheck.position + positionIncrement;
-            if (CheckIfWalkable(targetTilePosition))
+            if (CheckIfWalkable(targetTilePosition, positionIncrement))
             {
                 transform.position += positionIncrement;
                 CheckGround(groundCheck.position);
@@ -92,10 +92,15 @@ public class PlayerInput : MonoBehaviour
         gameObject.transform.rotation = rotation;
     }
 
-    private bool CheckIfWalkable(Vector3 target)
+    private bool CheckIfWalkable(Vector3 target, Vector3 direction)
     {
         RaycastHit hit;
-        return (Physics.Raycast(target, Vector3.down, out hit, 1f, LayerMask.GetMask("Ground"))) ? true : false;
+        if(Physics.Raycast(groundCheck.position, direction, out hit, 1f)) //check if there is a collider in that direction
+        {
+            if (!hit.collider.isTrigger) return false; //ignore triggers
+        }
+
+        return (Physics.Raycast(target, Vector3.down, out hit, 1f, LayerMask.GetMask("Ground"))) ? true : false; //check if ground exist in that direction
     }
 
     private void CheckGround(Vector3 origin)
@@ -116,7 +121,7 @@ public class PlayerInput : MonoBehaviour
         float timeDifference = Mathf.Abs(closestBeat - inputTime); //time difference in beats
 
         //Debug.Log(timeDifference);
-        if (timeDifference <= 0.3f)
+        if (timeDifference <= 0.4f)
         {
             timingText.text = "Great!";
             timingText.color = Color.yellow;

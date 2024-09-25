@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3840042353935541847}
   m_Layer: 3
   m_Name: pressure plate
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,5 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPress:
+    m_PersistentCalls:
+      m_Calls: []
+  onRelease:
     m_PersistentCalls:
       m_Calls: []

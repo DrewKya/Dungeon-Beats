@@ -234,11 +234,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3161680794025287389}
   - component: {fileID: 9055386611485747239}
-  - component: {fileID: 7421902633329468587}
+  - component: {fileID: 6611111444864850782}
   - component: {fileID: 7295141660313730720}
   m_Layer: 0
   m_Name: Basic Enemy
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,8 +287,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &7421902633329468587
-CapsuleCollider:
+--- !u!65 &6611111444864850782
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -305,11 +305,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Height: 1.001768
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5046198, z: 0}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &7295141660313730720
 MonoBehaviour:
   m_ObjectHideFlags: 0

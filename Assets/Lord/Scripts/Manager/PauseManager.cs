@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager instance {  get; private set; }
+    public GameObject MenuUI;
 
     private void Awake()
     {
@@ -22,10 +23,13 @@ public class PauseManager : MonoBehaviour
         if (boolean)
         {
             Time.timeScale = 0f; //pause
+            MenuUI.SetActive(true);
         }
         else
         {
             Time.timeScale = 1f; //unpause
+            MenuUI.SetActive(false);
         }
     }
+
 }

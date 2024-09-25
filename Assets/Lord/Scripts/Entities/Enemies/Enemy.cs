@@ -47,7 +47,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
 
             Vector3 targetTilePosition = groundCheck.position + positionIncrement;
 
-            if (CheckIfWalkable(targetTilePosition))
+            if (CheckIfWalkable(targetTilePosition, positionIncrement))
             {
                 RotateEntity(positionIncrement);
                 transform.position += positionIncrement;
@@ -85,15 +85,21 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         }
         return increment;
     }
-    
-    private bool CheckIfWalkable(Vector3 target)
+
+    private bool CheckIfWalkable(Vector3 target, Vector3 direction)
     {
         RaycastHit hit;
-        return (Physics.Raycast(target, Vector3.down, out hit, 1f, LayerMask.GetMask("Ground"))) ? true : false;
+        if (Physics.Raycast(groundCheck.position, direction, out hit, 1f)) //check if there is a collider in that direction
+        {
+            if (!hit.collider.isTrigger) return false; //ignore triggers
+        }
+
+        return (Physics.Raycast(target, Vector3.down, out hit, 1f, LayerMask.GetMask("Ground"))) ? true : false; //check if ground exist in that direction
     }
 
     public virtual void Die()
     {
+        Debug.Log($"{gameObject.name} died!");
         EntityManager.instance.RemoveEntity(this);
         Destroy(gameObject);
     }

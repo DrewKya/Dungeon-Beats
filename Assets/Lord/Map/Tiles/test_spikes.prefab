@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 9159136917705052020}
   m_Layer: 3
   m_Name: test_spikes
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,4 +155,4 @@ MonoBehaviour:
   spikeModel: {fileID: 4925827476432063674}
   durationOff: 3
   durationOn: 3
-  cooldown: 0
+  damage: 1

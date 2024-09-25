@@ -5608,43 +5608,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2481114938510205976, guid: 334e3b5828567f04d90d80fc74fca1a9,
-        type: 3}
-      propertyPath: loot
-      value: 
-      objectReference: {fileID: 11400000, guid: 3a9a8ca92ce1a94459c3bfb22edcfd4d,
-        type: 2}
     - target: {fileID: 3503674497600622856, guid: 334e3b5828567f04d90d80fc74fca1a9,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 330585545}
-    - target: {fileID: 3503674497600622856, guid: 334e3b5828567f04d90d80fc74fca1a9,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 976167541
-      objectReference: {fileID: 0}
-    - target: {fileID: 5585100703875196024, guid: 334e3b5828567f04d90d80fc74fca1a9,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5585100703875196024, guid: 334e3b5828567f04d90d80fc74fca1a9,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 461667f2aab1ebe449fb737588fc3a27,
-        type: 3}
-    - target: {fileID: 5802805258141667716, guid: 334e3b5828567f04d90d80fc74fca1a9,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5802805258141667716, guid: 334e3b5828567f04d90d80fc74fca1a9,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6877251967799855366, guid: 334e3b5828567f04d90d80fc74fca1a9,
         type: 3}
       propertyPath: m_LocalPosition.x

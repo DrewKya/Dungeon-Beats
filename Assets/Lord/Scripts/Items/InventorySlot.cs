@@ -7,7 +7,7 @@ public class InventorySlot : MonoBehaviour
 {
     public Image icon;
 
-    private Item item;
+    public Item item;
     private Button button;
 
     private void Start()

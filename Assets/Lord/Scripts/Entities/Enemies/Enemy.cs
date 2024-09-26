@@ -22,7 +22,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     public virtual void TakeDamage(int damage)
     {
         Debug.Log($"{gameObject.name} took {damage} damage!");
-        healthPoint -= damage;
+        healthPoint -= Math.Max(0, damage);
         if ( healthPoint <= 0)
         {
             Die();

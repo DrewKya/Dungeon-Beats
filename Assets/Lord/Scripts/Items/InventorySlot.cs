@@ -8,6 +8,12 @@ public class InventorySlot : MonoBehaviour
     public Image icon;
 
     private Item item;
+    private Button button;
+
+    private void Start()
+    {
+        button = GetComponent<Button>();
+    }
 
     public void AddItem(Item newItem)
     {
@@ -21,5 +27,13 @@ public class InventorySlot : MonoBehaviour
         item = null;
         icon.sprite = null;
         icon.enabled = false;
+    }
+
+    public void UseItem()
+    {
+        if(item != null)
+        {
+            item.Use();
+        }
     }
 }

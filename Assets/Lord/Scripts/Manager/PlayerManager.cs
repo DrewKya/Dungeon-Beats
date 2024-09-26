@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
 
     public void EquipItem(Equipment equipment)
     {
+        Debug.Log($"Equipping {equipment.itemName}.");
         int equipSlot = (int) equipment.equipmentType; //determine which type of equipment it is
 
         Equipment currentEquippedItem = null;

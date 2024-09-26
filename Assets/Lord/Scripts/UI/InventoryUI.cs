@@ -12,6 +12,7 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         inventoryManager = InventoryManager.instance;
+        inventoryManager.OnItemChangedCallback += UpdateUI;
 
         slots = itemsGrid.GetComponentsInChildren<InventorySlot>();
     }

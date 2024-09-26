@@ -18,6 +18,11 @@ public class PauseManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        MenuUI.SetActive(false);
+    }
+
     public void TogglePauseGame(bool boolean)
     {
         if (boolean)

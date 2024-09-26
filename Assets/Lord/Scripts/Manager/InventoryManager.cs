@@ -23,6 +23,9 @@ public class InventoryManager : MonoBehaviour
     public List<Item> items = new List<Item>();
     public int maxSlot = 20;
 
+    public delegate void OnItemChanged();
+    public OnItemChanged OnItemChangedCallback;
+
     public bool AddItem(Item item)
     {
         if (items.Count >= maxSlot)
@@ -31,12 +34,14 @@ public class InventoryManager : MonoBehaviour
             return false;
         }
         items.Add(item);
-        Debug.Log($"[{item.itemName}] added to inventory");
+        Debug.Log($"{item.itemName} added to inventory");
+        OnItemChangedCallback();
         return true;
     }
 
     public void RemoveItem(Item item)
     {
         items.Remove(item);
+        OnItemChangedCallback();
     }
 }

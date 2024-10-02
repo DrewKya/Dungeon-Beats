@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerStats playerStats;
 
     public Equipment[] currentEquipment;
+    public Weapon currentWeapon1;
 
     public void EquipItem(Equipment equipment)
     {
@@ -39,7 +40,48 @@ public class PlayerManager : MonoBehaviour
             InventoryManager.instance.AddItem(currentEquippedItem); //add equipped item back to inventory
         }
         currentEquipment[equipSlot] = equipment;
-        
+        UpdatePlayerStats(currentEquippedItem, equipment);
+    }
+
+    public void UnequipItem(Equipment equipment)
+    {
+        Debug.Log($"Unequipping {equipment.itemName}.");
+        int equipSlot = (int)equipment.equipmentType; //determine which type of equipment it is
+
+        if (currentEquipment[equipSlot] != null)
+        {
+            var currentEquippedItem = currentEquipment[equipSlot];
+            InventoryManager.instance.AddItem(currentEquippedItem); //add equipped item back to inventory
+            currentEquipment[equipSlot] = null;
+        }
+        UpdatePlayerStats(equipment, null);
+    }
+
+    public void EquipItem(Weapon weapon)
+    {
+        Debug.Log($"Equipping {weapon.itemName}.");
+        Weapon currentEquippedWeapon = null;
+
+        if (currentWeapon1 != null)
+        {
+            currentEquippedWeapon = currentWeapon1;
+            InventoryManager.instance.AddItem(currentEquippedWeapon); //add equipped item back to inventory
+        }
+        currentWeapon1 = weapon;
+        UpdatePlayerStats(currentEquippedWeapon, weapon);
+    }
+
+    public void UnequipItem(Weapon weapon)
+    {
+        Debug.Log($"Unequipping {weapon.itemName}.");
+
+        if (currentWeapon1 != null)
+        {
+            var currentEquippedWeapon = currentWeapon1;
+            InventoryManager.instance.AddItem(currentWeapon1); //add equipped item back to inventory
+            currentWeapon1 = null;
+        }
+        UpdatePlayerStats(weapon, null);
     }
 
     public void UpdatePlayerStats(Equipment previousItem, Equipment newItem)
@@ -63,6 +105,26 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void UpdatePlayerStats(Weapon previousItem, Weapon newItem)
+    {
+        if (previousItem != null)
+        {
+            playerStats.healthPoint -= previousItem.stats.healthModifier;
+            playerStats.attack -= previousItem.stats.attackModifier;
+            playerStats.defense -= previousItem.stats.defenseModifier;
+        }
+        if (newItem != null)
+        {
+            playerStats.healthPoint += newItem.stats.healthModifier;
+            playerStats.attack += newItem.stats.attackModifier;
+            playerStats.defense += newItem.stats.defenseModifier;
+        }
+        PlayerEntity player = FindFirstObjectByType<PlayerEntity>();
+        if (player != null)
+        {
+            player.UpdateStats();
+        }
+    }
 }
 
 [System.Serializable]

@@ -13,10 +13,16 @@ public class PlayerInput : MonoBehaviour
     MusicPlayer musicPlayer;
     TMP_Text timingText;
 
+    PlayerManager playerManager;
+    PlayerEntity playerEntity;
+
     int lastInputBeat = -1; //this is to store in which beat the player last inputted an action
 
     private void Start()
     {
+        playerManager = PlayerManager.instance;
+        playerEntity = GetComponent<PlayerEntity>();
+
         musicPlayer = MusicPlayer.Instance;
         timingText = musicPlayer.timingText;
         timingText.text = "";
@@ -30,6 +36,7 @@ public class PlayerInput : MonoBehaviour
         if (Time.timeScale == 0f) return;
 
         CheckMovementInput();
+        CheckAttackInput();
     }
 
     private void CheckPauseInput()
@@ -114,6 +121,21 @@ public class PlayerInput : MonoBehaviour
         }
 
     }
+
+    private void CheckAttackInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Weapon selectedWeapon = playerManager.currentWeapon1;
+            if(selectedWeapon != null)
+            {
+                playerEntity.Attack(selectedWeapon);
+            }
+        }
+    }
+
+    
+
     public void CheckTiming(float inputTime)
     {
         float closestBeat = Mathf.Round(inputTime);

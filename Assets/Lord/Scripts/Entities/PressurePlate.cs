@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class PressurePlate : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+
     public UnityEvent onPress;
     public UnityEvent onRelease;
 
@@ -20,13 +22,25 @@ public class PressurePlate : MonoBehaviour
         }
     }
 
+    private void PlayPressedAnimation()
+    {
+        animator.SetTrigger("Pressed");
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
-        TogglePlate(true);
+        if(collider.GetComponent<Rigidbody>() != null)
+        {
+            PlayPressedAnimation();
+            TogglePlate(true);
+        }
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        TogglePlate(false);
+        if (collider.GetComponent<Rigidbody>() != null)
+        {
+            TogglePlate(false);
+        }
     }
 }

@@ -126,11 +126,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Weapon selectedWeapon = playerManager.currentWeapon1;
-            if(selectedWeapon != null)
-            {
-                playerEntity.Attack(selectedWeapon);
-            }
+            playerEntity.Attack();
         }
     }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7165376694373346103}
   - component: {fileID: 2465134547564748494}
   - component: {fileID: 2191572252538724558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MeleeHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7230284601987779229}
   - component: {fileID: 6383822413360021287}
   - component: {fileID: 2631794292672398680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7221615673116697568}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 8241525690281822520}
   - component: {fileID: 5558342663698729226}
   - component: {fileID: 379841219606177482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5789599214727982215}
   - component: {fileID: 6638455491005175817}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BaseBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 3760386072287278190}
   - component: {fileID: 6328572566403138830}
   - component: {fileID: 5215574941628167269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -478,7 +478,8 @@ MonoBehaviour:
     defense: 0
   currentHP: 0
   meleeHitbox: {fileID: 2191572252538724558}
-  weaponAttachPoint: {fileID: 0}
+  weaponAttachPoint: {fileID: 7030780534791038798}
+  nextAttackTime: 0
 --- !u!114 &5215574941628167269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7030780534791038798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponAttachPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

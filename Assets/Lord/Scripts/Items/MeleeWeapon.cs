@@ -11,8 +11,6 @@ public class MeleeWeapon : Weapon
     }
     public MeleeRange range;
 
-    private MonoBehaviour monoBehaviour;
-
     public void Initialize(Transform weaponAttachPoint)
     {
         Instantiate(weaponModel, weaponAttachPoint);

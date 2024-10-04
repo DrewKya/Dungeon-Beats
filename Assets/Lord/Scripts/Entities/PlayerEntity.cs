@@ -16,6 +16,8 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public MeleeHitboxTrigger meleeHitbox;
     public Transform weaponAttachPoint;
 
+    public float nextAttackTime; //this determines the next Time.time the player can attack
+
     private void Start()
     {
         InitializeStats();
@@ -26,12 +28,33 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         playerManager = PlayerManager.instance;
         CopyStatsFromPlayerManager();
         currentHP = stats.healthPoint;
+
+        SetWeaponModel();
     }
 
     public void UpdateStats()
     {
         CopyStatsFromPlayerManager();
         currentHP = Mathf.Min(currentHP, stats.healthPoint);
+        
+        SetWeaponModel();
+    }
+
+    private void SetWeaponModel()
+    {
+        if(weaponAttachPoint.childCount > 0)
+        {
+            foreach(Transform child in weaponAttachPoint.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        if(playerManager.currentWeapon1 is MeleeWeapon)
+        {
+            MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon1;
+            meleeWeapon.Initialize(weaponAttachPoint);
+        }
     }
 
     public void CopyStatsFromPlayerManager()
@@ -44,15 +67,33 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         stats.defense = template.defense;
     }
 
-    public void Attack(Weapon weapon)
+    public void Attack()
     {
-        Debug.Log("Player is attacking!");
-        if(weapon is MeleeWeapon)
+        Weapon weapon = playerManager.currentWeapon1;
+        if(weapon == null)
         {
+            return;
+        }
+        if(!CheckAttackCooldown())
+        {
+            Debug.Log("Weapon is in cooldown!");
+            return;
+        }
+
+        if (weapon is MeleeWeapon)
+        {
+            Debug.Log("Player is attacking!");
             MeleeWeapon meleeWeapon = (MeleeWeapon)weapon;
             SetHitboxSize(meleeWeapon.range);
             StartCoroutine(ToggleHitbox());
         }
+        StartCoroutine(IngameParametersUI.instance.weaponIcon.StartCooldown(weapon.attackCooldownInSeconds));
+        nextAttackTime = Time.time + weapon.attackCooldownInSeconds;
+    }
+
+    private bool CheckAttackCooldown()
+    {
+        return (Time.time >= nextAttackTime) ? true : false;
     }
 
     private void SetHitboxSize(MeleeRange range)

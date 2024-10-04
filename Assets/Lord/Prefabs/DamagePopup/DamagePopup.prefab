@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 863006326529657971}
   - component: {fileID: 3912512732284842497}
   - component: {fileID: 3407828705003303656}
+  - component: {fileID: 2432227824553180800}
   m_Layer: 0
   m_Name: DamagePopup
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -7168291240433928648, guid: d102ff6b2988eb942895ca4d87c8b0df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,12 +103,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '100
-
-'
+  m_text: 100
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d102ff6b2988eb942895ca4d87c8b0df, type: 2}
+  m_sharedMaterial: {fileID: -7168291240433928648, guid: d102ff6b2988eb942895ca4d87c8b0df,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -120,8 +120,8 @@ MonoBehaviour:
   m_fontColorGradient:
     topLeft: {r: 1, g: 0.74249774, b: 0.1566037, a: 1}
     topRight: {r: 1, g: 0.74249774, b: 0.1566037, a: 1}
-    bottomLeft: {r: 1, g: 0.38475952, b: 0.043396115, a: 1}
-    bottomRight: {r: 1, g: 0.38475952, b: 0.043396115, a: 1}
+    bottomLeft: {r: 1, g: 0.94094646, b: 0.4433962, a: 1}
+    bottomRight: {r: 1, g: 0.94094646, b: 0.4433962, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 5.5875, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.26304817, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -190,4 +190,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3926c57b5944b334ba187634f1ddfb43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popupDuration: 2
+  popupDuration: 1.2
+--- !u!111 &2432227824553180800
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815857308429298433}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 33777cd5fac4c4c459fb876ad56691d1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 33777cd5fac4c4c459fb876ad56691d1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

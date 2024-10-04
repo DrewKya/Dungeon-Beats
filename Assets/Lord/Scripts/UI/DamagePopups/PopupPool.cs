@@ -22,7 +22,7 @@ public class PopupPool : MonoBehaviour
         DamagePopup popup;
         for(int i = 0; i < poolSize; i++)
         {
-            popup = Instantiate(popupPrefab);
+            popup = Instantiate(popupPrefab, transform);
             popup.gameObject.SetActive(false);
             pool.Add(popup);
         }
@@ -45,8 +45,8 @@ public class PopupPool : MonoBehaviour
         DamagePopup popup = GetPooledObject();
         if(popup != null)
         {
-            popup.transform.position = position;
             popup.gameObject.SetActive(true);
+            popup.transform.position = position + (Random.insideUnitSphere * 0.5f);
             popup.SetDamage(damage);
             StartCoroutine(popup.DisablePopupAfterDelay());
         }

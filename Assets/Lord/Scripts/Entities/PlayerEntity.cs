@@ -140,7 +140,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     {
         int totalDamage = CalculateDamageTaken(damage);
 
-        Debug.Log($"{gameObject.name} took {totalDamage} damage!");
+        PopupPool.instance.ShowDamage(transform.position, totalDamage);
         currentHP -= totalDamage;
         if(currentHP < 0)
         {

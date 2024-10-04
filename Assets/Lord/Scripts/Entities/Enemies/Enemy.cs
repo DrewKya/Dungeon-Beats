@@ -21,7 +21,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     }
     public virtual void TakeDamage(int damage)
     {
-        Debug.Log($"{gameObject.name} took {damage} damage!");
+        PopupPool.instance.ShowDamage(transform.position, damage);
         healthPoint -= Math.Max(0, damage);
         if ( healthPoint <= 0)
         {

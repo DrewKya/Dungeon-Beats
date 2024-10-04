@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6877251967799855366}
   - component: {fileID: 5761372265123279894}
   m_Layer: 3
-  m_Name: test_tile
+  m_Name: Tile
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,6 +66,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497478109593463303, guid: a4260dc7bfe863444b1a432ce4b16198,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3018260261360480445, guid: a4260dc7bfe863444b1a432ce4b16198,
         type: 3}
@@ -136,6 +141,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154622796918311890, guid: a4260dc7bfe863444b1a432ce4b16198,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

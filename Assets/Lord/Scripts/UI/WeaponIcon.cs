@@ -14,7 +14,6 @@ public class WeaponIcon : MonoBehaviour
     {
         if(weapon != null)
         {
-            Debug.Log("test");
             icon.sprite = weapon.icon;
             icon.enabled = true;
         }
@@ -34,11 +33,12 @@ public class WeaponIcon : MonoBehaviour
         {
             time -= Time.deltaTime;
             cooldownRemaining.text = Mathf.CeilToInt(time).ToString();
-            backgroundFill.fillAmount = time / cooldown;
+            backgroundFill.fillAmount = 1- (time / cooldown);
 
             yield return null;
         }
 
-        backgroundFill.fillAmount = 0;
+        backgroundFill.fillAmount = 1;
+        cooldownRemaining.text = "";
     }
 }

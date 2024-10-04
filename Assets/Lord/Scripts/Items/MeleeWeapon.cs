@@ -13,7 +13,10 @@ public class MeleeWeapon : Weapon
 
     public void Initialize(Transform weaponAttachPoint)
     {
-        Instantiate(weaponModel, weaponAttachPoint);
+        if(weaponModel != null)
+        {
+            Instantiate(weaponModel, weaponAttachPoint);
+        }
     }
 
     public override void Attack()

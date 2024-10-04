@@ -1,15 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Chest : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     [SerializeField] private Image interactPrompt;
     private bool isOpenable = false;
 
     public Item loot;
+
+
 
     private void Update()
     {
@@ -17,6 +21,7 @@ public class Chest : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                animator.SetTrigger("Open");
                 Interact();
             }
         }
@@ -27,7 +32,15 @@ public class Chest : MonoBehaviour
         bool itemAdded = InventoryManager.instance.AddItem(loot);
         if (itemAdded)
         {
-            Destroy(gameObject);
+            isOpenable = false;
+            interactPrompt.gameObject.SetActive(false);
+
+            Collider[] colliders = GetComponents<Collider>();
+            foreach (Collider collider in colliders)
+            {
+                if (collider.isTrigger) collider.enabled = false;
+            }
+            //Destroy(gameObject);
         }
     }
 

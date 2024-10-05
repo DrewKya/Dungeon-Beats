@@ -15,13 +15,23 @@ public class DamagePopup : MonoBehaviour
         textMesh = GetComponent<TMP_Text>();
     }
 
-    public void SetDamage(int damage)
+    public void SetDamage(int damage, bool isCrit)
     {
-        if(textMesh == null)
+        if(textMesh == null) textMesh = GetComponent<TMP_Text>();
+        
+
+        if (!isCrit)
         {
-            textMesh = GetComponent<TMP_Text>();
+            textMesh.text = damage.ToString();
+            textMesh.fontStyle = FontStyles.Normal;
+            textMesh.fontSize = 36;
         }
-        textMesh.text = damage.ToString();
+        else
+        {
+            textMesh.text = damage.ToString() + "!";
+            textMesh.fontStyle = FontStyles.Bold;
+            textMesh.fontSize = 50;
+        }
     }
 
     public IEnumerator DisablePopupAfterDelay()

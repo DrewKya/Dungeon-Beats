@@ -102,9 +102,9 @@ public class PlayerInput : MonoBehaviour
     private bool CheckIfWalkable(Vector3 target, Vector3 direction)
     {
         RaycastHit hit;
-        if(Physics.Raycast(groundCheck.position, direction, out hit, 1f)) //check if there is a collider in that direction
+        if(Physics.Raycast(groundCheck.position, direction, out hit, 1f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) //check if there is a collider in that direction
         {
-            if (!hit.collider.isTrigger) return false; //ignore triggers
+            return false;
         }
 
         return (Physics.Raycast(target, Vector3.down, out hit, 1f, LayerMask.GetMask("Ground"))) ? true : false; //check if ground exist in that direction

@@ -1397,6 +1397,7 @@ MonoBehaviour:
     healthPoint: 10
     attack: 1
     defense: 0
+    critRate: 5
   currentEquipment:
   - {fileID: 0}
   - {fileID: 0}
@@ -4066,12 +4067,12 @@ PrefabInstance:
     - target: {fileID: 9159136917705052020, guid: fa1504cf5e7381d40a4af5e40cb5e11a,
         type: 3}
       propertyPath: durationOn
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9159136917705052020, guid: fa1504cf5e7381d40a4af5e40cb5e11a,
         type: 3}
       propertyPath: durationOff
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

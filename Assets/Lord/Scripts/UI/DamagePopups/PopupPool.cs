@@ -40,14 +40,14 @@ public class PopupPool : MonoBehaviour
         return null;
     }
 
-    public void ShowDamage(Vector3 position, int damage)
+    public void ShowDamage(Vector3 position, int damage, bool isCrit)
     {
         DamagePopup popup = GetPooledObject();
         if(popup != null)
         {
             popup.gameObject.SetActive(true);
             popup.transform.position = position + (Random.insideUnitSphere * 0.5f);
-            popup.SetDamage(damage);
+            popup.SetDamage(damage, isCrit);
             StartCoroutine(popup.DisablePopupAfterDelay());
         }
     }

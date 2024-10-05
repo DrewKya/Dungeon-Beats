@@ -91,12 +91,14 @@ public class PlayerManager : MonoBehaviour
             playerStats.healthPoint -= previousItem.stats.healthModifier;
             playerStats.attack -= previousItem.stats.attackModifier; 
             playerStats.defense -= previousItem.stats.defenseModifier;
+            playerStats.critRate -= previousItem.stats.critRateModifier;
         }
         if(newItem != null)
         {
             playerStats.healthPoint += newItem.stats.healthModifier;
             playerStats.attack += newItem.stats.attackModifier;
             playerStats.defense += newItem.stats.defenseModifier;
+            playerStats.critRate += newItem.stats.critRateModifier;
         }
         PlayerEntity player = FindFirstObjectByType<PlayerEntity>();
         if (player != null)
@@ -140,4 +142,5 @@ public class PlayerStats
     public int healthPoint = 10;
     public int attack = 1;
     public int defense = 0;
+    public int critRate = 0;
 }

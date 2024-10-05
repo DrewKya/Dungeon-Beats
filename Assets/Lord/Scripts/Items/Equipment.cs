@@ -28,4 +28,5 @@ public class StatModifiers
     public int attackModifier = 0;
     public int healthModifier = 0;
     public int defenseModifier = 0;
+    public int critRateModifier = 0;
 }

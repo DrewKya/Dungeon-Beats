@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spikeModel: {fileID: 1985416932198534271}
+  animator: {fileID: 8700993817678020393}
   durationOff: 3
   durationOn: 3
   damage: 1
@@ -79,6 +80,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3071888841632053582}
     m_Modifications:
+    - target: {fileID: 1678977544220071373, guid: 775da2e94f5491e4f8686bac6a98bd86,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 24aede9046059cf4e94b71c00c512d5b, type: 2}
     - target: {fileID: 1678977544220071373, guid: 775da2e94f5491e4f8686bac6a98bd86,
         type: 3}
       propertyPath: m_UpdateMode
@@ -178,6 +184,12 @@ Transform:
 --- !u!1 &1985416932198534271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8359051197062342299, guid: 775da2e94f5491e4f8686bac6a98bd86,
+    type: 3}
+  m_PrefabInstance: {fileID: 8038026933772561124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8700993817678020393 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1678977544220071373, guid: 775da2e94f5491e4f8686bac6a98bd86,
     type: 3}
   m_PrefabInstance: {fileID: 8038026933772561124}
   m_PrefabAsset: {fileID: 0}

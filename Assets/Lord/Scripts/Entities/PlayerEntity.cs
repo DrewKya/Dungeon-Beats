@@ -65,6 +65,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         stats.healthPoint = template.healthPoint;
         stats.attack = template.attack;
         stats.defense = template.defense;
+        stats.critRate = template.critRate;
     }
 
     public void Attack()
@@ -126,21 +127,23 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     private int CalculateDamageDealt()
     {
         float critRoll = UnityEngine.Random.Range(0f, 100f);
-        if(critRoll < 5f) //5% chance to crit
+        if(critRoll < stats.critRate)
         {
+            meleeHitbox.isCrit = true;
             return Mathf.FloorToInt(stats.attack * 1.5f); //crit damage
         }
         else
         {
+            meleeHitbox.isCrit = false;
             return stats.attack;
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isCrit = false)
     {
         int totalDamage = CalculateDamageTaken(damage);
 
-        PopupPool.instance.ShowDamage(transform.position, totalDamage);
+        PopupPool.instance.ShowDamage(transform.position, totalDamage, isCrit);
         currentHP -= totalDamage;
         if(currentHP < 0)
         {

@@ -1,17 +1,22 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
+using UnityEditorInternal;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
 {
-    [SerializeField] Transform groundCheck;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected Transform groundCheck;
 
     public int maxHealthPoint = 10;
     public int healthPoint;
 
     private void Start()
     {
+        if (animator == null) animator = GetComponentInChildren<Animator>();
         healthPoint = maxHealthPoint;
     }
 
@@ -19,9 +24,9 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     {
         Move();
     }
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, bool isCrit = false)
     {
-        PopupPool.instance.ShowDamage(transform.position, damage);
+        PopupPool.instance.ShowDamage(transform.position, damage, isCrit);
         healthPoint -= Math.Max(0, damage);
         if ( healthPoint <= 0)
         {
@@ -34,7 +39,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         up, down, left, right
     };
 
-    public virtual void Move()
+    protected virtual void Move()
     {
         List<MoveDirection> availableDirections = new List<MoveDirection>((MoveDirection[])Enum.GetValues(typeof(MoveDirection)));
         Vector3 positionIncrement = Vector3.zero;
@@ -58,13 +63,13 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         }  
     }
 
-    private void RotateEntity(Vector3 direction)
+    protected void RotateEntity(Vector3 direction)
     {
         Quaternion rotation = Quaternion.LookRotation(direction);
         gameObject.transform.rotation = rotation;
     }
 
-    private Vector3 SetPositionIncrement(MoveDirection direction, Vector3 increment)
+    protected Vector3 SetPositionIncrement(MoveDirection direction, Vector3 increment)
     {
         switch (direction)
         {
@@ -86,7 +91,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         return increment;
     }
 
-    private bool CheckIfWalkable(Vector3 target, Vector3 direction)
+    protected bool CheckIfWalkable(Vector3 target, Vector3 direction)
     {
         RaycastHit hit;
         if (Physics.Raycast(groundCheck.position, direction, out hit, 1f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) //check if there is a collider in that direction

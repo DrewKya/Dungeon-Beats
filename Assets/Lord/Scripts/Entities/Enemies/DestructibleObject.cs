@@ -7,9 +7,9 @@ public class DestructibleObject : MonoBehaviour, IDamageable
 {
     public int hitsRemaining = 3;
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, bool isCrit)
     {
-        Debug.Log($"{gameObject.name} took damage!");
+        PopupPool.instance.ShowDamage(transform.position, 1, isCrit);
         hitsRemaining -= 1;
         if (hitsRemaining <= 0)
         {

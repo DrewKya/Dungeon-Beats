@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Spikes : MonoBehaviour, IActionable
 {
-    public GameObject spikeModel;
+    [SerializeField] private GameObject spikeModel;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private int durationOff = 1; //how many beats the spikes are off
     [SerializeField] private int durationOn = 1; //how many beats the spikes are on
@@ -48,14 +49,14 @@ public class Spikes : MonoBehaviour, IActionable
         if (isOn == false)
         {   //activate the spike
             isOn = true;
-            spikeModel.SetActive(true);
+            animator.SetBool("isOn", true);
             hitBox.enabled = true;
             cooldown = durationOn - 1;
         }
         else
         {   //deactivate the spike
             isOn = false;
-            spikeModel.SetActive(false);
+            animator.SetBool("isOn", false);
             hitBox.enabled = false;
             cooldown = durationOff - 1;
             objectsInTrigger.Clear();

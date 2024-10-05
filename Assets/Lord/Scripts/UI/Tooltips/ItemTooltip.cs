@@ -26,12 +26,6 @@ public class ItemTooltip : MonoBehaviour
     private void SetTooltipPosition()
     {
         Vector2 position = Input.mousePosition;
-        /*
-        float pivotX = position.x / Screen.width;
-        float pivotY = position.y / Screen.height;
-
-        rectTransform.pivot = new Vector2(pivotX, pivotY);
-        */
 
         float pivotX, pivotY;
         pivotX = (position.x > Screen.width / 2) ? 1 : 0;
@@ -51,20 +45,27 @@ public class ItemTooltip : MonoBehaviour
 
             itemType.text = equipment.equipmentType.ToString();
 
-            itemStats.text = "";
-            itemStats.text += GenerateEquipmentStatsAsString(equipment.stats);
-        }else if(item is Consumable)
+            itemStats.text = GenerateItemStatsAsString(equipment.stats);
+        }
+        else if(item is Consumable)
         {
             Consumable consumable = (Consumable)item;
 
             itemType.text = "Consumable item";
             itemStats.text = "";
+        }else if(item is Weapon)
+        {
+            Weapon weapon = (Weapon)item;
+
+            itemType.text = "Weapon";
+            itemStats.text = GenerateItemStatsAsString(weapon.stats);
+
         }
 
         itemDescription.text = item.itemDescription;
     }
 
-    private string GenerateEquipmentStatsAsString(StatModifiers stats)
+    private string GenerateItemStatsAsString(StatModifiers stats)
     {
         string result = "";
         if (stats.attackModifier != 0) result += $"Attack : {stats.attackModifier}\n";

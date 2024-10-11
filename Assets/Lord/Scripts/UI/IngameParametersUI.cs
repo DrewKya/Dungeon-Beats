@@ -20,6 +20,7 @@ public class IngameParametersUI : MonoBehaviour
     PlayerManager playerManager;
 
     public WeaponIcon weaponIcon;
+    public Image healthPointsBarFill;
 
     private void Start()
     {
@@ -35,5 +36,11 @@ public class IngameParametersUI : MonoBehaviour
     private void UpdateItemUI()
     {
         weaponIcon.SetWeapon(playerManager.currentWeapon1);
+    }
+
+    public void UpdateHealthPointsUI(int currentHP, int maxHP)
+    {
+        float percentage = (float)currentHP / (float)maxHP;
+        healthPointsBarFill.fillAmount = percentage;
     }
 }

@@ -9,6 +9,8 @@ using MeleeRange = MeleeWeapon.MeleeRange;
 public class PlayerEntity : MonoBehaviour, IDamageable
 {
     private PlayerManager playerManager;
+    private IngameParametersUI parametersUI;
+
     public PlayerStats stats;
 
     public int currentHP;
@@ -24,6 +26,8 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     private void Start()
     {
         InitializeStats();
+        parametersUI = IngameParametersUI.instance;
+        parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
     }
 
     private void InitializeStats()
@@ -115,7 +119,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             StartCoroutine(ToggleHitbox());
         }
 
-        StartCoroutine(IngameParametersUI.instance.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInSeconds));
+        StartCoroutine(parametersUI.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInSeconds));
         nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
         hitboxRangeIndicator.SetActive(false);
         isCharging = false;
@@ -186,6 +190,9 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
         PopupPool.instance.ShowDamage(transform.position, totalDamage, isCrit);
         currentHP -= totalDamage;
+
+        parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
+
         if(currentHP < 0)
         {
             PlayerDie();

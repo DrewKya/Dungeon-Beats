@@ -126,11 +126,44 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            playerEntity.HoldAttack();
+        }
+        if (Input.GetKey(KeyCode.Mouse0) && playerEntity.isCharging)
+        {
+            RotatePlayer(CheckPlayerDirectionByMouse());
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
             playerEntity.Attack();
         }
     }
 
-    
+    private Vector3 CheckPlayerDirectionByMouse()
+    {
+        Vector2 max = new Vector2(Screen.width, Screen.height);
+
+        Vector2 position = Input.mousePosition / max;
+        if (position.y > position.x && position.y > 1 - position.x)
+        {
+            return Vector3.forward;
+        }
+        else if (position.y > position.x && position.y < 1 - position.x)
+        {
+            return Vector3.left;
+        }
+        else if (position.y < position.x && position.y < 1 - position.x)
+        {
+            return Vector3.back;
+        }
+        else if (position.y < position.x && position.y > 1 - position.x)
+        {
+            return Vector3.right;
+        }
+        else
+        {
+            return Vector3.forward;
+        }
+    }
 
     public void CheckTiming(float inputTime)
     {

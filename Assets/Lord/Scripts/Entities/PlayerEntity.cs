@@ -13,10 +13,13 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     public int currentHP;
 
+    private Weapon selectedWeapon;
+    public GameObject hitboxRangeIndicator;
     public MeleeHitboxTrigger meleeHitbox;
     public Transform weaponAttachPoint;
 
-    public float nextAttackTime; //this determines the next Time.time the player can attack
+    public float nextAttackTime; //determines the next Time.time the player can attack
+    public bool isCharging; //determines if player is charging an attack
 
     private void Start()
     {
@@ -68,28 +71,54 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         stats.critRate = template.critRate;
     }
 
-    public void Attack()
+    public void HoldAttack()
     {
-        Weapon weapon = playerManager.currentWeapon1;
-        if(weapon == null)
+        if (isCharging) return;
+
+        selectedWeapon = playerManager.currentWeapon1;
+        if(selectedWeapon == null)
         {
+            Debug.Log("No weapon equipped");
             return;
         }
-        if(!CheckAttackCooldown())
+
+        if (!CheckAttackCooldown())
         {
             Debug.Log("Weapon is in cooldown!");
             return;
         }
 
-        if (weapon is MeleeWeapon)
+        isCharging = true;
+        PreviewAttack();
+    }
+
+    public void PreviewAttack()
+    {
+        if(selectedWeapon is MeleeWeapon)
+        {
+            MeleeWeapon meleeWeapon = (MeleeWeapon)selectedWeapon;
+            CheckHitboxRange(meleeWeapon.range);
+            hitboxRangeIndicator.SetActive(true);
+        }
+    }
+
+    public void Attack()
+    {
+        if(selectedWeapon == null || !isCharging)
+        {
+            return;
+        }
+
+        if (selectedWeapon is MeleeWeapon)
         {
             Debug.Log("Player is attacking!");
-            MeleeWeapon meleeWeapon = (MeleeWeapon)weapon;
-            SetHitboxSize(meleeWeapon.range);
             StartCoroutine(ToggleHitbox());
         }
-        StartCoroutine(IngameParametersUI.instance.weaponIcon.StartCooldown(weapon.attackCooldownInSeconds));
-        nextAttackTime = Time.time + weapon.attackCooldownInSeconds;
+
+        StartCoroutine(IngameParametersUI.instance.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInSeconds));
+        nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
+        hitboxRangeIndicator.SetActive(false);
+        isCharging = false;
     }
 
     private bool CheckAttackCooldown()
@@ -97,23 +126,35 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         return (Time.time >= nextAttackTime) ? true : false;
     }
 
-    private void SetHitboxSize(MeleeRange range)
+    private void CheckHitboxRange(MeleeRange range)
     {
         var collider = meleeHitbox.GetComponent<BoxCollider>();
+        var indicator = hitboxRangeIndicator.transform;
+
         switch (range)
         {
             case MeleeRange.Range1x1:
-                collider.center = new Vector3(0f, 0.5f, 1f);
-                collider.size = new Vector3(0.8f, 1f, 0.8f);
+                SetHitboxSize(new Vector3(0f, 0.5f, 1f), new Vector3(1f, 1f, 1f));
                 break;
             case MeleeRange.Range1x2:
-                collider.center = new Vector3(0f, 0.5f, 1.5f);
-                collider.size = new Vector3(0.8f, 1f, 1.6f);
+                SetHitboxSize(new Vector3(0f, 0.5f, 1.5f), new Vector3(1f, 1f, 2f));
                 break;
             default:
-                Debug.LogWarning("Cannot find melee weapon range!");
+                Debug.Log("Cannot find melee weapon range!");
                 break;
         }
+    }
+
+    private void SetHitboxSize(Vector3 position, Vector3 size)
+    {
+        var collider = meleeHitbox.GetComponent<BoxCollider>();
+        var indicator = hitboxRangeIndicator.transform;
+
+        indicator.localPosition = new Vector3(position.x, 0f, position.z);
+        indicator.localScale = size;
+
+        collider.center = position;
+        collider.size = new Vector3(size.x * 0.8f, size.y, size.z * 0.8f);
     }
 
     public IEnumerator ToggleHitbox()

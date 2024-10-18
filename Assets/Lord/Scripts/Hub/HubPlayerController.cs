@@ -9,6 +9,8 @@ public class HubPlayerController : MonoBehaviour
 
     GameObject currentPositionTile;
 
+    public bool inputEnabled = false;
+
     private void Start()
     {
         CheckGround(groundCheck.position);
@@ -19,7 +21,12 @@ public class HubPlayerController : MonoBehaviour
         CheckPauseInput();
         if (Time.timeScale == 0f) return;
 
-        CheckMovementInput();
+        if (inputEnabled) CheckMovementInput();
+    }
+
+    public void SetInputBool(bool value)
+    {
+        inputEnabled = value;
     }
 
     private void CheckPauseInput()

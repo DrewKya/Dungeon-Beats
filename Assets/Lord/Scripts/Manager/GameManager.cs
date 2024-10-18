@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,12 +25,6 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    public void LoadScene(string sceneName)
-    {
-        Debug.Log($"Loading scene : {sceneName}.");
-        SceneManager.LoadSceneAsync(sceneName);
     }
 
     public void InitializeNewData()

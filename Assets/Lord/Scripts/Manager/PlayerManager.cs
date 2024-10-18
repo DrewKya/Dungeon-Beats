@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
 
         Equipment currentEquippedItem = null;
 
+        Debug.Log(equipSlot);
         if(currentEquipment[equipSlot] != null)
         {
             currentEquippedItem = currentEquipment[equipSlot];

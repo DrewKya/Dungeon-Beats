@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 364f513771d6dce4097de5da22cd2718, type: 3}
-  m_Name: Test spear
+  m_Name: Test claymore
   m_EditorClassIdentifier: 
-  itemName: Test spear
+  itemName: Test claymore
   itemDescription: New description
-  icon: {fileID: -113045827, guid: fdce898e814624a418bbbd806ba6b322, type: 3}
-  weaponModel: {fileID: 844062147802165681, guid: 13904532d9541144db3a84a623a9e29c,
+  icon: {fileID: 739505063, guid: fdce898e814624a418bbbd806ba6b322, type: 3}
+  weaponModel: {fileID: 844062147802165681, guid: 38b973d0e11cbf040964d315a452392e,
     type: 3}
   stats:
-    attackModifier: 2
+    attackModifier: 4
     healthModifier: 0
     defenseModifier: 0
     critRateModifier: 0
-  attackCooldownInSeconds: 3
-  hitbox: {fileID: 11400000, guid: 536e20ca541071f4985f9aa471d9a060, type: 2}
+  attackCooldownInSeconds: 5
+  hitbox: {fileID: 11400000, guid: d8afac0d7b79c90408c1820b1c39811a, type: 2}

@@ -518,7 +518,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a552d52de640454e912b9982b4829cf, type: 2}
   - {fileID: 11400000, guid: 29846d2ffe91d134ea5f98ed8d05b94c, type: 2}
   - {fileID: 11400000, guid: 555e1756f08f5c94d814b01398bce6a0, type: 2}
-  - {fileID: 11400000, guid: 0ac9a57adf45a704b819ef633e99defd, type: 2}
+  - {fileID: 11400000, guid: 6bc0b9d07b17e7c49be26d86a2f40bed, type: 2}
   maxSlot: 15
   OnInventoryChanged: {fileID: 11400000, guid: 15528d032b55fd84fb28a21d0fa5d3b4, type: 2}
 --- !u!4 &65281901
@@ -782,12 +782,14 @@ MonoBehaviour:
     attack: 1
     defense: 0
     critRate: 0
+  coin: 0
   currentEquipment:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   currentWeapon1: {fileID: 0}
+  onStatsChanged: {fileID: 11400000, guid: faae0653c27c1aa4caa9b0e5f7cc4070, type: 2}
 --- !u!4 &138983396
 Transform:
   m_ObjectHideFlags: 0
@@ -5043,7 +5045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722631630}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0017812562, y: -0.22815552, z: -0.00041741357, w: 0.973623}
+  m_LocalRotation: {x: -0.0017858738, y: -0.21709163, z: -0.00039717098, w: 0.9761495}
   m_LocalPosition: {x: 7.7888064, y: 0.75460345, z: -7.9704876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14480,7 +14482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110277771}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.27004117, y: -0.3684213, z: 0.111251086, w: 0.88259095}
+  m_LocalRotation: {x: -0.2713016, y: -0.3583703, z: 0.108216025, w: 0.8867105}
   m_LocalPosition: {x: 0.20000012, y: -0.000000044703484, z: -0.00000006519258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

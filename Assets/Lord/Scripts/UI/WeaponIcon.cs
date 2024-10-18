@@ -39,6 +39,6 @@ public class WeaponIcon : MonoBehaviour
         }
 
         backgroundFill.fillAmount = 1;
-        cooldownRemaining.text = "";
+        cooldownRemaining.text = "<sprite=56>";
     }
 }

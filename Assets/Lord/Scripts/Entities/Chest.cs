@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 public class Chest : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private Image interactPrompt;
+    [SerializeField] private TMP_Text interactPrompt;
     private bool isOpenable = false;
 
     public Item loot;

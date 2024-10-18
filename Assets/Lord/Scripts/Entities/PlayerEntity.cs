@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.Mathematics;
 using UnityEngine;
-
-using MeleeRange = MeleeWeapon.MeleeRange;
 
 public class PlayerEntity : MonoBehaviour, IDamageable
 {
@@ -101,7 +100,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         if(selectedWeapon is MeleeWeapon)
         {
             MeleeWeapon meleeWeapon = (MeleeWeapon)selectedWeapon;
-            CheckHitboxRange(meleeWeapon.range);
+            CheckHitboxRange(meleeWeapon.hitbox);
             hitboxRangeIndicator.SetActive(true);
         }
     }
@@ -130,35 +129,16 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         return (Time.time >= nextAttackTime) ? true : false;
     }
 
-    private void CheckHitboxRange(MeleeRange range)
+    private void CheckHitboxRange(HitboxData hitboxData)
     {
         var collider = meleeHitbox.GetComponent<BoxCollider>();
         var indicator = hitboxRangeIndicator.transform;
 
-        switch (range)
-        {
-            case MeleeRange.Range1x1:
-                SetHitboxSize(new Vector3(0f, 0.5f, 1f), new Vector3(1f, 1f, 1f));
-                break;
-            case MeleeRange.Range1x2:
-                SetHitboxSize(new Vector3(0f, 0.5f, 1.5f), new Vector3(1f, 1f, 2f));
-                break;
-            default:
-                Debug.Log("Cannot find melee weapon range!");
-                break;
-        }
-    }
+        collider.center = hitboxData.hitboxPosition;
+        collider.size = hitboxData.hitboxScale;
 
-    private void SetHitboxSize(Vector3 position, Vector3 size)
-    {
-        var collider = meleeHitbox.GetComponent<BoxCollider>();
-        var indicator = hitboxRangeIndicator.transform;
-
-        indicator.localPosition = new Vector3(position.x, 0f, position.z);
-        indicator.localScale = size;
-
-        collider.center = position;
-        collider.size = new Vector3(size.x * 0.8f, size.y, size.z * 0.8f);
+        indicator.localPosition = new Vector3(hitboxData.hitboxPosition.x, 0f, hitboxData.hitboxPosition.z);
+        indicator.localScale = hitboxData.hitboxScale;
     }
 
     public IEnumerator ToggleHitbox()

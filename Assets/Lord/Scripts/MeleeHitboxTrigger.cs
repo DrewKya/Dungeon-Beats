@@ -13,6 +13,7 @@ public class MeleeHitboxTrigger : MonoBehaviour
         if(damageable != null)
         {
             damageable.TakeDamage(damage, isCrit);
+            CinemachineShake.instance.ShakeCamera(3f, 0.2f);
         }
     }
 }

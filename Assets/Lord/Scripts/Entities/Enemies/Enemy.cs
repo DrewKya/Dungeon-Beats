@@ -14,6 +14,8 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     public int maxHealthPoint = 10;
     public int healthPoint;
 
+    public int coinDropped = 1;
+
     private void Start()
     {
         if (animator == null) animator = GetComponentInChildren<Animator>();
@@ -106,6 +108,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     {
         Debug.Log($"{gameObject.name} died!");
         EntityManager.instance.RemoveEntity(this);
+        PlayerManager.instance.AddCoin(coinDropped);
         Destroy(gameObject);
     }
 }

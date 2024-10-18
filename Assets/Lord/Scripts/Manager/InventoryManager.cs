@@ -23,8 +23,10 @@ public class InventoryManager : MonoBehaviour
     public List<Item> items = new List<Item>();
     public int maxSlot = 20;
 
-    public delegate void OnItemChanged();
-    public OnItemChanged OnItemChangedCallback;
+    // public delegate void OnItemChanged();
+    // public OnItemChanged OnItemChangedCallback;
+
+    [SerializeField] public GameEvent OnInventoryChanged;
 
     public bool AddItem(Item item)
     {
@@ -35,13 +37,13 @@ public class InventoryManager : MonoBehaviour
         }
         items.Add(item);
         Debug.Log($"{item.itemName} added to inventory");
-        OnItemChangedCallback();
+        OnInventoryChanged.TriggerEvent();
         return true;
     }
 
     public void RemoveItem(Item item)
     {
         items.Remove(item);
-        OnItemChangedCallback();
+        OnInventoryChanged.TriggerEvent();
     }
 }

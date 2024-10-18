@@ -24,8 +24,12 @@ public class PlayerManager : MonoBehaviour
     public string playerName;
     public PlayerStats playerStats;
 
+    public int coin;
+
     public Equipment[] currentEquipment;
     public Weapon currentWeapon1;
+
+    public GameEvent onStatsChanged;
 
     public void EquipItem(Equipment equipment)
     {
@@ -34,7 +38,6 @@ public class PlayerManager : MonoBehaviour
 
         Equipment currentEquippedItem = null;
 
-        Debug.Log(equipSlot);
         if(currentEquipment[equipSlot] != null)
         {
             currentEquippedItem = currentEquipment[equipSlot];
@@ -101,11 +104,7 @@ public class PlayerManager : MonoBehaviour
             playerStats.defense += newItem.stats.defenseModifier;
             playerStats.critRate += newItem.stats.critRateModifier;
         }
-        PlayerEntity player = FindFirstObjectByType<PlayerEntity>();
-        if (player != null)
-        {
-            player.UpdateStats();
-        }
+        onStatsChanged.TriggerEvent();
     }
 
     public void UpdatePlayerStats(Weapon previousItem, Weapon newItem)
@@ -122,11 +121,12 @@ public class PlayerManager : MonoBehaviour
             playerStats.attack += newItem.stats.attackModifier;
             playerStats.defense += newItem.stats.defenseModifier;
         }
-        PlayerEntity player = FindFirstObjectByType<PlayerEntity>();
-        if (player != null)
-        {
-            player.UpdateStats();
-        }
+        onStatsChanged.TriggerEvent();
+    }
+
+    public void AddCoin(int amount)
+    {
+        coin += amount;
     }
 }
 

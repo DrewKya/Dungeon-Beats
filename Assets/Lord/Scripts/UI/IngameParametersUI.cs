@@ -25,16 +25,18 @@ public class IngameParametersUI : MonoBehaviour
     private void Start()
     {
         playerManager = PlayerManager.instance;
-
-        inventoryManager = InventoryManager.instance;
-        inventoryManager.OnItemChangedCallback += UpdateItemUI;
-
         UpdateItemUI();
     }
 
 
-    private void UpdateItemUI()
+    public void UpdateItemUI()
     {
+        if (playerManager.currentWeapon1 == null)
+        {
+            weaponIcon.SetWeapon(null);
+            
+            return;
+        }
         weaponIcon.SetWeapon(playerManager.currentWeapon1);
     }
 

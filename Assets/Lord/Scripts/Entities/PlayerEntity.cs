@@ -14,6 +14,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     public int currentHP;
 
+    [SerializeField] private Animator animator;
     private Weapon selectedWeapon;
     public GameObject hitboxRangeIndicator;
     public MeleeHitboxTrigger meleeHitbox;
@@ -117,7 +118,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             Debug.Log("Player is attacking!");
             StartCoroutine(ToggleHitbox());
         }
-
+        animator.SetTrigger("Attack");
         StartCoroutine(parametersUI.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInSeconds));
         nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
         hitboxRangeIndicator.SetActive(false);

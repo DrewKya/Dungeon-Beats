@@ -305,8 +305,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Origin: {x: 0, y: -64, z: 0}
+  m_Size: {x: 45, y: 67, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -2525,7 +2525,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.499999, y: 0.0017306376, z: -0.0009991841, w: 0.8660237}
-  m_LocalPosition: {x: 3.8871036, y: -3.4562426, z: 6.63948}
+  m_LocalPosition: {x: 3.8911002, y: -5.1882935, z: 7.639472}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6194,7 +6194,7 @@ Transform:
   m_GameObject: {fileID: 980312270}
   serializedVersion: 2
   m_LocalRotation: {x: 0.499999, y: 0.0017306376, z: -0.0009991841, w: 0.8660237}
-  m_LocalPosition: {x: 3.8871036, y: -3.4562426, z: 6.63948}
+  m_LocalPosition: {x: 3.8911002, y: -5.1882935, z: 7.639472}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -9189,6 +9189,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 17811709}
     m_Modifications:
+    - target: {fileID: 2481114938510205976, guid: 334e3b5828567f04d90d80fc74fca1a9,
+        type: 3}
+      propertyPath: loot
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ac9a57adf45a704b819ef633e99defd,
+        type: 2}
     - target: {fileID: 6877251967799855366, guid: 334e3b5828567f04d90d80fc74fca1a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10517,7 +10523,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 10
+  m_CameraDistance: 8
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0

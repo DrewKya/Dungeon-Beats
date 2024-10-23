@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerEntity : MonoBehaviour, IDamageable
 {
@@ -15,6 +16,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public int currentHP;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private PlayableDirector ultDirector;
     private Weapon selectedWeapon;
     public GameObject hitboxRangeIndicator;
     public MeleeHitboxTrigger meleeHitbox;
@@ -123,6 +125,12 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
         hitboxRangeIndicator.SetActive(false);
         isCharging = false;
+    }
+
+    public void TestUltimate() //this is only for testing player ult
+    {
+        Debug.Log("test");
+        ultDirector.Play();
     }
 
     private bool CheckAttackCooldown()

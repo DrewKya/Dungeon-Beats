@@ -18,6 +18,8 @@ public class MusicPlayer : MonoBehaviour
 
     public TMP_Text timingText;
 
+    private bool triggerIsEnabled = true;
+
     private void Awake()
     {
         if (Instance != null)
@@ -39,7 +41,15 @@ public class MusicPlayer : MonoBehaviour
     private void Update()
     {
         songPositionInBeats = audioSource.timeSamples / (audioSource.clip.frequency * intervalLength);
-        interval.CheckNewInterval(songPositionInBeats);
+        if (interval.CheckNewInterval(songPositionInBeats))
+        {
+            interval.trigger.Invoke();
+        }
+    }
+
+    public void EnableTrigger(bool boolean)
+    {
+        triggerIsEnabled = boolean;
     }
 }
 
@@ -55,14 +65,15 @@ public class Interval
         return 60f / bpm;
     }
 
-    public void CheckNewInterval(float interval)
+    public bool CheckNewInterval(float interval)
     {
         var roundedInterval = Mathf.FloorToInt(interval); //round down
 
         if (roundedInterval != lastInterval)
         {
             lastInterval = roundedInterval;
-            trigger.Invoke();
+            return true;
         }
+        return false;
     }
 }

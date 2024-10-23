@@ -3,6 +3,7 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Playables;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -16,7 +17,11 @@ public class PlayerInput : MonoBehaviour
     PlayerManager playerManager;
     PlayerEntity playerEntity;
 
+    bool inputEnabled = true;
+
     int lastInputBeat = -1; //this is to store in which beat the player last inputted an action
+
+
 
     private void Start()
     {
@@ -33,10 +38,16 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         CheckPauseInput();
-        if (Time.timeScale == 0f) return;
+        if (Time.timeScale == 0f || inputEnabled == false) return;
 
         CheckMovementInput();
         CheckAttackInput();
+        CheckUltimateInput();
+    }
+
+    public void EnableInput(bool boolean)
+    {
+        inputEnabled = boolean;
     }
 
     private void CheckPauseInput()
@@ -137,6 +148,16 @@ public class PlayerInput : MonoBehaviour
             playerEntity.Attack();
         }
     }
+
+    private void CheckUltimateInput()
+    {
+        if (Input.GetKeyUp(KeyCode.Mouse2))
+        {
+            playerEntity.TestUltimate();
+        }
+    }
+
+    
 
     private Vector3 CheckPlayerDirectionByMouse()
     {

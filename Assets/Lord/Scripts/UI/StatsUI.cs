@@ -23,6 +23,10 @@ public class StatsUI : MonoBehaviour
 
     public void UpdateStatsUI()
     {
+        if (playerManager == null)
+        {
+            playerManager = PlayerManager.instance;
+        }
         coinText.text = $"Coin : {playerManager.coin}";
 
         var stats = playerManager.playerStats;

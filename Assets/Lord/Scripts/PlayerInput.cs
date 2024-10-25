@@ -19,7 +19,8 @@ public class PlayerInput : MonoBehaviour
 
     bool inputEnabled = true;
 
-    int lastInputBeat = -1; //this is to store in which beat the player last inputted an action
+    //this is to store in which beat the player last inputted an action
+    //int lastInputBeat = -1; 
 
 
 

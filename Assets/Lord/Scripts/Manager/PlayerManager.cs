@@ -136,12 +136,12 @@ public class PlayerStats
     public int level = 1;
 
     //base stat is for unmodified stats (no equipment)
-    private int baseHealthPoint = 10;
-    private int baseAttack = 1;
-    private int baseDefense = 0;
+    //private int baseHealthPoint = 10;
+    //private int baseAttack = 1;
+    //private int baseDefense = 0;
 
     public int healthPoint = 10;
     public int attack = 1;
     public int defense = 0;
-    public int critRate = 0;
+    public int critRate = 5;
 }

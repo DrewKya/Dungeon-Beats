@@ -26,7 +26,7 @@ public class EntityManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.LogWarning("Make sure every entity is a child of entities container");
+        //Debug.LogWarning("Make sure every entity is a child of entities container");
 
         musicPlayer = MusicPlayer.Instance;
         actionableEntities = new List<IActionable>();

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine.Playables;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField] GameObject playerModel;
     [SerializeField] Transform groundCheck;
 
     GameObject currentPositionTile;
@@ -20,7 +22,7 @@ public class PlayerInput : MonoBehaviour
     bool inputEnabled = true;
 
     //this is to store in which beat the player last inputted an action
-    //int lastInputBeat = -1; 
+    int lastInputBeat = -1;
 
 
 
@@ -89,20 +91,21 @@ public class PlayerInput : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.A)) //move left
         {
             CheckTiming(musicPlayer.songPositionInBeats);
-            positionIncrement = new Vector3(-1, 0, 0);        
+            positionIncrement = new Vector3(-1, 0, 0);
         }
 
-        if(positionIncrement.magnitude > 0) //if a movement input is detected and allowed
+        if (positionIncrement.magnitude > 0) //if a movement input is detected and allowed
         {
-            RotatePlayer(positionIncrement);
-
+            //RotatePlayer(positionIncrement);
             Vector3 targetTilePosition = groundCheck.position + positionIncrement;
             if (CheckIfWalkable(targetTilePosition, positionIncrement))
             {
+                StartCoroutine(HopAnimation(positionIncrement));
+
                 transform.position += positionIncrement;
                 CheckGround(groundCheck.position);
             }
-        }   
+        }
     }
 
     private void RotatePlayer(Vector3 direction)
@@ -110,6 +113,48 @@ public class PlayerInput : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction);
         gameObject.transform.rotation = rotation;
     }
+
+    private IEnumerator HopAnimation(Vector3 targetDirection)
+    {
+        float hopHeight = 1f;
+
+        Vector3 localDirection = playerModel.transform.parent.TransformDirection(targetDirection); //align hop direction with parent's rotation
+
+        if (Mathf.Abs(transform.eulerAngles.y - 90) <= 0.1f || Mathf.Abs(transform.eulerAngles.y - 270) <= 0.1f) //check if rotation is -90 or 90 degree (facing x axis)
+        {
+            localDirection = -localDirection; //reverse localDirection when player is facing x axis
+        }
+
+        Vector3 initialPosition = Vector3.zero;
+        Vector3 startPosition = initialPosition - localDirection;
+        Vector3 hopPosition = startPosition + (localDirection * 0.5f) + new Vector3(0, hopHeight, 0);
+
+        playerModel.transform.localPosition = startPosition;
+
+        float time = 0.1f;
+        float timeElapsed = 0f;
+
+        // Go up
+        while (timeElapsed < time)
+        {
+            playerModel.transform.localPosition = Vector3.Lerp(startPosition, hopPosition, timeElapsed / time);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        playerModel.transform.localPosition = hopPosition;
+
+        timeElapsed = 0f;
+
+        // Go down
+        while (timeElapsed < time)
+        {
+            playerModel.transform.localPosition = Vector3.Lerp(hopPosition, initialPosition, timeElapsed / time);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        playerModel.transform.localPosition = initialPosition;
+    }
+
 
     private bool CheckIfWalkable(Vector3 target, Vector3 direction)
     {
@@ -194,7 +239,7 @@ public class PlayerInput : MonoBehaviour
         float timeDifference = Mathf.Abs(closestBeat - inputTime); //time difference in beats
 
         //Debug.Log(timeDifference);
-        if (timeDifference <= 0.4f)
+        if (timeDifference <= 0.3f)
         {
             timingText.text = "Great!";
             timingText.color = Color.yellow;

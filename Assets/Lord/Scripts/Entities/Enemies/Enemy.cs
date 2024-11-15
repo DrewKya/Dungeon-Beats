@@ -8,6 +8,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
 {
+    [SerializeField] protected GameObject model;
     [SerializeField] protected Animator animator;
     [SerializeField] protected Transform groundCheck;
 
@@ -57,6 +58,8 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
             if (CheckIfWalkable(targetTilePosition, positionIncrement))
             {
                 RotateEntity(positionIncrement);
+                StartCoroutine(HopAnimation(transform.position, transform.position + positionIncrement));
+
                 transform.position += positionIncrement;
                 return;
             }
@@ -69,6 +72,37 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     {
         Quaternion rotation = Quaternion.LookRotation(direction);
         gameObject.transform.rotation = rotation;
+    }
+
+    protected IEnumerator HopAnimation(Vector3 firstPosition, Vector3 targetPosition)
+    {
+        float hopHeight = 1f;
+        float time = 0.1f;
+        float timeElapsed = 0f;
+
+        Vector3 hopPosition = firstPosition + ((targetPosition - firstPosition) * 0.5f) + new Vector3(0, hopHeight, 0);
+
+        model.transform.position = firstPosition;
+
+        // Go up
+        while (timeElapsed < time)
+        {
+            model.transform.position = Vector3.Lerp(firstPosition, hopPosition, timeElapsed / time);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        model.transform.position = hopPosition;
+
+        timeElapsed = 0f;
+
+        // Go down
+        while (timeElapsed < time)
+        {
+            model.transform.position = Vector3.Lerp(hopPosition, targetPosition, timeElapsed / time);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        model.transform.position = targetPosition;
     }
 
     protected Vector3 SetPositionIncrement(MoveDirection direction, Vector3 increment)

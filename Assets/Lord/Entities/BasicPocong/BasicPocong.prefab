@@ -144,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7893582725714474450}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491f01fe548bcb44a90c0ae72a365021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: {fileID: 6968559154238741040}
   animator: {fileID: 8937897604576820481}
   groundCheck: {fileID: 4171737713669964882}
   maxHealthPoint: 5
@@ -313,6 +314,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebaccb8d9ce235b42846366747e60a5a, type: 3}
+--- !u!1 &6968559154238741040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 783277177152556978, guid: ebaccb8d9ce235b42846366747e60a5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7668374318726452610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7781827688997716106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 114018109360772360, guid: ebaccb8d9ce235b42846366747e60a5a,

@@ -40,7 +40,9 @@ public class BasicEnemy : Enemy
             if (CheckIfWalkable(targetTilePosition, positionIncrement))
             {
                 RotateEntity(positionIncrement);
-                animator.SetTrigger("Move");
+                StartCoroutine(HopAnimation(transform.position, transform.position + positionIncrement));
+                //animator.SetTrigger("Move");
+
                 transform.position += positionIncrement;
                 return;
             }

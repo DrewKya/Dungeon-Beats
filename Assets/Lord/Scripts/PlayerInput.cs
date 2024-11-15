@@ -96,11 +96,11 @@ public class PlayerInput : MonoBehaviour
 
         if (positionIncrement.magnitude > 0) //if a movement input is detected and allowed
         {
-            //RotatePlayer(positionIncrement);
+            RotatePlayer(positionIncrement);
             Vector3 targetTilePosition = groundCheck.position + positionIncrement;
             if (CheckIfWalkable(targetTilePosition, positionIncrement))
             {
-                StartCoroutine(HopAnimation(positionIncrement));
+                StartCoroutine(HopAnimation(transform.position, transform.position + positionIncrement));
 
                 transform.position += positionIncrement;
                 CheckGround(groundCheck.position);
@@ -114,45 +114,35 @@ public class PlayerInput : MonoBehaviour
         gameObject.transform.rotation = rotation;
     }
 
-    private IEnumerator HopAnimation(Vector3 targetDirection)
+    private IEnumerator HopAnimation(Vector3 firstPosition, Vector3 targetPosition)
     {
         float hopHeight = 1f;
-
-        Vector3 localDirection = playerModel.transform.parent.TransformDirection(targetDirection); //align hop direction with parent's rotation
-
-        if (Mathf.Abs(transform.eulerAngles.y - 90) <= 0.1f || Mathf.Abs(transform.eulerAngles.y - 270) <= 0.1f) //check if rotation is -90 or 90 degree (facing x axis)
-        {
-            localDirection = -localDirection; //reverse localDirection when player is facing x axis
-        }
-
-        Vector3 initialPosition = Vector3.zero;
-        Vector3 startPosition = initialPosition - localDirection;
-        Vector3 hopPosition = startPosition + (localDirection * 0.5f) + new Vector3(0, hopHeight, 0);
-
-        playerModel.transform.localPosition = startPosition;
-
         float time = 0.1f;
         float timeElapsed = 0f;
+
+        Vector3 hopPosition = firstPosition + ((targetPosition - firstPosition) * 0.5f) + new Vector3(0, hopHeight, 0);
+
+        playerModel.transform.position = firstPosition;
 
         // Go up
         while (timeElapsed < time)
         {
-            playerModel.transform.localPosition = Vector3.Lerp(startPosition, hopPosition, timeElapsed / time);
+            playerModel.transform.position = Vector3.Lerp(firstPosition, hopPosition, timeElapsed / time);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        playerModel.transform.localPosition = hopPosition;
+        playerModel.transform.position = hopPosition;
 
         timeElapsed = 0f;
 
         // Go down
         while (timeElapsed < time)
         {
-            playerModel.transform.localPosition = Vector3.Lerp(hopPosition, initialPosition, timeElapsed / time);
+            playerModel.transform.position = Vector3.Lerp(hopPosition, targetPosition, timeElapsed / time);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        playerModel.transform.localPosition = initialPosition;
+        playerModel.transform.position = targetPosition;
     }
 
 

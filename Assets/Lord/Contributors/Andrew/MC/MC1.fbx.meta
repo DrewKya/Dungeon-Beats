@@ -85,7 +85,127 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: MC1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armor.004
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: BangHair.004
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head.013
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Legging.007
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Basic Helmet.004
+      parentName: MC1(Clone)
+      position: {x: -2.5836168e-18, y: -0.011635575, z: 0.007272236}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: TaiL.004
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SideHair.004
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Arms.004
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boots.004
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Legging.010
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head.018
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head.019
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head.020
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Crown
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube.002
+      parentName: MC1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root
+      parentName: MC1(Clone)
+      position: {x: 0, y: -2.3833544, z: 0.3148929}
+      rotation: {x: 8.659561e-17, y: 0.7071068, z: 0.7071068, w: -8.7157646e-33}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cc_Wing
+      parentName: root
+      position: {x: -0.17343265, y: 0.7311378, z: 1.9610051}
+      rotation: {x: 0.6329953, y: -0.5753801, z: 0.032545418, w: 0.51690966}
+      scale: {x: 1.0000044, y: 1.0000029, z: 1.0000064}
+    - name: cc_Hair.L
+      parentName: root
+      position: {x: -0.44767717, y: -0.31489262, z: 2.7176483}
+      rotation: {x: -0.08837126, y: -0.7291083, z: 0.66997224, w: -0.10830084}
+      scale: {x: 1.0000008, y: 1.0000088, z: 1.000008}
+    - name: cc_Hair1.L
+      parentName: cc_Hair.L
+      position: {x: -0.0000001299195, y: 0.14091185, z: -0.0000000949949}
+      rotation: {x: 0.098515384, y: 0.004010983, z: -0.039984845, w: 0.99432385}
+      scale: {x: 1.0000002, y: 0.99999803, z: 1.0000007}
+    - name: cc_Hair2.L
+      parentName: cc_Hair1.L
+      position: {x: 0.000000033898687, y: 0.16519573, z: -0.00000004749745}
+      rotation: {x: 0.022144537, y: 0.0046088463, z: 0.008007145, w: 0.9997121}
+      scale: {x: 0.99999934, y: 1.0000135, z: 1.0000129}
+    - name: cc_Hair.R
+      parentName: root
+      position: {x: 0.44767684, y: -0.31489256, z: 2.7176478}
+      rotation: {x: 0.08844258, y: -0.7291199, z: 0.6699625, w: 0.10822386}
+      scale: {x: 0.9999992, y: 1.0000058, z: 1.0000049}
+    - name: cc_Hair1.R
+      parentName: cc_Hair.R
+      position: {x: -0.00000003562309, y: 0.14091277, z: 0.00000014714897}
+      rotation: {x: 0.09851415, y: -0.0037681977, z: 0.039988134, w: 0.9943248}
+      scale: {x: 0.9999997, y: 1.0000069, z: 1.0000079}
+    - name: cc_Hair2.R
+      parentName: cc_Hair1.R
+      position: {x: 0.000000088708475, y: 0.16519563, z: -4.656613e-10}
+      rotation: {x: 0.022145106, y: -0.0048642335, z: -0.008006424, w: 0.99971086}
+      scale: {x: 0.9999999, y: 1.0000122, z: 1.000012}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

@@ -33,6 +33,8 @@ public class Chest : MonoBehaviour
         bool itemAdded = InventoryManager.instance.AddItem(loot);
         if (itemAdded)
         {
+            NotificationUI.instance.ItemObtainedNotification(loot);
+
             isOpenable = false;
             interactPrompt.gameObject.SetActive(false);
 

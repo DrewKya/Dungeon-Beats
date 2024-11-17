@@ -7,16 +7,34 @@ using UnityEngine;
 //This enemy AI moves in a random direction without following the player
 public class BasicEnemy : Enemy
 {
-    [SerializeField] private int actionCooldown = 2;
+    [SerializeField] private GameObject attackIndicator;
+    [SerializeField] private MeleeHitboxTrigger hitbox;
 
+    [SerializeField] private int actionCooldown = 2;
     private int cooldown = 0;
+
+    private bool isReadyingAttack = false;
 
     public override void TakeAction()
     {
         if(cooldown <= 0)
         {
             cooldown = actionCooldown - 1;
-            Move();
+            if(isReadyingAttack)
+            {
+                Attack();
+                return;
+            }
+
+            direction? attackDirection = CheckPlayerInRange();
+            if (attackDirection.HasValue)
+            {
+                ReadyAttack(attackDirection.Value);
+            }
+            else
+            {
+                Move();
+            }
         }
         else
         {
@@ -26,12 +44,12 @@ public class BasicEnemy : Enemy
 
     protected override void Move()
     {
-        List<MoveDirection> availableDirections = new List<MoveDirection>((MoveDirection[])Enum.GetValues(typeof(MoveDirection)));
+        List<direction> availableDirections = new List<direction>((direction[])Enum.GetValues(typeof(direction)));
         Vector3 positionIncrement = Vector3.zero;
 
         while (availableDirections.Count > 0)
         {
-            MoveDirection direction = availableDirections[UnityEngine.Random.Range(0, availableDirections.Count)]; //pick one random
+            direction direction = availableDirections[UnityEngine.Random.Range(0, availableDirections.Count)]; //pick one random
 
             positionIncrement = SetPositionIncrement(direction, positionIncrement);
 
@@ -41,7 +59,6 @@ public class BasicEnemy : Enemy
             {
                 RotateEntity(positionIncrement);
                 StartCoroutine(HopAnimation(transform.position, transform.position + positionIncrement));
-                //animator.SetTrigger("Move");
 
                 transform.position += positionIncrement;
                 return;
@@ -49,5 +66,55 @@ public class BasicEnemy : Enemy
 
             availableDirections.Remove(direction);
         }
+    }
+
+    protected direction? CheckPlayerInRange()
+    {
+        RaycastHit hit;
+        int playerLayerMask = LayerMask.GetMask("Player");
+
+        if(Physics.Raycast(transform.position, Vector3.forward, out hit, 1f, playerLayerMask))
+        {
+            return direction.up;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.back, out hit, 1f, playerLayerMask))
+        {
+            return direction.down;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.left, out hit, 1f, playerLayerMask))
+        {
+            return direction.left;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.right, out hit, 1f, playerLayerMask))
+        {
+            return direction.right;
+        }
+        return null;
+    }
+
+    protected void ReadyAttack(direction direction)
+    {
+        isReadyingAttack = true;
+        animator.SetTrigger("ReadyAttack");
+
+        RotateEntity(direction);
+        attackIndicator.SetActive(true);
+    }
+
+    protected void Attack()
+    {
+        isReadyingAttack = false;
+        animator.SetTrigger("Attack");
+        attackIndicator.SetActive(false);
+
+        StartCoroutine(ToggleHitbox());
+    }
+
+    public IEnumerator ToggleHitbox()
+    {
+        hitbox.damage = attack;
+        hitbox.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        hitbox.gameObject.SetActive(false);
     }
 }

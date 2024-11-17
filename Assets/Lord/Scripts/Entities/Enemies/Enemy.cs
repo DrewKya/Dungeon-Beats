@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
 
     public int maxHealthPoint = 10;
     public int healthPoint;
+    public int attack = 1;
 
     public int coinDropped = 1;
 
@@ -37,19 +38,19 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         }
     }
 
-    public enum MoveDirection
+    public enum direction
     {
         up, down, left, right
     };
 
     protected virtual void Move()
     {
-        List<MoveDirection> availableDirections = new List<MoveDirection>((MoveDirection[])Enum.GetValues(typeof(MoveDirection)));
+        List<direction> availableDirections = new List<direction>((direction[])Enum.GetValues(typeof(direction)));
         Vector3 positionIncrement = Vector3.zero;
 
         while ( availableDirections.Count > 0)
         {
-            MoveDirection direction = availableDirections[UnityEngine.Random.Range(0, availableDirections.Count)]; //pick one random
+            direction direction = availableDirections[UnityEngine.Random.Range(0, availableDirections.Count)]; //pick one random
             
             positionIncrement = SetPositionIncrement(direction, positionIncrement);
 
@@ -71,6 +72,30 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     protected void RotateEntity(Vector3 direction)
     {
         Quaternion rotation = Quaternion.LookRotation(direction);
+        gameObject.transform.rotation = rotation;
+    }
+
+    protected void RotateEntity(direction direction)
+    {
+        Vector3 dir = Vector3.zero;
+        
+        switch (direction)
+        {
+            case direction.up:
+                dir = Vector3.forward;
+                break;
+            case direction.down:
+                dir = Vector3.back; 
+                break;
+            case direction.left:
+                dir = Vector3.left; 
+                break;
+            case direction.right:
+                dir = Vector3.right; 
+                break;
+        }
+
+        Quaternion rotation = Quaternion.LookRotation(dir);
         gameObject.transform.rotation = rotation;
     }
 
@@ -105,20 +130,20 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         model.transform.position = targetPosition;
     }
 
-    protected Vector3 SetPositionIncrement(MoveDirection direction, Vector3 increment)
+    protected Vector3 SetPositionIncrement(direction direction, Vector3 increment)
     {
         switch (direction)
         {
-            case MoveDirection.up:
+            case direction.up:
                 increment = new Vector3(0, 0, 1);
                 break;
-            case MoveDirection.down:
+            case direction.down:
                 increment = new Vector3(0, 0, -1);
                 break;
-            case MoveDirection.left:
+            case direction.left:
                 increment = new Vector3(1, 0, 0);
                 break;
-            case MoveDirection.right:
+            case direction.right:
                 increment = new Vector3(-1, 0, 0);
                 break;
             default:
@@ -138,11 +163,12 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         return (Physics.Raycast(target, Vector3.down, out hit, 1f, LayerMask.GetMask("Ground"))) ? true : false; //check if ground exist in that direction
     }
 
-    public virtual void Die()
+    protected virtual void Die()
     {
         Debug.Log($"{gameObject.name} died!");
         EntityManager.instance.RemoveEntity(this);
         PlayerManager.instance.AddCoin(coinDropped);
-        Destroy(gameObject);
+        animator.SetTrigger("Die");
+        Destroy(gameObject, 2f);
     }
 }

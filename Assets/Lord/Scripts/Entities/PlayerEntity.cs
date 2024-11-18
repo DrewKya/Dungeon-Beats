@@ -17,6 +17,8 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     [SerializeField] private Animator animator;
     [SerializeField] private PlayableDirector ultDirector;
+    [SerializeField] private GameEvent onPlayerTakeDamage;
+
     private Weapon selectedWeapon;
     public GameObject hitboxRangeIndicator;
     public MeleeHitboxTrigger meleeHitbox;
@@ -179,6 +181,8 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
         PopupPool.instance.ShowDamage(transform.position, totalDamage, isCrit);
         currentHP -= totalDamage;
+
+        onPlayerTakeDamage.TriggerEvent();
 
         parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
 

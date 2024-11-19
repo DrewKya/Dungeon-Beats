@@ -10,6 +10,8 @@ public class EntityManager : MonoBehaviour
 
     MusicPlayer musicPlayer;
 
+    [SerializeField] private PlayerEntity playerEntity;
+
     [SerializeField] private GameObject entityContainer;
     [SerializeField] private List<IActionable> actionableEntities;
 
@@ -45,6 +47,11 @@ public class EntityManager : MonoBehaviour
         }
     }
 
+    public void AddEntity(IActionable entity)
+    {
+        actionableEntities.Add(entity);
+    }
+
     public void RemoveEntity(IActionable entity)
     {
         actionableEntities.Remove(entity);
@@ -54,7 +61,20 @@ public class EntityManager : MonoBehaviour
     {
         for (int i = actionableEntities.Count - 1; i >= 0; i--)
         {
-            if(actionableEntities[i] != null)
+            var actionable = actionableEntities[i] as MonoBehaviour; //get the gameobject
+            if((playerEntity.transform.position - actionable.transform.position).sqrMagnitude > 100f)
+            {
+                actionable.gameObject.SetActive(false);
+                continue;
+            }
+            else
+            {
+                actionable.gameObject.SetActive(true);
+            }
+
+            
+
+            if (actionableEntities[i] != null)
             {
                 actionableEntities[i].TakeAction();
             }

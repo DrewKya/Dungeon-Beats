@@ -24,6 +24,15 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         healthPoint = maxHealthPoint;
     }
 
+    private bool isRendererVisible()
+    {
+        if(model.GetComponent<Renderer>().isVisible)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public virtual void TakeAction()
     {
         Move();

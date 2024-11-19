@@ -86,6 +86,12 @@ public class Spikes : MonoBehaviour, IActionable
     private void OnTriggerEnter(Collider collider)
     {
         objectsInTrigger.Add(collider.gameObject);
+
+        IDamageable damageable = collider.GetComponent<IDamageable>();
+        if(damageable != null)
+        {
+            damageable.TakeDamage(damage);
+        }
     }
 
     private void OnTriggerExit(Collider collider)

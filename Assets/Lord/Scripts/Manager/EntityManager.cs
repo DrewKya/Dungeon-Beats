@@ -34,6 +34,11 @@ public class EntityManager : MonoBehaviour
         actionableEntities = new List<IActionable>();
         GetAllActionableEntities();
         musicPlayer.interval.trigger.AddListener(NotifyAllEntityToTakeAction);
+
+        if(playerEntity == null)
+        {
+            playerEntity = FindFirstObjectByType<PlayerEntity>();
+        }
     }
 
     private void GetAllActionableEntities()

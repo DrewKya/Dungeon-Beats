@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class NotificationUI : MonoBehaviour
 {
@@ -11,6 +10,9 @@ public class NotificationUI : MonoBehaviour
 
     [SerializeField] GameObject panel;
     [SerializeField] ItemObtainPanel itemObtainData;
+
+    private Vector2 initialPosition;
+    private Tweener currentTween;
 
     private void Awake()
     {
@@ -25,39 +27,45 @@ public class NotificationUI : MonoBehaviour
 
     private void Start()
     {
+        initialPosition = panel.GetComponent<RectTransform>().anchoredPosition;
         panel.SetActive(false);
     }
 
     public void ItemObtainedNotification(Item item)
     {
         itemObtainData.SetData(item);
-        StartCoroutine(ShowItemObtained());
 
-    }
-
-    private IEnumerator ShowItemObtained() //make the panel show, then fades out
-    {
-        float duration = 4f;  // The duration of the fade
-        float elapsedTime = 0f;
-
-        Image obj = panel.GetComponent<Image>();
-
-        Color initialColor = new Color(obj.color.r, obj.color.g, obj.color.b, 1f);
-        Color transparentColor = new Color(obj.color.r, obj.color.g, obj.color.b, 0f);
-
-        obj.color = initialColor;
-        obj.gameObject.SetActive(true);
-
-        while (elapsedTime < duration)
+        // Stop any ongoing tween and reset position
+        if (currentTween != null && currentTween.IsActive())
         {
-            obj.color = Color.Lerp(initialColor, transparentColor, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            currentTween.Kill();
+            panel.GetComponent<RectTransform>().anchoredPosition = initialPosition;
         }
 
-        obj.color = transparentColor;
-        obj.gameObject.SetActive(false);
+        panel.SetActive(true);
+        SlideOutPanel();
     }
+
+    private void SlideOutPanel()
+    {
+        RectTransform rectTransform = panel.GetComponent<RectTransform>();
+        Vector2 targetPosition = initialPosition - new Vector2(rectTransform.rect.width * 2f, 0f);
+
+        rectTransform.anchoredPosition = targetPosition; //start outside the screen
+
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(rectTransform.DOAnchorPos(initialPosition, 0.2f).SetEase(Ease.InOutSine)); // slide in to screen
+        sequence.AppendInterval(3f); // Add a delay of 3 seconds
+        sequence.Append(rectTransform.DOAnchorPos(targetPosition, 1f).SetEase(Ease.InOutSine)); // slide out of screen
+
+        sequence.OnComplete(() =>
+        {
+            rectTransform.anchoredPosition = initialPosition; // Reset position on animation complete
+            panel.SetActive(false);
+        });
+    }
+
 }
 
 [Serializable]

@@ -17,10 +17,12 @@ MonoBehaviour:
   icon: {fileID: 739505063, guid: fdce898e814624a418bbbd806ba6b322, type: 3}
   weaponModel: {fileID: 844062147802165681, guid: 38b973d0e11cbf040964d315a452392e,
     type: 3}
+  offhandModel: {fileID: 0}
   stats:
     attackModifier: 4
     healthModifier: 0
     defenseModifier: 0
     critRateModifier: 0
   attackCooldownInSeconds: 5
+  animationType: 2
   hitbox: {fileID: 11400000, guid: d8afac0d7b79c90408c1820b1c39811a, type: 2}

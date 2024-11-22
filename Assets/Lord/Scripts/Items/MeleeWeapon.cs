@@ -7,11 +7,15 @@ public class MeleeWeapon : Weapon
 {
     public HitboxData hitbox;
 
-    public void Initialize(Transform weaponAttachPoint)
+    public void Initialize(Transform weaponAttachPoint, Transform offhandAttachPoint)
     {
-        if(weaponModel != null)
+        if (weaponModel != null)
         {
             Instantiate(weaponModel, weaponAttachPoint);
+        }
+        if (offhandModel != null)
+        {
+            Instantiate(offhandModel, offhandAttachPoint);
         }
     }
 

@@ -21,6 +21,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public GameObject hitboxRangeIndicator;
     public MeleeHitboxTrigger meleeHitbox;
     public Transform weaponAttachPoint;
+    public Transform offhandAttachPoint;
 
     public float nextAttackTime; //determines the next Time.time the player can attack
     public bool isCharging; //determines if player is charging an attack
@@ -49,6 +50,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         currentHP = Mathf.Min(currentHP, stats.healthPoint);
         
         SetWeaponModel();
+        playerAnimation.SetAnimationType(playerManager.currentWeapon1.animationType);
     }
 
     private void SetWeaponModel()
@@ -59,12 +61,16 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             {
                 Destroy(child.gameObject);
             }
+            foreach(Transform child in offhandAttachPoint.transform) 
+            { 
+                Destroy(child.gameObject); 
+            }
         }
 
         if(playerManager.currentWeapon1 is MeleeWeapon)
         {
             MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon1;
-            meleeWeapon.Initialize(weaponAttachPoint);
+            meleeWeapon.Initialize(weaponAttachPoint, offhandAttachPoint);
         }
     }
 

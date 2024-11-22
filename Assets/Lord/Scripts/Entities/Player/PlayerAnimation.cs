@@ -10,6 +10,8 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] PlayableDirector ultDirector;
 
+    private Weapon.AnimationType currentAnimationType = 0;
+
     public void RotatePlayer(Vector3 direction)
     {
         Quaternion rotation = Quaternion.LookRotation(direction);
@@ -55,5 +57,17 @@ public class PlayerAnimation : MonoBehaviour
     public void PlayUltimateAnimation()
     {
         ultDirector.Play();
+    }
+
+    public void SetAnimationType(Weapon.AnimationType type)
+    {
+        if(currentAnimationType == type)
+        {
+            return;
+        }
+
+        currentAnimationType = type;
+        animator.SetInteger("WeaponType", (int)currentAnimationType);
+        animator.SetTrigger("ChangeWeapon");
     }
 }

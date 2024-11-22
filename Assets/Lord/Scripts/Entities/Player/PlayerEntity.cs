@@ -50,7 +50,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         currentHP = Mathf.Min(currentHP, stats.healthPoint);
         
         SetWeaponModel();
-        playerAnimation.SetAnimationType(playerManager.currentWeapon1.animationType);
+        
     }
 
     private void SetWeaponModel()
@@ -67,7 +67,12 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             }
         }
 
-        if(playerManager.currentWeapon1 is MeleeWeapon)
+        if (playerManager.currentWeapon1 != null)
+        {
+            playerAnimation.SetAnimationType(playerManager.currentWeapon1.animationType);
+        }
+
+        if (playerManager.currentWeapon1 is MeleeWeapon)
         {
             MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon1;
             meleeWeapon.Initialize(weaponAttachPoint, offhandAttachPoint);

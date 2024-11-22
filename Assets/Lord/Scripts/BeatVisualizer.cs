@@ -19,6 +19,8 @@ public class BeatVisualizer : MonoBehaviour
 
     private void Start()
     {
+        beatTravelDistance = beatContainer.rect.width / beatContainer.gameObject.transform.childCount;
+
         musicPlayer = GetComponent<MusicPlayer>();
         slideSpeed = beatTravelDistance / musicPlayer.intervalLength; // travel distance divided by secPerBeat;
     }

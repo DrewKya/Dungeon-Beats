@@ -5,6 +5,7 @@ using System.Drawing;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.VFX;
 
 public class PlayerEntity : MonoBehaviour, IDamageable
 {
@@ -20,8 +21,10 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     private Weapon selectedWeapon;
     public GameObject hitboxRangeIndicator;
     public MeleeHitboxTrigger meleeHitbox;
+
     public Transform weaponAttachPoint;
     public Transform offhandAttachPoint;
+    public Transform VFX_AttachPoint;
 
     public float nextAttackTime; //determines the next Time.time the player can attack
     public bool isCharging; //determines if player is charging an attack
@@ -65,6 +68,10 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             { 
                 Destroy(child.gameObject); 
             }
+            foreach(Transform child in VFX_AttachPoint.transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
 
         if (playerManager.currentWeapon1 != null)
@@ -75,7 +82,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         if (playerManager.currentWeapon1 is MeleeWeapon)
         {
             MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon1;
-            meleeWeapon.Initialize(weaponAttachPoint, offhandAttachPoint);
+            meleeWeapon.Initialize(weaponAttachPoint, offhandAttachPoint, VFX_AttachPoint);
         }
     }
 
@@ -132,8 +139,16 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         {
             Debug.Log("Player is attacking!");
             StartCoroutine(ToggleHitbox());
+
+            if(playerAnimation.weaponVFX == null)
+            {
+                playerAnimation.weaponVFX = VFX_AttachPoint.GetComponentInChildren<VisualEffect>();
+            }
+
+            playerAnimation.PlayAttackAnimation();
         }
-        playerAnimation.SetTrigger("Attack");
+        
+
         StartCoroutine(parametersUI.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInSeconds));
         nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
         hitboxRangeIndicator.SetActive(false);

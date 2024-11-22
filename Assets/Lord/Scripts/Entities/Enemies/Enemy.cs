@@ -175,6 +175,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     protected virtual void Die()
     {
         Debug.Log($"{gameObject.name} died!");
+        GetComponent<Collider>().enabled = false;
         EntityManager.instance.RemoveEntity(this);
         PlayerManager.instance.AddCoin(coinDropped);
         animator.SetTrigger("Die");

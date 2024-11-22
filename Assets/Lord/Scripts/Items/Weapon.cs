@@ -18,16 +18,9 @@ public abstract class Weapon : Item
     };
     public AnimationType animationType;
 
-    public void Initialize(Transform weaponAttachPoint, Transform offhandAttachPoint)
+    public virtual void Initialize(Transform weaponAttachPoint, Transform offhandAttachPoint)
     {
-        if (weaponModel != null)
-        {
-            Instantiate(weaponModel, weaponAttachPoint);
-        }
-        if(offhandModel != null)
-        {
-            Instantiate(offhandModel, offhandAttachPoint);
-        }
+        //Do something in the derived class
     }
 
     public virtual void Attack()

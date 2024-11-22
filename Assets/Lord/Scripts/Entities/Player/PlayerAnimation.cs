@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.VFX;
 
 public class PlayerAnimation : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField] Animator animator;
     [SerializeField] PlayableDirector ultDirector;
+
+    public VisualEffect weaponVFX;
+
 
     private Weapon.AnimationType currentAnimationType = 0;
 
@@ -49,9 +53,14 @@ public class PlayerAnimation : MonoBehaviour
         playerModel.transform.position = targetPosition;
     }
 
-    public void SetTrigger(string parameter)
+    public void PlayAttackAnimation()
     {
-        animator.SetTrigger(parameter);
+        animator.SetTrigger("Attack");
+        
+        if(weaponVFX != null)
+        {
+            weaponVFX.Play();
+        }
     }
 
     public void PlayUltimateAnimation()

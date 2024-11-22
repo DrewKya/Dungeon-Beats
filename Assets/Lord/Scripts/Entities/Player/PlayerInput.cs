@@ -8,7 +8,6 @@ using UnityEngine.Playables;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] GameObject playerModel;
     [SerializeField] Transform groundCheck;
 
     GameObject currentPositionTile;
@@ -18,6 +17,7 @@ public class PlayerInput : MonoBehaviour
 
     PlayerManager playerManager;
     PlayerEntity playerEntity;
+    PlayerAnimation playerAnimation;
 
     bool inputEnabled = true;
 
@@ -30,6 +30,7 @@ public class PlayerInput : MonoBehaviour
     {
         playerManager = PlayerManager.instance;
         playerEntity = GetComponent<PlayerEntity>();
+        playerAnimation = GetComponent<PlayerAnimation>();
 
         musicPlayer = MusicPlayer.Instance;
         timingText = musicPlayer.timingText;
@@ -96,55 +97,17 @@ public class PlayerInput : MonoBehaviour
 
         if (positionIncrement.magnitude > 0) //if a movement input is detected and allowed
         {
-            RotatePlayer(positionIncrement);
+            playerAnimation.RotatePlayer(positionIncrement);
             Vector3 targetTilePosition = groundCheck.position + positionIncrement;
             if (CheckIfWalkable(targetTilePosition, positionIncrement))
             {
-                StartCoroutine(HopAnimation(transform.position, transform.position + positionIncrement));
+                StartCoroutine(playerAnimation.HopAnimation(transform.position, transform.position + positionIncrement));
 
                 transform.position += positionIncrement;
                 CheckGround(groundCheck.position);
             }
         }
     }
-
-    private void RotatePlayer(Vector3 direction)
-    {
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        gameObject.transform.rotation = rotation;
-    }
-
-    private IEnumerator HopAnimation(Vector3 firstPosition, Vector3 targetPosition)
-    {
-        float hopHeight = 1f;
-        float time = 0.1f;
-        float timeElapsed = 0f;
-
-        Vector3 hopPosition = firstPosition + ((targetPosition - firstPosition) * 0.5f) + new Vector3(0, hopHeight, 0);
-
-        playerModel.transform.position = firstPosition;
-
-        // Go up
-        while (timeElapsed < time)
-        {
-            playerModel.transform.position = Vector3.Lerp(firstPosition, hopPosition, timeElapsed / time);
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-        playerModel.transform.position = hopPosition;
-
-        timeElapsed = 0f;
-
-        // Go down
-        while (timeElapsed < time)
-        {
-            playerModel.transform.position = Vector3.Lerp(hopPosition, targetPosition, timeElapsed / time);
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-        playerModel.transform.position = targetPosition;
-    }
-
 
     private bool CheckIfWalkable(Vector3 target, Vector3 direction)
     {
@@ -177,7 +140,7 @@ public class PlayerInput : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Mouse0) && playerEntity.isCharging)
         {
-            RotatePlayer(CheckPlayerDirectionByMouse());
+            playerAnimation.RotatePlayer(CheckPlayerDirectionByMouse());
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {

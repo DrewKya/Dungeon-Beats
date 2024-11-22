@@ -9,14 +9,12 @@ using UnityEngine.Playables;
 public class PlayerEntity : MonoBehaviour, IDamageable
 {
     private PlayerManager playerManager;
+    private PlayerAnimation playerAnimation;
     private IngameParametersUI parametersUI;
 
     public PlayerStats stats;
-
     public int currentHP;
 
-    [SerializeField] private Animator animator;
-    [SerializeField] private PlayableDirector ultDirector;
     [SerializeField] private GameEvent onPlayerTakeDamage;
 
     private Weapon selectedWeapon;
@@ -29,6 +27,8 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        playerAnimation = GetComponent<PlayerAnimation>();
+
         InitializeStats();
         parametersUI = IngameParametersUI.instance;
         parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
@@ -122,7 +122,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             Debug.Log("Player is attacking!");
             StartCoroutine(ToggleHitbox());
         }
-        animator.SetTrigger("Attack");
+        playerAnimation.SetTrigger("Attack");
         StartCoroutine(parametersUI.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInSeconds));
         nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
         hitboxRangeIndicator.SetActive(false);
@@ -132,7 +132,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public void TestUltimate() //this is only for testing player ult
     {
         Debug.Log("test");
-        ultDirector.Play();
+        playerAnimation.PlayUltimateAnimation();
     }
 
     private bool CheckAttackCooldown()

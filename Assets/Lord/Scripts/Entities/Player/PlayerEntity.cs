@@ -104,13 +104,11 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         selectedWeapon = playerManager.currentWeapon1;
         if(selectedWeapon == null)
         {
-            Debug.Log("No weapon equipped");
             return;
         }
 
         if (!CheckAttackCooldown())
         {
-            Debug.Log("Weapon is in cooldown!");
             return;
         }
 
@@ -137,7 +135,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
         if (selectedWeapon is MeleeWeapon)
         {
-            Debug.Log("Player is attacking!");
+            //Debug.Log("Player is attacking!");
             StartCoroutine(ToggleHitbox());
 
             if(playerAnimation.weaponVFX == null)

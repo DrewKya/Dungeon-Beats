@@ -56,6 +56,7 @@ public class TerrainChunkCombiner : MonoBehaviour
         {
             renderer.material = materials[0]; // Use the first material found
         }
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
         // Add MeshCollider
         MeshCollider meshCollider = combined.AddComponent<MeshCollider>();

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class DestructibleObject : MonoBehaviour, IDamageable
 {
+    [SerializeField] private GameObject model;
+    [SerializeField] private GameObject destroyedModel;
+
     public int hitsRemaining = 3;
 
     public virtual void TakeDamage(int damage, bool isCrit)
@@ -19,6 +22,8 @@ public class DestructibleObject : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Destroy(gameObject);
+        model.SetActive(false);
+        Instantiate(destroyedModel, transform.position, Quaternion.identity, this.transform);
+        Destroy(gameObject, 2f);
     }
 }

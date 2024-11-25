@@ -97,8 +97,12 @@ public class TerrainChunkCombiner : MonoBehaviour
             }
             else
             {
-                //Destory the chunk if it contains no tiles
-                Object.Destroy(chunkObject);
+                //Destroy the chunk if it contains no tiles
+                #if UNITY_EDITOR
+                    DestroyImmediate(chunkObject);
+                #else
+                    Destroy(chunkObject);
+                #endif
                 chunkObject = null;
             }
         }

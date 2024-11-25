@@ -95,6 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8708d3a0d08984c99764b98dab4f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: {fileID: 4123081454400646929}
+  destroyedModel: {fileID: 6678408087618712580, guid: 76166c8c3c80453448ca10514f4de5c7,
+    type: 3}
   hitsRemaining: 3
 --- !u!1001 &2232973569281284752
 PrefabInstance:
@@ -197,6 +200,12 @@ PrefabInstance:
 --- !u!4 &3635513276923475371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3210764929412214587, guid: cc3de7974f3869348818dd65c86e1b73,
+    type: 3}
+  m_PrefabInstance: {fileID: 2232973569281284752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4123081454400646929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2865763935747175809, guid: cc3de7974f3869348818dd65c86e1b73,
     type: 3}
   m_PrefabInstance: {fileID: 2232973569281284752}
   m_PrefabAsset: {fileID: 0}

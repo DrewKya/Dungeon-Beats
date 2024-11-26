@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364f513771d6dce4097de5da22cd2718, type: 3}
+  m_Name: Test dual sword
+  m_EditorClassIdentifier: 
+  itemName: Test dual sword
+  itemDescription: New description
+  icon: {fileID: 21300000, guid: 5fb31fe4b734b4949be87bec4f08460c, type: 3}
+  weaponModel: {fileID: 844062147802165681, guid: 77148de9a1f26454b935704861966e4d,
+    type: 3}
+  offhandModel: {fileID: 844062147802165681, guid: 77148de9a1f26454b935704861966e4d,
+    type: 3}
+  stats:
+    attackModifier: 2
+    healthModifier: 0
+    defenseModifier: 0
+    critRateModifier: 0
+  attackCooldownInSeconds: 2
+  animationType: 1
+  hitbox: {fileID: 11400000, guid: ef513eb753d120a4da397bf8ff916cc6, type: 2}
+  attackVFX: {fileID: 4060117804001197792, guid: 7224e9f4283720144a0a582821d4e64b,
+    type: 3}

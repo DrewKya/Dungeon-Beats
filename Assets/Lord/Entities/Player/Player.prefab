@@ -556,7 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7165376694373346103}
   - component: {fileID: 2465134547564748494}
-  - component: {fileID: 2191572252538724558}
+  - component: {fileID: 5607551069379471243}
   m_Layer: 6
   m_Name: MeleeHitbox
   m_TagString: Untagged
@@ -600,7 +600,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 1}
---- !u!114 &2191572252538724558
+--- !u!114 &5607551069379471243
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1972450164913090080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245c2e0606595d4d9020ff29df88eab, type: 3}
+  m_Script: {fileID: 11500000, guid: 51a832b3a048d3c488fc0afe005cac70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   currentHP: 0
   onPlayerTakeDamage: {fileID: 11400000, guid: e0071bc38ee02064fb08faf98b50260e, type: 2}
   hitboxRangeIndicator: {fileID: 2551715306879542265}
-  meleeHitbox: {fileID: 2191572252538724558}
+  meleeHitbox: {fileID: 5607551069379471243}
   weaponAttachPoint: {fileID: 1413783537279966748}
   offhandAttachPoint: {fileID: 8076497350354183354}
   VFX_AttachPoint: {fileID: 0}

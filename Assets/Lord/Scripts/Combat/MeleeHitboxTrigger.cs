@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeHitboxTrigger : MonoBehaviour
+public class MeleeHitboxTrigger : HitboxTrigger
 {
-    public int damage;
-    public bool isCrit = false;
-
     private void OnTriggerEnter(Collider collider)
     {
         IDamageable damageable = collider.GetComponent<IDamageable>();

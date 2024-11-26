@@ -14,7 +14,9 @@ public abstract class Weapon : Item
     {
         None = 0,
         DualSword = 1,
-        GreatSword = 2
+        GreatSword = 2,
+        Bow = 3,
+        Wand = 4
     };
     public AnimationType animationType;
 

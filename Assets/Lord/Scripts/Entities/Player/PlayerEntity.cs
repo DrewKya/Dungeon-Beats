@@ -96,6 +96,11 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon1;
             meleeWeapon.Initialize(weaponAttachPoint, offhandAttachPoint, VFX_AttachPoint);
         }
+        else if (playerManager.currentWeapon1 is RangedWeapon)
+        {
+            RangedWeapon rangedWeapon = (RangedWeapon)playerManager.currentWeapon1;
+            rangedWeapon.Initialize(weaponAttachPoint, offhandAttachPoint);
+        }
     }
 
     public void CopyStatsFromPlayerManager()
@@ -163,9 +168,15 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
             VFX_AttachPoint.transform.position = this.transform.position;
             VFX_AttachPoint.transform.rotation = this.transform.rotation;
-            playerAnimation.PlayAttackAnimation();
+            
         }
-        
+        else if(selectedWeapon is RangedWeapon)
+        {
+            RangedWeapon weapon = (RangedWeapon)selectedWeapon;
+            ShootProjectile(weapon.projectilePrefab, weapon.projectileSpeed);
+        }
+
+        playerAnimation.PlayAttackAnimation();
 
         StartCoroutine(parametersUI.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInSeconds));
         nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
@@ -198,24 +209,37 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     public IEnumerator ToggleHitbox()
     {
-        meleeHitbox.damage = CalculateDamageDealt();
+        CalculateDamageDealt(meleeHitbox);
         meleeHitbox.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         meleeHitbox.gameObject.SetActive(false);
     }
 
-    private int CalculateDamageDealt()
+    public void ShootProjectile(GameObject projectilePrefab, float projectileSpeed)
+    {
+        Vector3 spawnPosition = this.transform.position + this.transform.forward * 1f + Vector3.up * 0.5f;
+
+        var projectile = Instantiate(projectilePrefab, spawnPosition, transform.rotation);
+
+        projectile.GetComponent<Rigidbody>().velocity = this.transform.forward * projectileSpeed;
+        Destroy(projectile, 5f);
+
+        RangedHitboxTrigger projectileHitbox = projectile.GetComponent<RangedHitboxTrigger>(); 
+        CalculateDamageDealt(projectileHitbox);
+    }
+
+    private void CalculateDamageDealt(HitboxTrigger hitbox)
     {
         float critRoll = UnityEngine.Random.Range(0f, 100f);
         if(critRoll < stats.critRate)
         {
-            meleeHitbox.isCrit = true;
-            return Mathf.FloorToInt(stats.attack * 1.5f); //crit damage
+            hitbox.isCrit = true;
+            hitbox.damage = Mathf.FloorToInt(stats.attack * 1.5f); //crit damage
         }
         else
         {
-            meleeHitbox.isCrit = false;
-            return stats.attack;
+            hitbox.isCrit = false;
+            hitbox.damage = stats.attack;
         }
     }
 

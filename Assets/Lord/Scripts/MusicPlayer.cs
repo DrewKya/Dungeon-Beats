@@ -1,57 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MusicPlayer : MonoBehaviour
 {
     public static MusicPlayer Instance;
 
     public AudioSource audioSource;
-
+    
     public float musicBPM;
-    public float secPerBeat;
-    public float songPositionInSeconds;
+    public Interval interval;
     public float songPositionInBeats;
 
-    public float dspSongTime; //seconds passed since the song started
+    public float intervalLength;
 
-    public Transform beatSpawnContainer;
-    public GameObject beatUI;
+    public TMP_Text timingText;
+
+    private bool triggerIsEnabled = true;
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Debug.LogWarning($"More than one instance of {Instance.GetType()} found!");
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
     }
 
     private void Start()
     {
+        intervalLength = interval.GetIntervalLength(musicBPM);
         audioSource = GetComponent<AudioSource>();
-        secPerBeat = 60f / musicBPM;
-        dspSongTime = (float)AudioSettings.dspTime;
-
         audioSource.Play();
-        //StartCoroutine(SpawnBeatIndicator());
     }
 
     private void Update()
     {
-        songPositionInSeconds = (float)(AudioSettings.dspTime - dspSongTime);
-        songPositionInBeats = songPositionInSeconds / secPerBeat;
-    }
-
-    IEnumerator SpawnBeatIndicator()
-    {
-        while (true)
+        songPositionInBeats = audioSource.timeSamples / (audioSource.clip.frequency * intervalLength);
+        if (interval.CheckNewInterval(songPositionInBeats))
         {
-            Debug.Log("test");
-            var obj = Instantiate(beatUI, beatSpawnContainer);
-            obj.AddComponent<DelayedDestroy>().DelayInSeconds = secPerBeat / 2f;
-            yield return new WaitForSeconds(secPerBeat);
+            interval.trigger.Invoke();
         }
     }
 
-    void StopLoopingCoroutine()
+    public void EnableTrigger(bool boolean)
     {
-        StopCoroutine(nameof(SpawnBeatIndicator));
+        triggerIsEnabled = boolean;
+    }
+}
+
+[System.Serializable]
+public class Interval
+{
+    [SerializeField] public UnityEvent trigger;
+
+    public int lastInterval; //track the last interval
+
+    public float GetIntervalLength(float bpm)
+    {
+        return 60f / bpm;
+    }
+
+    public bool CheckNewInterval(float interval)
+    {
+        var roundedInterval = Mathf.FloorToInt(interval); //round down
+
+        if (roundedInterval != lastInterval)
+        {
+            lastInterval = roundedInterval;
+            return true;
+        }
+        return false;
     }
 }

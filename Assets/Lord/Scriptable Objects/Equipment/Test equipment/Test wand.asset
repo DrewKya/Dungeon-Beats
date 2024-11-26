@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a1a261682b15ec4ba42dd6c41c445ff, type: 3}
-  m_Name: Test bow
+  m_Name: Test wand
   m_EditorClassIdentifier: 
-  itemName: Test bow
+  itemName: Test wand
   itemDescription: New description
-  icon: {fileID: 21300000, guid: 71b8c66a6022bae47b1632d09bbea422, type: 3}
-  weaponModel: {fileID: 844062147802165681, guid: 5d8ea21b8a1aaf84c957e290c77db0a2,
+  icon: {fileID: 21300000, guid: 76c43ab6740480244bfcc075beec440e, type: 3}
+  weaponModel: {fileID: 844062147802165681, guid: 66d09250404dc6546859eba6c422f793,
     type: 3}
-  offhandModel: {fileID: 0}
+  offhandModel: {fileID: 844062147802165681, guid: 374da508c1e058d41a79f8c0e6bd4038,
+    type: 3}
   stats:
-    attackModifier: 1
+    attackModifier: 2
     healthModifier: 0
     defenseModifier: 0
     critRateModifier: 0
-  attackCooldownInSeconds: 2
-  animationType: 3
-  projectilePrefab: {fileID: 8428290687844217194, guid: 9f59e512e1ccab4479809e1cd3f2bb2c,
+  attackCooldownInSeconds: 3
+  animationType: 4
+  projectilePrefab: {fileID: 8428290687844217194, guid: 7ae7fe4812f7b6c409cdcfec879cc5f7,
     type: 3}
-  projectileSpeed: 15
+  projectileSpeed: 8

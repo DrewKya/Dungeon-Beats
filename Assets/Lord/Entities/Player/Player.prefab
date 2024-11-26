@@ -826,37 +826,6 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &6453292141024609656
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1130115062820469387}
-  m_Layer: 6
-  m_Name: VFX attach point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1130115062820469387
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6453292141024609656}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6277181852184129135}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6477743832580463614
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +956,6 @@ Transform:
   - {fileID: 7165376694373346103}
   - {fileID: 7011519571386373175}
   - {fileID: 3910674518435733687}
-  - {fileID: 1130115062820469387}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7433224054760540505
@@ -1077,7 +1045,7 @@ MonoBehaviour:
   meleeHitbox: {fileID: 2191572252538724558}
   weaponAttachPoint: {fileID: 1413783537279966748}
   offhandAttachPoint: {fileID: 8076497350354183354}
-  VFX_AttachPoint: {fileID: 1130115062820469387}
+  VFX_AttachPoint: {fileID: 0}
   nextAttackTime: 0
   isCharging: 0
 --- !u!114 &3245062274353414719
@@ -1093,8 +1061,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 423961839764219762}
-  animator: {fileID: 1501548029823397905}
+  characterAnimator: {fileID: 0}
   ultDirector: {fileID: 990076715194011146}
+  weaponAnimation: {fileID: 0}
   weaponVFX: {fileID: 0}
 --- !u!114 &5215574941628167269
 MonoBehaviour:
@@ -2561,12 +2530,6 @@ GameObject:
 --- !u!4 &1413783537279966748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8517685651424869819, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
-    type: 3}
-  m_PrefabInstance: {fileID: 7325704415665513383}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1501548029823397905 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8177605224967394230, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
     type: 3}
   m_PrefabInstance: {fileID: 7325704415665513383}
   m_PrefabAsset: {fileID: 0}

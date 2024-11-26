@@ -31,6 +31,11 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        if(VFX_AttachPoint== null)
+        {
+            Debug.LogWarning("VFX attach point is null, make sure to put a reference to it");
+        }
+
         playerAnimation = GetComponent<PlayerAnimation>();
 
         InitializeStats();
@@ -58,6 +63,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     private void SetWeaponModel()
     {
+        //remove existing weapon model
         if(weaponAttachPoint.childCount > 0)
         {
             foreach(Transform child in weaponAttachPoint.transform)
@@ -74,11 +80,16 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             }
         }
 
+        //remove existing weapon vfx and animation references
+        playerAnimation.weaponVFX = null;
+        playerAnimation.weaponAnimation = null;
+
         if (playerManager.currentWeapon1 != null)
         {
             playerAnimation.SetAnimationType(playerManager.currentWeapon1.animationType);
         }
 
+        //initialize weapon based on its type
         if (playerManager.currentWeapon1 is MeleeWeapon)
         {
             MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon1;
@@ -141,8 +152,16 @@ public class PlayerEntity : MonoBehaviour, IDamageable
             if(playerAnimation.weaponVFX == null)
             {
                 playerAnimation.weaponVFX = VFX_AttachPoint.GetComponentInChildren<VisualEffect>();
+
+                // If no VisualEffect is found, try to get an Animator component
+                if (playerAnimation.weaponVFX == null)
+                {
+                    playerAnimation.weaponAnimation = VFX_AttachPoint.GetComponentInChildren<Animator>();
+                }
             }
 
+            VFX_AttachPoint.transform.position = this.transform.position;
+            VFX_AttachPoint.transform.rotation = this.transform.rotation;
             playerAnimation.PlayAttackAnimation();
         }
         

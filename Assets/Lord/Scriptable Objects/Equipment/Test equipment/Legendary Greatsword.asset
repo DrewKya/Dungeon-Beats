@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 364f513771d6dce4097de5da22cd2718, type: 3}
-  m_Name: Test claymore
+  m_Name: Legendary Greatsword
   m_EditorClassIdentifier: 
-  itemName: Test claymore
+  itemName: Legendary Greatsword
   itemDescription: New description
   icon: {fileID: 739505063, guid: fdce898e814624a418bbbd806ba6b322, type: 3}
   weaponModel: {fileID: 844062147802165681, guid: 90661d8052d71e54d85b6de2b15bb8ee,
@@ -25,4 +25,6 @@ MonoBehaviour:
     critRateModifier: 0
   attackCooldownInSeconds: 5
   animationType: 2
-  hitbox: {fileID: 11400000, guid: d8afac0d7b79c90408c1820b1c39811a, type: 2}
+  hitbox: {fileID: 11400000, guid: 328f489e582a08748a8a25a35e2acbd6, type: 2}
+  attackVFX: {fileID: 8090680221936425355, guid: 8d2c2000357250e4baca152fccbb9bf8,
+    type: 3}

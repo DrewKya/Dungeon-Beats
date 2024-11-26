@@ -8,9 +8,10 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] GameObject playerModel;
 
-    [SerializeField] Animator animator;
+    [SerializeField] Animator characterAnimator;
     [SerializeField] PlayableDirector ultDirector;
 
+    public Animator weaponAnimation;
     public VisualEffect weaponVFX;
 
 
@@ -55,11 +56,15 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayAttackAnimation()
     {
-        animator.SetTrigger("Attack");
+        characterAnimator.SetTrigger("Attack");
         
         if(weaponVFX != null)
         {
             weaponVFX.Play();
+        }
+        else if(weaponAnimation != null)
+        {
+            weaponAnimation.SetTrigger("Attack");
         }
     }
 
@@ -76,7 +81,7 @@ public class PlayerAnimation : MonoBehaviour
         }
 
         currentAnimationType = type;
-        animator.SetInteger("WeaponType", (int)currentAnimationType);
-        animator.SetTrigger("ChangeWeapon");
+        characterAnimator.SetInteger("WeaponType", (int)currentAnimationType);
+        characterAnimator.SetTrigger("ChangeWeapon");
     }
 }

@@ -3040,6 +3040,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2111791150}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &453252524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 453252525}
+  m_Layer: 6
+  m_Name: VFX attach point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &453252525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453252524}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &466695516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6877251967799855366, guid: aa865dd447d901045b958361bd87527e,
@@ -6123,6 +6154,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6877251967799855366, guid: aa865dd447d901045b958361bd87527e,
     type: 3}
   m_PrefabInstance: {fileID: 1572477303}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &954262764 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1501548029823397905, guid: 13c78777328653744bde7ff418d1965d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1505399388480452184}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &964309976
 GameObject:
@@ -14100,6 +14137,16 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3245062274353414719, guid: 13c78777328653744bde7ff418d1965d,
+        type: 3}
+      propertyPath: characterAnimator
+      value: 
+      objectReference: {fileID: 954262764}
+    - target: {fileID: 3950871804963596721, guid: 13c78777328653744bde7ff418d1965d,
+        type: 3}
+      propertyPath: onEventTriggered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6277181852184129135, guid: 13c78777328653744bde7ff418d1965d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14150,6 +14197,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6328572566403138830, guid: 13c78777328653744bde7ff418d1965d,
+        type: 3}
+      propertyPath: VFX_AttachPoint
+      value: 
+      objectReference: {fileID: 453252525}
     - target: {fileID: 6674940282733693231, guid: 13c78777328653744bde7ff418d1965d,
         type: 3}
       propertyPath: m_Name
@@ -14732,3 +14784,4 @@ SceneRoots:
   - {fileID: 1419530460}
   - {fileID: 1197112467}
   - {fileID: 676921220850751503}
+  - {fileID: 453252525}

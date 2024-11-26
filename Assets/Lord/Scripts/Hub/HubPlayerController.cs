@@ -33,7 +33,7 @@ public class HubPlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Time.timeScale > 0)
+            if (PauseManager.instance.isPaused == false)
             {
                 PauseManager.instance.TogglePauseGame(true);
             }

@@ -836,7 +836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5789599214727982215}
   - component: {fileID: 6638455491005175817}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BaseBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 423961839764219762}
-  characterAnimator: {fileID: 0}
+  characterAnimator: {fileID: 1501548029823397905}
   ultDirector: {fileID: 990076715194011146}
   weaponAnimation: {fileID: 0}
   weaponVFX: {fileID: 0}
@@ -1094,18 +1094,6 @@ MonoBehaviour:
   onEventTriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6328572566403138830}
-        m_TargetAssemblyTypeName: PlayerEntity, Assembly-CSharp
-        m_MethodName: UpdateStats
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 6328572566403138830}
         m_TargetAssemblyTypeName: PlayerEntity, Assembly-CSharp
         m_MethodName: UpdateStats
@@ -2530,6 +2518,12 @@ GameObject:
 --- !u!4 &1413783537279966748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8517685651424869819, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7325704415665513383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1501548029823397905 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8177605224967394230, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
     type: 3}
   m_PrefabInstance: {fileID: 7325704415665513383}
   m_PrefabAsset: {fileID: 0}

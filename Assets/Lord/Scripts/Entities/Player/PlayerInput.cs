@@ -58,15 +58,15 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Time.timeScale > 0)
+            if (PauseManager.instance.isPaused == false)
             {
                 PauseManager.instance.TogglePauseGame(true);
-                musicPlayer.audioSource.Pause();
+                //musicPlayer.audioSource.Pause();
             }
             else
             {
                 PauseManager.instance.TogglePauseGame(false);
-                musicPlayer.audioSource.Play();
+                //musicPlayer.audioSource.Play();
             }
         }
     }

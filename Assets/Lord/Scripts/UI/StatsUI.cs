@@ -27,7 +27,7 @@ public class StatsUI : MonoBehaviour
         {
             playerManager = PlayerManager.instance;
         }
-        coinText.text = $"Coin : {playerManager.coin}";
+        //coinText.text = $"Coin : {playerManager.coin}";
 
         var stats = playerManager.playerStats;
         statTexts[0].text = stats.healthPoint.ToString();

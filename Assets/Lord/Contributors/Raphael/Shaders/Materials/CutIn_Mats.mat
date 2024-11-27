@@ -61,6 +61,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: f4de855dc3416324a8323821fa95e5bf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_61f6dd86fdd04604bd126aab61915b87_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: ab97cb28cfb793b4eb53305b191eeab0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_68f5b9daad714c18b4f5e3357730b2b3_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: da0b271ee2e72e94d9a55a24903ab8a8, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -84,8 +88,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0.5
-    - _AlphaTest: -1
+    - _AlphaTest: -0.9
+    - _Base_Rotation: 0
     - _BorderNoise: 155.51
+    - _Char_Rotation: 16
+    - _Char_follow_Base_Rotation: 0
+    - _Char_follow_base_Rotation: 0
     - _ColorMask: 15
     - _Rotation: 0
     - _Stencil: 0
@@ -96,10 +104,13 @@ Material:
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
     m_Colors:
-    - _BackgroundColor: {r: 0.7169812, g: 0.1318975, b: 0.1318975, a: 0}
-    - _BaseBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-    - _BorderColor: {r: 2.670157, g: 0.19482139, b: 0, a: 0}
+    - _AdditionalStarColor: {r: 9.082411, g: 2.362431, b: 0, a: 0}
+    - _BackgroundColor: {r: 0.7176471, g: 0.25243205, b: 0.13333333, a: 0}
+    - _BaseBackgroundColor: {r: 0.060771663, g: 0, b: 0, a: 1}
+    - _BorderColor: {r: 3.5648696, g: 0.71447515, b: 0, a: 0}
+    - _Char_Position: {r: 0.1, g: -0.1, b: 0, a: 0}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
-    - _StarColor: {r: 1, g: 0.23032942, b: 0, a: 0}
+    - _EyeColor: {r: 4, g: 1.3491042, b: 0.09433962, a: 1}
+    - _StarColor: {r: 1, g: 0.110657394, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

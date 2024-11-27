@@ -14,7 +14,7 @@ public class Equipment : Item
     public EquipmentType equipmentType;
     public StatModifiers stats;
 
-    public override void Use()
+    public override void EquipToPlayer()
     {
         PlayerManager.instance.EquipItem(this);
         InventoryManager.instance.RemoveItem(this);

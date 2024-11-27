@@ -31,13 +31,13 @@ public class IngameParametersUI : MonoBehaviour
 
     public void UpdateItemUI()
     {
-        if (playerManager.currentWeapon1 == null)
+        if (playerManager.currentWeapon == null)
         {
             weaponIcon.SetWeapon(null);
             
             return;
         }
-        weaponIcon.SetWeapon(playerManager.currentWeapon1);
+        weaponIcon.SetWeapon(playerManager.currentWeapon);
     }
 
     public void UpdateHealthPointsUI(int currentHP, int maxHP)

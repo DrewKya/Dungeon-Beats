@@ -16,11 +16,9 @@ public class InventoryUI : MonoBehaviour
     public EquipSlot leggingsSlot;
     public EquipSlot bootsSlot;
 
-    public EquipSlot weaponSlot_1;
-    public EquipSlot weaponSlot_2;
+    public EquipSlot weaponSlot;
 
-    public EquipSlot consumableSlot_1;
-    public EquipSlot consumableSlot_2;
+    public EquipSlot consumableSlot;
 
 
     private void Start()
@@ -73,9 +71,14 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        if (playerManager.currentWeapon1 != null)
+        if (playerManager.currentWeapon != null)
         {
-            weaponSlot_1.AddItem(playerManager.currentWeapon1);
+            weaponSlot.AddItem(playerManager.currentWeapon);
+        }
+
+        if (playerManager.currentConsumable != null)
+        {
+            consumableSlot.AddItem(playerManager.currentConsumable);
         }
     }
 }

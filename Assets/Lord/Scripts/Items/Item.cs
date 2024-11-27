@@ -9,7 +9,7 @@ public abstract class Item : ScriptableObject
     public string itemDescription = "New description";
     public Sprite icon = null;
 
-    public virtual void Use() { }
+    public virtual void EquipToPlayer() { }
     public virtual void Drop()
     {
         InventoryManager.instance.RemoveItem(this);

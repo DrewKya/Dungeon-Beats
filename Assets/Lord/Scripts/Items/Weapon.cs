@@ -30,7 +30,7 @@ public abstract class Weapon : Item
         //Do something in the derived class
     }
 
-    public override void Use()
+    public override void EquipToPlayer()
     {
         PlayerManager.instance.EquipItem(this);
         InventoryManager.instance.RemoveItem(this);

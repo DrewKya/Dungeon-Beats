@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Consumable item")]
 public class Consumable : Item
 {
-    public override void Use()
+    public string effectDescription;
+
+    public override void EquipToPlayer()
     {
-        base.Use();
-        Debug.Log($"Using {this.itemName}.");
+        PlayerManager.instance.EquipItem(this);
+        InventoryManager.instance.RemoveItem(this);
     }
+
+    public virtual void UseConsumable(PlayerEntity targetPlayer) { }
 }

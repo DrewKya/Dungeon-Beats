@@ -52,12 +52,13 @@ public class ItemTooltip : MonoBehaviour
             Consumable consumable = (Consumable)item;
 
             itemType.text = "Consumable item";
-            itemStats.text = "";
-        }else if(item is Weapon)
+            itemStats.text = consumable.effectDescription;
+        }
+        else if(item is Weapon)
         {
             Weapon weapon = (Weapon)item;
 
-            itemType.text = "Weapon";
+            itemType.text = weapon.animationType.ToString();
             itemStats.text = GenerateItemStatsAsString(weapon.stats);
 
         }

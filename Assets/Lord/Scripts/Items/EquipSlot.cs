@@ -12,6 +12,8 @@ public class EquipSlot : MonoBehaviour
 
     private void Start()
     {
+        if(icon == null) icon = GetComponentInChildren<Image>();
+
         button = GetComponent<Button>();
         button.onClick.AddListener(() => UnequipItem());
     }
@@ -45,7 +47,8 @@ public class EquipSlot : MonoBehaviour
             }
             else if (item is Consumable)
             {
-                Debug.Log("Implement a code to unequip consumable");
+                Consumable consumable = (Consumable)item;
+                PlayerManager.instance.UnequipItem(consumable);
             }
             ClearSlot();
         }

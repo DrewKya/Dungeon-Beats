@@ -85,20 +85,20 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         playerAnimation.weaponVFX = null;
         playerAnimation.weaponAnimation = null;
 
-        if (playerManager.currentWeapon1 != null)
+        if (playerManager.currentWeapon != null)
         {
-            playerAnimation.SetAnimationType(playerManager.currentWeapon1.animationType);
+            playerAnimation.SetAnimationType(playerManager.currentWeapon.animationType);
         }
 
         //initialize weapon based on its type
-        if (playerManager.currentWeapon1 is MeleeWeapon)
+        if (playerManager.currentWeapon is MeleeWeapon)
         {
-            MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon1;
+            MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon;
             meleeWeapon.Initialize(weaponAttachPoint, offhandAttachPoint, VFX_AttachPoint);
         }
-        else if (playerManager.currentWeapon1 is RangedWeapon)
+        else if (playerManager.currentWeapon is RangedWeapon)
         {
-            RangedWeapon rangedWeapon = (RangedWeapon)playerManager.currentWeapon1;
+            RangedWeapon rangedWeapon = (RangedWeapon)playerManager.currentWeapon;
             rangedWeapon.Initialize(weaponAttachPoint, offhandAttachPoint);
         }
     }
@@ -118,7 +118,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     {
         if (isCharging) return;
 
-        selectedWeapon = playerManager.currentWeapon1;
+        selectedWeapon = playerManager.currentWeapon;
         if(selectedWeapon == null)
         {
             return;
@@ -258,6 +258,14 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         {
             PlayerDie();
         }
+    }
+
+    public void Heal(int healAmount)
+    {
+        int healedHP = Math.Min(currentHP + healAmount, stats.healthPoint);
+        currentHP += healedHP;
+
+        parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
     }
 
     private int CalculateDamageTaken(int damage)

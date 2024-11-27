@@ -152,25 +152,11 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
         if (selectedWeapon is MeleeWeapon)
         {
-            //Debug.Log("Player is attacking!");
             StartCoroutine(ToggleHitbox());
+            SetMeleeAttackVFX();
 
-            if(playerAnimation.weaponVFX == null)
-            {
-                playerAnimation.weaponVFX = VFX_AttachPoint.GetComponentInChildren<VisualEffect>();
-
-                // If no VisualEffect is found, try to get an Animator component
-                if (playerAnimation.weaponVFX == null)
-                {
-                    playerAnimation.weaponAnimation = VFX_AttachPoint.GetComponentInChildren<Animator>();
-                }
-            }
-
-            VFX_AttachPoint.transform.position = this.transform.position;
-            VFX_AttachPoint.transform.rotation = this.transform.rotation;
-            
         }
-        else if(selectedWeapon is RangedWeapon)
+        else if (selectedWeapon is RangedWeapon)
         {
             RangedWeapon weapon = (RangedWeapon)selectedWeapon;
             ShootProjectile(weapon.projectilePrefab, weapon.projectileSpeed);
@@ -182,6 +168,28 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
         hitboxRangeIndicator.SetActive(false);
         isCharging = false;
+    }
+
+    private void SetMeleeAttackVFX()
+    {
+        if (playerAnimation.weaponVFX == null)
+        {
+            playerAnimation.weaponVFX = VFX_AttachPoint.GetComponentInChildren<VisualEffect>();
+
+            // If no VisualEffect is found, try to get an Animator component
+            if (playerAnimation.weaponVFX == null)
+            {
+                playerAnimation.weaponAnimation = VFX_AttachPoint.GetComponentInChildren<Animator>();
+            }
+        }
+
+        VFX_AttachPoint.transform.position = this.transform.position;
+        VFX_AttachPoint.transform.rotation = this.transform.rotation;
+    }
+
+    public void UseItem()
+    {
+        playerManager.currentConsumable.UseConsumable(this);
     }
 
     public void TestUltimate() //this is only for testing player ult
@@ -263,7 +271,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public void Heal(int healAmount)
     {
         int healedHP = Math.Min(currentHP + healAmount, stats.healthPoint);
-        currentHP += healedHP;
+        currentHP = healedHP;
 
         parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
     }

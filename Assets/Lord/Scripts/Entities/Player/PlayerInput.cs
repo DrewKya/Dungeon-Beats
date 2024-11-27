@@ -45,6 +45,7 @@ public class PlayerInput : MonoBehaviour
         if (Time.timeScale == 0f || inputEnabled == false) return;
 
         CheckMovementInput();
+        CheckUseItemInput();
         CheckAttackInput();
         CheckUltimateInput();
     }
@@ -158,7 +159,13 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    
+    private void CheckUseItemInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            playerEntity.UseItem();
+        }
+    }
 
     private Vector3 CheckPlayerDirectionByMouse()
     {

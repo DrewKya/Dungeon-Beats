@@ -20,6 +20,8 @@ public class IngameParametersUI : MonoBehaviour
     PlayerManager playerManager;
 
     public WeaponIcon weaponIcon;
+    public ConsumableIcon consumableIcon;
+
     public Image healthPointsBarFill;
 
     private void Start()
@@ -31,13 +33,8 @@ public class IngameParametersUI : MonoBehaviour
 
     public void UpdateItemUI()
     {
-        if (playerManager.currentWeapon == null)
-        {
-            weaponIcon.SetWeapon(null);
-            
-            return;
-        }
         weaponIcon.SetWeapon(playerManager.currentWeapon);
+        consumableIcon.SetItem(playerManager.currentConsumable);
     }
 
     public void UpdateHealthPointsUI(int currentHP, int maxHP)

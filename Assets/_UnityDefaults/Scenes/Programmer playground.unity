@@ -1406,7 +1406,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  currentWeapon1: {fileID: 0}
+  currentWeapon: {fileID: 0}
+  currentConsumable: {fileID: 0}
   onStatsChanged: {fileID: 11400000, guid: faae0653c27c1aa4caa9b0e5f7cc4070, type: 2}
 --- !u!4 &136417264
 Transform:
@@ -10817,6 +10818,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6bc0b9d07b17e7c49be26d86a2f40bed, type: 2}
   - {fileID: 11400000, guid: 8fb9c957a3b3ad244b745c5271f1852e, type: 2}
   - {fileID: 11400000, guid: a8325583028932a4bb6845f7acdca8b5, type: 2}
+  - {fileID: 11400000, guid: 5c19998e17a21f3429a1d21bef287eb5, type: 2}
+  - {fileID: 11400000, guid: 2de96887681b500448d8b466afdbd8f2, type: 2}
+  - {fileID: 11400000, guid: 7eccff451b5c58f4ab8e642c966bf26e, type: 2}
   maxSlot: 15
   OnInventoryChanged: {fileID: 11400000, guid: 15528d032b55fd84fb28a21d0fa5d3b4, type: 2}
 --- !u!4 &1607564026

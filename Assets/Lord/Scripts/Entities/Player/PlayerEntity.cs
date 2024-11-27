@@ -121,6 +121,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         selectedWeapon = playerManager.currentWeapon;
         if(selectedWeapon == null)
         {
+            NotificationUI.instance.TextNotification("No weapon equipped!");
             return;
         }
 
@@ -191,6 +192,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     {
         if(playerManager.currentConsumable == null)
         {
+            NotificationUI.instance.TextNotification("No consumable item equipped!");
             return;
         }
 

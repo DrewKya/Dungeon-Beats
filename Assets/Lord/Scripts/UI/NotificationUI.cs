@@ -9,10 +9,12 @@ public class NotificationUI : MonoBehaviour
     public static NotificationUI instance { get; private set; }
 
     [SerializeField] GameObject panel;
-    [SerializeField] ItemObtainPanel itemObtainData;
+    [SerializeField] NotificationPanel notificationPanel;
+    [SerializeField] Sprite exclamationMark;
 
     private Vector2 initialPosition;
-    private Tweener currentTween;
+    private Sequence currentSequence;
+
 
     private void Awake()
     {
@@ -33,13 +35,22 @@ public class NotificationUI : MonoBehaviour
 
     public void ItemObtainedNotification(Item item)
     {
-        itemObtainData.SetData(item);
+        notificationPanel.SetItemData(item);
+        AnimatePanel();
+    }
 
+    public void TextNotification(string text)
+    {
+        notificationPanel.SetTextData(text, exclamationMark);
+        AnimatePanel();
+    }
+
+    private void AnimatePanel()
+    {
         // Stop any ongoing tween and reset position
-        if (currentTween != null && currentTween.IsActive())
+        if (currentSequence != null && currentSequence.IsActive())
         {
-            currentTween.Kill();
-            panel.GetComponent<RectTransform>().anchoredPosition = initialPosition;
+            currentSequence.Kill(false);
         }
 
         panel.SetActive(true);
@@ -59,24 +70,36 @@ public class NotificationUI : MonoBehaviour
         sequence.AppendInterval(3f); // Add a delay of 3 seconds
         sequence.Append(rectTransform.DOAnchorPos(targetPosition, 1f).SetEase(Ease.InOutSine)); // slide out of screen
 
-        sequence.OnComplete(() =>
-        {
-            rectTransform.anchoredPosition = initialPosition; // Reset position on animation complete
-            panel.SetActive(false);
-        });
+        sequence.OnComplete(ResetPanelState);
+
+        currentSequence = sequence;
+    }
+
+    private void ResetPanelState()
+    {
+        RectTransform rectTransform = panel.GetComponent<RectTransform>();
+
+        rectTransform.anchoredPosition = initialPosition;
+        panel.SetActive(false);
     }
 
 }
 
 [Serializable]
-public class ItemObtainPanel
+public class NotificationPanel
 {
-    public Image itemIcon;
-    public TMP_Text itemName;
+    public Image icon;
+    public TMP_Text notificationText;
 
-    public void SetData(Item item)
+    public void SetItemData(Item item)
     {
-        itemIcon.sprite = item.icon;
-        itemName.text = item.itemName;
+        icon.sprite = item.icon;
+        notificationText.text = item.itemName;
+    }
+
+    public void SetTextData(string _text, Sprite _sprite)
+    {
+        icon.sprite = _sprite;
+        notificationText.text = _text;
     }
 }

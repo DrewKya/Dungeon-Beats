@@ -32,11 +32,11 @@ public class InventoryManager : MonoBehaviour
     {
         if (items.Count >= maxSlot)
         {
-            Debug.Log("No space in inventory");
+            NotificationUI.instance.TextNotification("No space in inventory");
             return false;
         }
         items.Add(item);
-        Debug.Log($"{item.itemName} added to inventory");
+        //Debug.Log($"{item.itemName} added to inventory");
         OnInventoryChanged.TriggerEvent();
         return true;
     }

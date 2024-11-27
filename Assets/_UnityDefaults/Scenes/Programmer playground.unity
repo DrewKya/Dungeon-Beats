@@ -1409,6 +1409,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   currentConsumable: {fileID: 0}
   onStatsChanged: {fileID: 11400000, guid: faae0653c27c1aa4caa9b0e5f7cc4070, type: 2}
+  onInventoryChanged: {fileID: 11400000, guid: 15528d032b55fd84fb28a21d0fa5d3b4, type: 2}
 --- !u!4 &136417264
 Transform:
   m_ObjectHideFlags: 0
@@ -6174,7 +6175,7 @@ GameObject:
   - component: {fileID: 964309979}
   - component: {fileID: 964309978}
   m_Layer: 5
-  m_Name: Item obtain panel
+  m_Name: Notification panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6960,9 +6961,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 964309976}
-  itemObtainData:
-    itemIcon: {fileID: 1243708148}
-    itemName: {fileID: 1489239683}
+  notificationPanel:
+    icon: {fileID: 1243708148}
+    text: {fileID: 1489239683}
+  exclamationMark: {fileID: 0}
 --- !u!114 &1027077249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8250,7 +8252,7 @@ GameObject:
   - component: {fileID: 1243708147}
   - component: {fileID: 1243708148}
   m_Layer: 5
-  m_Name: Item icon
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9828,7 +9830,7 @@ GameObject:
   - component: {fileID: 1489239684}
   - component: {fileID: 1489239683}
   m_Layer: 5
-  m_Name: Item name
+  m_Name: text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

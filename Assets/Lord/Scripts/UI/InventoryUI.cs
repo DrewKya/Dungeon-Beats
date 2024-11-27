@@ -20,7 +20,6 @@ public class InventoryUI : MonoBehaviour
 
     public EquipSlot consumableSlot;
 
-
     private void Start()
     {
         playerManager = PlayerManager.instance;
@@ -33,6 +32,11 @@ public class InventoryUI : MonoBehaviour
 
     public void UpdateUI()
     {
+        if(!inventoryManager || !playerManager)
+        {
+            return;
+        }
+
         for(int i = 0; i < slots.Length; i++)
         {
             if (i < inventoryManager.items.Count)
@@ -75,10 +79,23 @@ public class InventoryUI : MonoBehaviour
         {
             weaponSlot.AddItem(playerManager.currentWeapon);
         }
+        else
+        {
+            weaponSlot.ClearSlot();
+        }
 
         if (playerManager.currentConsumable != null)
         {
             consumableSlot.AddItem(playerManager.currentConsumable);
         }
+        else
+        {
+            consumableSlot.ClearSlot();
+        }
+    }
+
+    private void OnEnable()
+    {
+        UpdateUI();
     }
 }

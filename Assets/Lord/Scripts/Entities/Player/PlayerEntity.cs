@@ -189,7 +189,13 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     public void UseItem()
     {
+        if(playerManager.currentConsumable == null)
+        {
+            return;
+        }
+
         playerManager.currentConsumable.UseConsumable(this);
+        playerManager.ConsumeItem();
     }
 
     public void TestUltimate() //this is only for testing player ult

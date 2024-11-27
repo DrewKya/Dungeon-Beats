@@ -31,10 +31,11 @@ public class PlayerManager : MonoBehaviour
     public Consumable currentConsumable;
 
     public GameEvent onStatsChanged;
+    public GameEvent onInventoryChanged;
 
     public void EquipItem(Equipment equipment)
     {
-        Debug.Log($"Equipping {equipment.itemName}.");
+        //Debug.Log($"Equipping {equipment.itemName}.");
         int equipSlot = (int) equipment.equipmentType; //determine which type of equipment it is
 
         Equipment currentEquippedItem = null;
@@ -50,7 +51,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UnequipItem(Equipment equipment)
     {
-        Debug.Log($"Unequipping {equipment.itemName}.");
+        //Debug.Log($"Unequipping {equipment.itemName}.");
         int equipSlot = (int)equipment.equipmentType; //determine which type of equipment it is
 
         if (currentEquipment[equipSlot] != null)
@@ -64,7 +65,7 @@ public class PlayerManager : MonoBehaviour
 
     public void EquipItem(Weapon weapon)
     {
-        Debug.Log($"Equipping {weapon.itemName}.");
+        //Debug.Log($"Equipping {weapon.itemName}.");
         Weapon currentEquippedWeapon = null;
 
         if (currentWeapon != null)
@@ -78,7 +79,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UnequipItem(Weapon weapon)
     {
-        Debug.Log($"Unequipping {weapon.itemName}.");
+        //Debug.Log($"Unequipping {weapon.itemName}.");
 
         if (currentWeapon != null)
         {
@@ -91,24 +92,38 @@ public class PlayerManager : MonoBehaviour
 
     public void EquipItem(Consumable consumable)
     {
-        Debug.Log($"Equipping {consumable.itemName}.");
+        //Debug.Log($"Equipping {consumable.itemName}.");
 
         if(currentConsumable != null)
         {
             InventoryManager.instance.AddItem(currentConsumable); //add equipped consumable back to inventory
         }
         currentConsumable = consumable;
+
+        onStatsChanged.TriggerEvent();
     }
 
     public void UnequipItem(Consumable consumable)
     {
-        Debug.Log($"Unequipping {consumable.itemName}.");
+        //Debug.Log($"Unequipping {consumable.itemName}.");
 
         if (currentConsumable != null)
         {
             InventoryManager.instance.AddItem(currentConsumable); //add equipped item back to inventory
             currentConsumable = null;
         }
+
+        onStatsChanged.TriggerEvent();
+    }
+
+    public void ConsumeItem()
+    {
+        if(currentConsumable != null)
+        {
+            currentConsumable = null;
+        }
+
+        onStatsChanged.TriggerEvent();
     }
 
     public void UpdatePlayerStats(Equipment previousItem, Equipment newItem)

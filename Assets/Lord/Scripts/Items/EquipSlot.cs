@@ -40,7 +40,8 @@ public class EquipSlot : MonoBehaviour
             {
                 Equipment equipment = (Equipment)item;
                 PlayerManager.instance.UnequipItem(equipment);
-            }else if(item is Weapon)
+            }
+            else if(item is Weapon)
             {
                 Weapon weapon = (Weapon)item;
                 PlayerManager.instance.UnequipItem(weapon);

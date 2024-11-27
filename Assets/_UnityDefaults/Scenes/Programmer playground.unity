@@ -6963,8 +6963,8 @@ MonoBehaviour:
   panel: {fileID: 964309976}
   notificationPanel:
     icon: {fileID: 1243708148}
-    text: {fileID: 1489239683}
-  exclamationMark: {fileID: 0}
+    notificationText: {fileID: 1489239683}
+  exclamationMark: {fileID: -1777524883, guid: c9d14774a66854445aae3b01705dd13f, type: 3}
 --- !u!114 &1027077249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8307,7 +8307,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 313973541, guid: fdce898e814624a418bbbd806ba6b322, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -9952,8 +9952,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 94.5, y: 0}
-  m_SizeDelta: {x: 100, y: 30}
+  m_AnchoredPosition: {x: 92, y: 0}
+  m_SizeDelta: {x: 95, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1498213741
 PrefabInstance:
@@ -10950,6 +10950,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8325583028932a4bb6845f7acdca8b5, type: 2}
   - {fileID: 11400000, guid: 5c19998e17a21f3429a1d21bef287eb5, type: 2}
   - {fileID: 11400000, guid: 2de96887681b500448d8b466afdbd8f2, type: 2}
+  - {fileID: 11400000, guid: 7eccff451b5c58f4ab8e642c966bf26e, type: 2}
   - {fileID: 11400000, guid: 7eccff451b5c58f4ab8e642c966bf26e, type: 2}
   maxSlot: 15
   OnInventoryChanged: {fileID: 11400000, guid: 15528d032b55fd84fb28a21d0fa5d3b4, type: 2}

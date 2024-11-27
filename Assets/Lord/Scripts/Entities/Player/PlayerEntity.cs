@@ -89,6 +89,10 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         {
             playerAnimation.SetAnimationType(playerManager.currentWeapon.animationType);
         }
+        else
+        {
+            playerAnimation.SetAnimationType(0);
+        }
 
         //initialize weapon based on its type
         if (playerManager.currentWeapon is MeleeWeapon)

@@ -120,7 +120,18 @@ public class PlayerManager : MonoBehaviour
     {
         if(currentConsumable != null)
         {
-            currentConsumable = null;
+            //try to find the same item in inventory
+            Consumable nextItem = InventoryManager.instance.items.Find(item => item == currentConsumable) as Consumable;
+
+            if (nextItem != null)
+            {
+                currentConsumable = nextItem;
+                InventoryManager.instance.RemoveItem(nextItem);
+            }
+            else
+            {
+                currentConsumable = null;
+            }
         }
 
         onStatsChanged.TriggerEvent();

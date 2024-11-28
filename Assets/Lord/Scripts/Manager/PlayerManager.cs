@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         if(currentEquipment[equipSlot] != null)
         {
             currentEquippedItem = currentEquipment[equipSlot];
-            InventoryManager.instance.AddItem(currentEquippedItem); //add equipped item back to inventory
+            InventoryManager.instance.AddItemToInventory(currentEquippedItem); //add equipped item back to inventory
         }
         currentEquipment[equipSlot] = equipment;
         UpdatePlayerStats(currentEquippedItem, equipment);
@@ -57,7 +57,7 @@ public class PlayerManager : MonoBehaviour
         if (currentEquipment[equipSlot] != null)
         {
             var currentEquippedItem = currentEquipment[equipSlot];
-            InventoryManager.instance.AddItem(currentEquippedItem); //add equipped item back to inventory
+            InventoryManager.instance.AddItemToInventory(currentEquippedItem); //add equipped item back to inventory
             currentEquipment[equipSlot] = null;
         }
         UpdatePlayerStats(equipment, null);
@@ -71,7 +71,7 @@ public class PlayerManager : MonoBehaviour
         if (currentWeapon != null)
         {
             currentEquippedWeapon = currentWeapon;
-            InventoryManager.instance.AddItem(currentEquippedWeapon); //add equipped item back to inventory
+            InventoryManager.instance.AddItemToInventory(currentEquippedWeapon); //add equipped item back to inventory
         }
         currentWeapon = weapon;
         UpdatePlayerStats(currentEquippedWeapon, weapon);
@@ -84,7 +84,7 @@ public class PlayerManager : MonoBehaviour
         if (currentWeapon != null)
         {
             var currentEquippedWeapon = currentWeapon;
-            InventoryManager.instance.AddItem(currentWeapon); //add equipped item back to inventory
+            InventoryManager.instance.AddItemToInventory(currentWeapon); //add equipped item back to inventory
             currentWeapon = null;
         }
         UpdatePlayerStats(weapon, null);
@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour
 
         if(currentConsumable != null)
         {
-            InventoryManager.instance.AddItem(currentConsumable); //add equipped consumable back to inventory
+            InventoryManager.instance.AddItemToInventory(currentConsumable); //add equipped consumable back to inventory
         }
         currentConsumable = consumable;
 
@@ -109,7 +109,7 @@ public class PlayerManager : MonoBehaviour
 
         if (currentConsumable != null)
         {
-            InventoryManager.instance.AddItem(currentConsumable); //add equipped item back to inventory
+            InventoryManager.instance.AddItemToInventory(currentConsumable); //add equipped item back to inventory
             currentConsumable = null;
         }
 

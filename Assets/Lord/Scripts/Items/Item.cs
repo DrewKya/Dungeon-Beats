@@ -7,6 +7,7 @@ public abstract class Item : ScriptableObject
 {
     public string itemName = "Item Name";
     public string itemDescription = "New description";
+    public int itemPrice = 1;
     public Sprite icon = null;
 
     public virtual void EquipToPlayer() { }

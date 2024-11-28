@@ -22,7 +22,7 @@ public class Chest : MonoBehaviour
     }
     private void Interact()
     {
-        bool itemAdded = InventoryManager.instance.AddItem(loot);
+        bool itemAdded = InventoryManager.instance.AddItemToInventory(loot);
         if (itemAdded)
         {
             NotificationUI.instance.ItemObtainedNotification(loot);

@@ -18,7 +18,7 @@ public class InventorySlot : MonoBehaviour
         button.onClick.AddListener(() => UseItem());
     }
 
-    public void AddItem(Item newItem)
+    public void AddItemToSlot(Item newItem)
     {
         item = newItem;
         icon.sprite = item.icon;

@@ -28,7 +28,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] public GameEvent OnInventoryChanged;
 
-    public bool AddItem(Item item)
+    public bool AddItemToInventory(Item item)
     {
         if (items.Count >= maxSlot)
         {

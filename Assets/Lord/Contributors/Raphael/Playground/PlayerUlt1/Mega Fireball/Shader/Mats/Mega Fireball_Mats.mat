@@ -18,11 +18,12 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2450
   stringTagMap:
     RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -45,10 +46,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 1.5
     - _AlphaClip: 1
     - _AlphaToMask: 1
     - _Blend: 0
-    - _CastShadows: 1
+    - _CastShadows: 0
     - _Cull: 2
     - _DstBlend: 0
     - _QueueControl: 0
@@ -59,8 +61,8 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Inner_Color: {r: 776.04706, g: 776.04706, b: 776.04706, a: 0}
-    - _Outer_Color: {r: 238.85654, g: 18.705238, b: 0, a: 0}
+    - _Inner_Color: {r: 388.02353, g: 0, b: 0, a: 0}
+    - _Outer_Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &4215439404074253552

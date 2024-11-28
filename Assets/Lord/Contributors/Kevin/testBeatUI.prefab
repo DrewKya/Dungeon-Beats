@@ -106,11 +106,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3527503226302080937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03c8401fc95aac448fd5c61cd6211da, type: 3}
+  m_Script: {fileID: 11500000, guid: 15ee13680630b7d45a4f35dcdd64f2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
-  imageToTween: {fileID: 0}
-  closeColor: {r: 0, g: 1, b: 0, a: 1}
-  farColor: {r: 1, g: 0, b: 0, a: 1}
   thresholdDistance: 100
+  minDistance: 0

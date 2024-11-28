@@ -5,10 +5,8 @@ public class ColorDistanceTween : MonoBehaviour
 {
     public RectTransform targetObject;
 
-    public Color farColor = Color.red;
-    public Color closeColor = Color.blue;
-    public float thresholdDistance = 100f; // Distance threshold for full interpolation
-    public float minDistance = 0f; // Minimum distance where color is fully 'closeColor'
+    public float nearThreshold = 50f; // Distance where transition is fully color1
+    public float farThreshold = 300f; // Distance where transition is fully color2
 
     private RectTransform rectTransform;
     private Image imageToTween;
@@ -17,6 +15,9 @@ public class ColorDistanceTween : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         imageToTween = GetComponent<Image>();
+
+        Material material = new Material(imageToTween.material);
+        imageToTween.material = material;
     }
 
     void FixedUpdate()
@@ -24,10 +25,9 @@ public class ColorDistanceTween : MonoBehaviour
         float distance = Vector3.Distance(rectTransform.position, targetObject.position);
 
         // Interpolate the distance to a value between 0 and 1
-        float t = Mathf.InverseLerp(minDistance, thresholdDistance, distance);
+        float t = Mathf.InverseLerp(farThreshold, nearThreshold, distance);
 
-        Color targetColor = Color.Lerp(farColor, closeColor, t);
-
-        imageToTween.color = targetColor;
+        // Set the _Transition value in the material
+        imageToTween.material.SetFloat("_Transition", t);
     }
 }

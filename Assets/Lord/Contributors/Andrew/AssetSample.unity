@@ -272,6 +272,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 020af31131aa1494ea8e392d2f73b646,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -770,6 +775,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MC1 with mark
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e730c0f3bdc658d44990574eab1de9fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680310563675643647, guid: e730c0f3bdc658d44990574eab1de9fa,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b8e1b3605b853454b89448ee228a66ad, type: 2}
     - target: {fileID: 4353607187421848963, guid: e730c0f3bdc658d44990574eab1de9fa,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1668,6 +1683,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 020af31131aa1494ea8e392d2f73b646,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1931,6 +1951,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4c75b66940852e44a9f92095d1a53063,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2471,6 +2496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 020af31131aa1494ea8e392d2f73b646,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3032,6 +3062,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c904afbaf0e447144980c33afbf6cc7e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3441,6 +3476,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 020af31131aa1494ea8e392d2f73b646,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3603,6 +3643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gundamdaman
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cdda4011bd73ca340908ffbc73969f35,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4139,6 +4184,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 020af31131aa1494ea8e392d2f73b646,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4359,7 +4409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1154261133
 Transform:
   m_ObjectHideFlags: 0
@@ -4844,6 +4894,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lava2
       objectReference: {fileID: 0}
+    - target: {fileID: 5398045544337866776, guid: fe9263b5b766e8d418244aed0b7d5d25,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5251,7 +5306,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 020af31131aa1494ea8e392d2f73b646,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5779,6 +5834,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 020af31131aa1494ea8e392d2f73b646,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7073,6 +7133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 020af31131aa1494ea8e392d2f73b646,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9356,7 +9421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2128112085
 Transform:
   m_ObjectHideFlags: 0
@@ -9450,6 +9515,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865763935747175809, guid: cc3de7974f3869348818dd65c86e1b73,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3210764929412214587, guid: cc3de7974f3869348818dd65c86e1b73,
         type: 3}
@@ -9569,6 +9639,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Traps
       objectReference: {fileID: 0}
+    - target: {fileID: 4293657555359878987, guid: 910c7df31ecb4bb43a28a414b7e7e8bd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4899780540958973064, guid: 910c7df31ecb4bb43a28a414b7e7e8bd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9652,6 +9727,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pocong
       objectReference: {fileID: 0}
+    - target: {fileID: 6554103783549801893, guid: e1f4ee2ccbab31d44a7219ac7d0439f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9724,6 +9804,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lava1
       objectReference: {fileID: 0}
+    - target: {fileID: 5398045544337866776, guid: 8f521c1390e75594dab4cf06280726b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9741,6 +9826,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spike
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359051197062342299, guid: 775da2e94f5491e4f8686bac6a98bd86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9172284784226090017, guid: 775da2e94f5491e4f8686bac6a98bd86,
         type: 3}
@@ -9809,6 +9899,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lava3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865411357494699325, guid: 41170f5fbac5f3f4c99532fa65c39bef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4534952797372366727, guid: 41170f5fbac5f3f4c99532fa65c39bef,
         type: 3}
@@ -9901,6 +9996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP
       objectReference: {fileID: 0}
+    - target: {fileID: 8547657362071432317, guid: f1106a3ef7bc2c740a65d8a1832bf68e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9067067361197389511, guid: f1106a3ef7bc2c740a65d8a1832bf68e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9968,6 +10068,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Barrel_Destroyed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497478109593463303, guid: a4260dc7bfe863444b1a432ce4b16198,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3018260261360480445, guid: a4260dc7bfe863444b1a432ce4b16198,
         type: 3}
@@ -10111,6 +10216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chest (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7569108611871816981, guid: 52a43dd83dfebd24ca81ee4bc7492e7a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

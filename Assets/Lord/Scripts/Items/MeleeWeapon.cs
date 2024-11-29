@@ -19,7 +19,7 @@ public class MeleeWeapon : Weapon
         {
             Instantiate(offhandModel, offhandAttachPoint);
         }
-        if(attackVFX != null)
+        if(attackVFX != null && VFXattachPoint != null)
         {
             Instantiate(attackVFX, VFXattachPoint);
         }

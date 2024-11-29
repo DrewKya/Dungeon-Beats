@@ -7,11 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
 
-    public enum SceneState
-    {
-        MainMenu, Ingame
-    };
-
     public PlayerManager playerManager;
     public int loadedSlotIndex = -1;
 

@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Test chest
   itemDescription: New description
-  icon: {fileID: -1910543216, guid: 1fd137815bbde1746a21ee59fd368d65, type: 3}
+  itemPrice: 1
+  icon: {fileID: -1024071547, guid: eb97e8d6899383848aff347f85b4ae0e, type: 3}
   equipmentType: 3
   stats:
     attackModifier: 0
     healthModifier: 5
     defenseModifier: 0
+    critRateModifier: 0

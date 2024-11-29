@@ -38,7 +38,7 @@ public class ItemTooltip : MonoBehaviour
 
     public void SetContent(Item item)
     {
-        itemName.text = item.name;
+        itemName.text = item.itemName;
 
         if(item is Equipment)
         {

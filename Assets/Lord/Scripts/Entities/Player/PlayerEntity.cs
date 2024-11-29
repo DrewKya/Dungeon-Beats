@@ -290,7 +290,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     private int CalculateDamageTaken(int damage)
     {
-        return Math.Max(0, damage - stats.defense);
+        return Math.Max(1, damage - stats.defense);
     }
 
     private void PlayerDie()

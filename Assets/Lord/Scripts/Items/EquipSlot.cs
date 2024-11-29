@@ -10,6 +10,8 @@ public class EquipSlot : MonoBehaviour
     public Item item;
     private Button button;
 
+    [SerializeField] private Sprite emptyIcon;
+
     private void Start()
     {
         if(icon == null) icon = GetComponentInChildren<Image>();
@@ -22,14 +24,12 @@ public class EquipSlot : MonoBehaviour
     {
         item = newItem;
         icon.sprite = item.icon;
-        icon.enabled = true;
     }
 
     public void ClearSlot()
     {
         item = null;
-        icon.sprite = null;
-        icon.enabled = false;
+        icon.sprite = emptyIcon;
     }
 
     public void UnequipItem()

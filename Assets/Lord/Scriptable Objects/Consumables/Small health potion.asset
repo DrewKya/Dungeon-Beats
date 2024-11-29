@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098f9cc0e74199343849f7952c8c9127, type: 3}
   m_Name: Small health potion
   m_EditorClassIdentifier: 
-  itemName: Health potion (small)
+  itemName: Health potion (S)
   itemDescription: Heals a small amount
-  icon: {fileID: 1022265484, guid: fdce898e814624a418bbbd806ba6b322, type: 3}
+  itemPrice: 1
+  icon: {fileID: 21300000, guid: 1596ce10979230c4eba5169c4c90f895, type: 3}
   effectDescription: Heals 5 HP
   healingAmount: 5

@@ -7,26 +7,23 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Brand New Wing Mats
-  m_Shader: {fileID: -6465566751694194690, guid: 4e2d69bc384b0094c9d4c95172a51b60,
+  m_Name: Bone Wing Shader
+  m_Shader: {fileID: -6465566751694194690, guid: dc1c4a6c63423a143bdc07aaa19b1d1d,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ALPHAPREMULTIPLY_ON
   - _ALPHATEST_ON
   - _SPECULAR_SETUP
-  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap:
-    RenderType: Transparent
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
-  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -45,33 +42,29 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0
     - _AlphaClip: 1
-    - _AlphaToMask: 0
-    - _Blend: 2
+    - _AlphaToMask: 1
+    - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _CastShadows: 1
     - _Cull: 2
-    - _DstBlend: 1
-    - _Float: -4.26
-    - _Float_1: -1.6
-    - _NoiseRotation: 0
+    - _DstBlend: 0
+    - _Float: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Rotation: 107.13
     - _SrcBlend: 1
-    - _Surface: 1
+    - _Surface: 0
     - _WorkflowMode: 0
     - _ZTest: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 2.9960783, g: 0, b: 0, a: 0}
-    - _Color_1: {r: 2.639016, g: 2.639016, b: 2.639016, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_1: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7634857581829687150
+--- !u!114 &4947932710137020245
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

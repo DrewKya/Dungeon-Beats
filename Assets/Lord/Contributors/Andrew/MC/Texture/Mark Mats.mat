@@ -21,21 +21,23 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mark Mats
-  m_Shader: {fileID: -6465566751694194690, guid: 32389ceb1f131d64f8beeba461c33ccd,
+  m_Shader: {fileID: -6465566751694194690, guid: 03dbab5a7d35aeb40b8afbdf537e9869,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHATEST_ON
+  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: TransparentCutout
+    RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
+  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -59,23 +61,23 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 1
-    - _AlphaToMask: 1
+    - _AlphaToMask: 0
     - _Blend: 0
     - _CastShadows: 1
-    - _Cull: 2
-    - _DstBlend: 0
-    - _Float: 3.1
-    - _Float_1: 0
+    - _Cull: 0
+    - _DstBlend: 10
+    - _Float: 7
+    - _Float_1: 2.51
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Rotate: 0
-    - _SrcBlend: 1
-    - _Surface: 0
+    - _Rotate: -4.27
+    - _SrcBlend: 5
+    - _Surface: 1
     - _ZTest: 4
-    - _ZWrite: 1
+    - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _innerColor: {r: 0.3295524, g: 1, b: 0, a: 0}
-    - _outerColor: {r: 1, g: 0, b: 0, a: 0}
+    - _innerColor: {r: 0, g: 0.1419127, b: 0.0032606765, a: 0}
+    - _outerColor: {r: 1.7207954, g: 0.44122955, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

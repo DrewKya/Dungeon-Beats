@@ -14,7 +14,6 @@ public class PlayerAnimation : MonoBehaviour
     public Animator weaponAnimation;
     public VisualEffect weaponVFX;
 
-
     private Weapon.AnimationType currentAnimationType = 0;
 
     public void RotatePlayer(Vector3 direction)

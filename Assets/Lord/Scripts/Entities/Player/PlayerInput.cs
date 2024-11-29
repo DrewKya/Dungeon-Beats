@@ -59,15 +59,13 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (PauseManager.instance.isPaused == false)
+            if (GameStateManager.instance.ToggleGameState(GameStateManager.GameState.inMenu))
             {
-                PauseManager.instance.TogglePauseGame(true);
                 inputEnabled = false;
                 //musicPlayer.audioSource.Pause();
             }
             else
             {
-                PauseManager.instance.TogglePauseGame(false);
                 inputEnabled = true;
                 //musicPlayer.audioSource.Play();
             }

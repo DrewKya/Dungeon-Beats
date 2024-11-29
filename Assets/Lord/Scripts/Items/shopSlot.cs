@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour
+public class shopSlot : MonoBehaviour
 {
     public Image icon;
     public Item item;
@@ -37,7 +37,7 @@ public class ItemSlot : MonoBehaviour
 
         if(item.itemPrice > currentCoins)
         {
-            NotificationUI.instance?.TextNotification("Not enough coins!");
+            ShopUI.instance?.SetDialogue($"Sorry, but you need <color=#FFFFA9>{item.itemPrice - currentCoins}</color> more coins to buy that.");
             return;
         }
 
@@ -45,9 +45,14 @@ public class ItemSlot : MonoBehaviour
         {
             currentCoins -= item.itemPrice;
 
+            ShopUI.instance?.SetDialogue($"Thank you for your patronage!");
             Debug.Log($"{item.itemName} bought for {item.itemPrice} coins");
 
             onBuyOrSellItem.TriggerEvent();
+        }
+        else
+        {
+            ShopUI.instance?.SetDialogue($"Hmm..? Looks like your inventory is full.");
         }
     }
 
@@ -58,6 +63,7 @@ public class ItemSlot : MonoBehaviour
         currentCoins += item.itemPrice;
         item.Drop();
 
+        ShopUI.instance?.SetDialogue($"Happy to do business with you!");
         Debug.Log($"{item.itemName} sold for {item.itemPrice} coins");
 
         onBuyOrSellItem.TriggerEvent();

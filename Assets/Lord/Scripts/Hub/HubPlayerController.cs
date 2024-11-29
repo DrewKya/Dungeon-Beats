@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class HubPlayerController : MonoBehaviour
 {
+    private GameStateManager gameStateManager;
+
+    private PlayerManager playerManager;
+    private PlayerAnimation playerAnimation;
+
+    [SerializeField] GameObject playerModel;
+
+    public Transform weaponAttachPoint;
+    public Transform offhandAttachPoint;
+
     [SerializeField] Transform groundCheck;
 
     GameObject currentPositionTile;
@@ -13,14 +23,24 @@ public class HubPlayerController : MonoBehaviour
 
     private void Start()
     {
+        gameStateManager = GameStateManager.instance;
+
+        playerManager = PlayerManager.instance;
+        playerAnimation = GetComponent<PlayerAnimation>();
+
+        SetWeaponModel();
+
         CheckGround(groundCheck.position);
     }
 
     private void Update()
     {
         CheckPauseInput();
-        if (Time.timeScale == 0f) return;
-
+        if (gameStateManager.currentState != GameStateManager.GameState.inGame)
+        {
+            return;
+        }
+        
         if (inputEnabled) CheckMovementInput();
     }
 
@@ -33,14 +53,7 @@ public class HubPlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (PauseManager.instance.isPaused == false)
-            {
-                PauseManager.instance.TogglePauseGame(true);
-            }
-            else
-            {
-                PauseManager.instance.TogglePauseGame(false);
-            }
+            GameStateManager.instance.ToggleGameState(GameStateManager.GameState.inMenu);
         }
     }
 
@@ -66,21 +79,54 @@ public class HubPlayerController : MonoBehaviour
 
         if (positionIncrement.magnitude > 0) //if a movement input is detected and allowed
         {
-            RotatePlayer(positionIncrement);
+            playerAnimation.RotatePlayer(positionIncrement);
 
             Vector3 targetTilePosition = groundCheck.position + positionIncrement;
             if (CheckIfWalkable(targetTilePosition, positionIncrement))
             {
+                StartCoroutine(playerAnimation.HopAnimation(transform.position, transform.position + positionIncrement));
                 transform.position += positionIncrement;
                 CheckGround(groundCheck.position);
             }
         }
     }
 
-    private void RotatePlayer(Vector3 direction)
+    public void SetWeaponModel()
     {
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        gameObject.transform.rotation = rotation;
+        //remove existing weapon model
+        if (weaponAttachPoint.childCount > 0)
+        {
+            foreach (Transform child in weaponAttachPoint.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (Transform child in offhandAttachPoint.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        //Set animation type based on equipped weapon
+        if (playerManager.currentWeapon != null)
+        {
+            playerAnimation.SetAnimationType(playerManager.currentWeapon.animationType);
+        }
+        else
+        {
+            playerAnimation.SetAnimationType(0);
+        }
+
+        //initialize weapon based on its type
+        if (playerManager.currentWeapon is MeleeWeapon)
+        {
+            MeleeWeapon meleeWeapon = (MeleeWeapon)playerManager.currentWeapon;
+            meleeWeapon.Initialize(weaponAttachPoint, offhandAttachPoint, null);
+        }
+        else if (playerManager.currentWeapon is RangedWeapon)
+        {
+            RangedWeapon rangedWeapon = (RangedWeapon)playerManager.currentWeapon;
+            rangedWeapon.Initialize(weaponAttachPoint, offhandAttachPoint);
+        }
     }
 
     private bool CheckIfWalkable(Vector3 target, Vector3 direction)

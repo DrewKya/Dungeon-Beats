@@ -5,11 +5,13 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     private InventorySlot slot;
     private EquipSlot equipSlot;
+    private shopSlot shopSlot;
 
     private void Start()
     {
         slot = GetComponent<InventorySlot>();
         equipSlot = GetComponent<EquipSlot>();
+        shopSlot = GetComponent<shopSlot>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -21,6 +23,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         else if(equipSlot != null)
         {
             if (equipSlot.item != null) TooltipSystem.instance.Show(equipSlot.item);
+        }
+        else if(shopSlot != null)
+        {
+            if (shopSlot.item != null) TooltipSystem.instance.Show(shopSlot.item);
         }
         else
         {

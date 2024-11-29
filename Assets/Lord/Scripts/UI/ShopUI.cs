@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class ShopUI : MonoBehaviour
 
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private TMP_Text coinText;
+    [SerializeField] private TMP_Text dialogueText;
 
     private List<Item> currentAvailableItems;
 
@@ -33,8 +35,8 @@ public class ShopUI : MonoBehaviour
     public Transform playerItemsGrid;
     public Transform shopItemsGrid;
 
-    ItemSlot[] playerItemSlots;
-    ItemSlot[] shopItemSlots;
+    shopSlot[] playerItemSlots;
+    shopSlot[] shopItemSlots;
 
 
     private void Start()
@@ -42,8 +44,8 @@ public class ShopUI : MonoBehaviour
         playerManager = PlayerManager.instance;
         inventoryManager = InventoryManager.instance;
 
-        playerItemSlots = playerItemsGrid.GetComponentsInChildren<ItemSlot>();
-        shopItemSlots = shopItemsGrid.GetComponentsInChildren<ItemSlot>();
+        playerItemSlots = playerItemsGrid.GetComponentsInChildren<shopSlot>();
+        shopItemSlots = shopItemsGrid.GetComponentsInChildren<shopSlot>();
 
         shopPanel.SetActive(false);
     }
@@ -55,6 +57,8 @@ public class ShopUI : MonoBehaviour
             Debug.LogError("Cannot find inventory manager or player manager");
             return;
         }
+
+        SetDialogue("Welcome to my shop! Anything you fancy?");
 
         shopPanel.SetActive(true);
 
@@ -102,4 +106,42 @@ public class ShopUI : MonoBehaviour
 
         coinText.text = $"Coins : {playerManager.coin.ToString()}";
     }
+
+    public void SetDialogue(string text)
+    {
+        StartCoroutine(TypeText(text));
+    }
+
+    private IEnumerator TypeText(string dialogue)
+    {
+        dialogueText.text = ""; // Clear existing text
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+
+        while (i < dialogue.Length)
+        {
+            // If the current character is a '<', treat it as the start of a tag
+            if (dialogue[i] == '<')
+            {
+                // Find the closing '>' of the tag
+                int tagEnd = dialogue.IndexOf('>', i);
+                if (tagEnd != -1)
+                {
+                    sb.Append(dialogue.Substring(i, tagEnd - i + 1));
+                    i = tagEnd + 1;
+                    continue;
+                }
+            }
+
+            // Append the next character normally
+            sb.Append(dialogue[i]);
+            i++;
+
+            dialogueText.text = sb.ToString();
+
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+
 }

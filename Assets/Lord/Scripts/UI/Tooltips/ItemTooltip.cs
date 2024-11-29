@@ -11,6 +11,7 @@ public class ItemTooltip : MonoBehaviour
     [SerializeField] private TMP_Text itemName;
     [SerializeField] private TMP_Text itemType;
     [SerializeField] private TMP_Text itemStats;
+    [SerializeField] private TMP_Text itemPrice;
     [SerializeField] private TMP_Text itemDescription;
 
     private void Awake()
@@ -63,6 +64,7 @@ public class ItemTooltip : MonoBehaviour
 
         }
 
+        itemPrice.text =  $"Value : {item.itemPrice.ToString()} coins";
         itemDescription.text = item.itemDescription;
     }
 

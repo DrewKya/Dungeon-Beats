@@ -16,7 +16,6 @@ public class Shop : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("Input");
                 Interact();
             }
         }
@@ -24,7 +23,10 @@ public class Shop : MonoBehaviour
 
     private void Interact()
     {
-        ShopUI.instance.InitializeShopUI(ref availableItems);
+        if (GameStateManager.instance.ToggleGameState(GameStateManager.GameState.inShop))
+        {
+            ShopUI.instance.InitializeShopUI(ref availableItems);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,7 +37,6 @@ public class Shop : MonoBehaviour
             isInteractable = true;
 
             Camera camera = Camera.main;
-            interactPrompt.transform.LookAt(transform.position + camera.transform.rotation * Vector3.forward, camera.transform.rotation * Vector3.up);
         }
     }
 

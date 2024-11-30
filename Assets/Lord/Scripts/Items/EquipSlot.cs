@@ -36,22 +36,25 @@ public class EquipSlot : MonoBehaviour
     {
         if (item != null)
         {
+            bool isUnequipped = false;
+
             if(item is Equipment)
             {
                 Equipment equipment = (Equipment)item;
-                PlayerManager.instance.UnequipItem(equipment);
+                isUnequipped = PlayerManager.instance.UnequipItem(equipment);
             }
             else if(item is Weapon)
             {
                 Weapon weapon = (Weapon)item;
-                PlayerManager.instance.UnequipItem(weapon);
+                isUnequipped = PlayerManager.instance.UnequipItem(weapon);
             }
             else if (item is Consumable)
             {
                 Consumable consumable = (Consumable)item;
-                PlayerManager.instance.UnequipItem(consumable);
+                isUnequipped = PlayerManager.instance.UnequipItem(consumable);
             }
-            ClearSlot();
+             
+            if (isUnequipped) ClearSlot();
         }
     }
 }

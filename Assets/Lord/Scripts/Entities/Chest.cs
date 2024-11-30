@@ -22,6 +22,12 @@ public class Chest : MonoBehaviour
     }
     private void Interact()
     {
+        if(loot == null)
+        {
+            loot = MapManager.instance?.GetRandomItem();
+        }
+
+
         bool itemAdded = InventoryManager.instance.AddItemToInventory(loot);
         if (itemAdded)
         {

@@ -49,7 +49,7 @@ public class PlayerManager : MonoBehaviour
         UpdatePlayerStats(currentEquippedItem, equipment);
     }
 
-    public void UnequipItem(Equipment equipment)
+    public bool UnequipItem(Equipment equipment)
     {
         //Debug.Log($"Unequipping {equipment.itemName}.");
         int equipSlot = (int)equipment.equipmentType; //determine which type of equipment it is
@@ -57,10 +57,15 @@ public class PlayerManager : MonoBehaviour
         if (currentEquipment[equipSlot] != null)
         {
             var currentEquippedItem = currentEquipment[equipSlot];
-            InventoryManager.instance.AddItemToInventory(currentEquippedItem); //add equipped item back to inventory
-            currentEquipment[equipSlot] = null;
+            bool itemAdded = InventoryManager.instance.AddItemToInventory(currentEquippedItem); //add equipped item back to inventory
+            if (itemAdded)
+            {
+                currentEquipment[equipSlot] = null;
+                UpdatePlayerStats(equipment, null);
+                return true;
+            }
         }
-        UpdatePlayerStats(equipment, null);
+        return false; 
     }
 
     public void EquipItem(Weapon weapon)
@@ -77,17 +82,21 @@ public class PlayerManager : MonoBehaviour
         UpdatePlayerStats(currentEquippedWeapon, weapon);
     }
 
-    public void UnequipItem(Weapon weapon)
+    public bool UnequipItem(Weapon weapon)
     {
         //Debug.Log($"Unequipping {weapon.itemName}.");
 
         if (currentWeapon != null)
         {
-            var currentEquippedWeapon = currentWeapon;
-            InventoryManager.instance.AddItemToInventory(currentWeapon); //add equipped item back to inventory
-            currentWeapon = null;
+            bool itemAdded = InventoryManager.instance.AddItemToInventory(currentWeapon); //add equipped item back to inventory
+            if (itemAdded)
+            {
+                currentWeapon = null;
+                UpdatePlayerStats(weapon, null);
+                return true;
+            }
         }
-        UpdatePlayerStats(weapon, null);
+        return false;
     }
 
     public void EquipItem(Consumable consumable)
@@ -103,17 +112,21 @@ public class PlayerManager : MonoBehaviour
         onStatsChanged.TriggerEvent();
     }
 
-    public void UnequipItem(Consumable consumable)
+    public bool UnequipItem(Consumable consumable)
     {
         //Debug.Log($"Unequipping {consumable.itemName}.");
 
         if (currentConsumable != null)
         {
-            InventoryManager.instance.AddItemToInventory(currentConsumable); //add equipped item back to inventory
-            currentConsumable = null;
+            bool itemAdded = InventoryManager.instance.AddItemToInventory(currentConsumable); //add equipped item back to inventory
+            if (itemAdded)
+            {
+                currentConsumable = null;
+                onStatsChanged.TriggerEvent();
+                return true;
+            } 
         }
-
-        onStatsChanged.TriggerEvent();
+        return false;
     }
 
     public void ConsumeItem()

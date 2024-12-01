@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     public PlayerManager playerManager;
     public int loadedSlotIndex = -1;
 
+    [HideInInspector] public bool isAppFirstTimeOpen = true; //if this is the first time application is open (eg. to determine if main menu animation should be played)
+
     private void Awake()
     {
         if (instance != null)
@@ -20,6 +23,11 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        
     }
 
     public void InitializeNewData()
@@ -73,6 +81,11 @@ public class GameManager : MonoBehaviour
     public void DeleteData(int slot)
     {
         SaveSystem.ResetData(slot);
+    }
+
+    public void MarkAppAsNotFirstTime()
+    {
+        isAppFirstTimeOpen = false;
     }
 
     public void QuitApplication()

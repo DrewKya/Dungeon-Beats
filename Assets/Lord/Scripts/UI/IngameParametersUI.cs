@@ -22,7 +22,8 @@ public class IngameParametersUI : MonoBehaviour
     public WeaponIcon weaponIcon;
     public ConsumableIcon consumableIcon;
 
-    public Image healthPointsBarFill;
+    [SerializeField] private Image healthPointsBarFill;
+    [SerializeField] private TMP_Text healthPointsText;
 
     private void Start()
     {
@@ -41,5 +42,6 @@ public class IngameParametersUI : MonoBehaviour
     {
         float percentage = (float)currentHP / (float)maxHP;
         healthPointsBarFill.fillAmount = percentage;
+        healthPointsText.text = $"{currentHP} / {maxHP}";
     }
 }

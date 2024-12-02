@@ -57,6 +57,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     {
         CopyStatsFromPlayerManager();
         currentHP = Mathf.Min(currentHP, stats.healthPoint);
+        parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
         
         SetWeaponModel();
         

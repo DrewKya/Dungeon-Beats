@@ -33,9 +33,29 @@ public class PlayerManager : MonoBehaviour
     public GameEvent onStatsChanged;
     public GameEvent onInventoryChanged;
 
+    public void EquipItem(Item item)
+    {
+        if(item is Equipment)
+        {
+            var equipment = (Equipment)item;
+            EquipItem(equipment);
+        }
+        else if (item is Weapon)
+        {
+            var weapon = (Weapon)item;
+            EquipItem(weapon);
+        }
+        else if (item is Consumable)
+        {
+            var consumable = (Consumable)item;
+            EquipItem(consumable);
+        }
+        onInventoryChanged.TriggerEvent();
+    }
+
     public void EquipItem(Equipment equipment)
     {
-        //Debug.Log($"Equipping {equipment.itemName}.");
+        Debug.Log($"Equipping {equipment.itemName}.");
         int equipSlot = (int) equipment.equipmentType; //determine which type of equipment it is
 
         Equipment currentEquippedItem = null;

@@ -10,7 +10,11 @@ public abstract class Item : ScriptableObject
     public int itemPrice = 1;
     public Sprite icon = null;
 
-    public virtual void EquipToPlayer() { }
+    public virtual void EquipToPlayer() 
+    {
+        InventoryManager.instance.RemoveItem(this);
+        PlayerManager.instance.EquipItem(this);
+    }
     public virtual void Drop()
     {
         InventoryManager.instance.RemoveItem(this);

@@ -1,9 +1,12 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject chestModel;
+    [SerializeField] private GameObject coinModel;
     [SerializeField] private TMP_Text interactPrompt;
     private bool isOpenable = false;
 
@@ -15,7 +18,6 @@ public class Chest : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                animator.SetTrigger("Open");
                 Interact();
             }
         }
@@ -31,6 +33,7 @@ public class Chest : MonoBehaviour
         bool itemAdded = InventoryManager.instance.AddItemToInventory(loot);
         if (itemAdded)
         {
+
             NotificationUI.instance.ItemObtainedNotification(loot);
 
             isOpenable = false;
@@ -41,8 +44,40 @@ public class Chest : MonoBehaviour
             {
                 if (collider.isTrigger) collider.enabled = false;
             }
-            //Destroy(gameObject);
+
+            StartCoroutine(PlayAnimationCoroutine(3f));
+            Destroy(gameObject, 3f);
         }
+    }
+
+    private IEnumerator PlayAnimationCoroutine(float duration)
+    {
+        animator.SetTrigger("Open");
+
+        string dissolveParameter = "_Dissolve_amount";
+
+        Material newChestMat = new Material(chestModel.GetComponent<Renderer>().material);
+        Material newCoinMat = new Material(coinModel.GetComponent<Renderer>().material);
+
+        chestModel.GetComponent<Renderer>().material = newChestMat;
+        coinModel.GetComponent<Renderer>().material = newCoinMat;
+
+        yield return new WaitForSeconds(1f);
+
+        float elapsedTime = 0f;
+        float dissolveDuration = duration - 1f;
+        while (elapsedTime < dissolveDuration)
+        {
+            float lerpTime = Mathf.Lerp(0, 1, elapsedTime / dissolveDuration);
+            newChestMat.SetFloat(dissolveParameter, lerpTime);
+            newCoinMat.SetFloat(dissolveParameter, lerpTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(newChestMat);
+        Destroy(newCoinMat);
     }
 
     private void OnTriggerEnter(Collider other)

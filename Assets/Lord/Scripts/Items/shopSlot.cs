@@ -37,7 +37,7 @@ public class shopSlot : MonoBehaviour
 
         if(item.itemPrice > currentCoins)
         {
-            ShopUI.instance?.SetDialogue($"Sorry, but you need <color=#FFFFA9>{item.itemPrice - currentCoins}</color> more coins to buy that.");
+            ShopUI.instance?.SetDialogue($"Sorry, but you are <color=#FFFFA9>{item.itemPrice - currentCoins}</color> coins short on that.");
             return;
         }
 
@@ -45,7 +45,7 @@ public class shopSlot : MonoBehaviour
         {
             currentCoins -= item.itemPrice;
 
-            ShopUI.instance?.SetDialogue($"Thank you for your patronage!");
+            ShopUI.instance?.SetDialogue($"Thank you for your patronage.");
             Debug.Log($"{item.itemName} bought for {item.itemPrice} coins");
 
             onBuyOrSellItem.TriggerEvent();
@@ -63,7 +63,7 @@ public class shopSlot : MonoBehaviour
         currentCoins += item.itemPrice;
         item.Drop();
 
-        ShopUI.instance?.SetDialogue($"Happy to do business with you!");
+        ShopUI.instance?.SetDialogue($"Heh heh... A pleasure doing business with you.");
         Debug.Log($"{item.itemName} sold for {item.itemPrice} coins");
 
         onBuyOrSellItem.TriggerEvent();

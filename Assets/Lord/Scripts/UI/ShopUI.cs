@@ -58,7 +58,7 @@ public class ShopUI : MonoBehaviour
             return;
         }
 
-        SetDialogue("Welcome to my shop! Anything you fancy?");
+        SetDialogue("Welcome to this humble merchant's shop. Anything you fancy?");
 
         shopPanel.SetActive(true);
 

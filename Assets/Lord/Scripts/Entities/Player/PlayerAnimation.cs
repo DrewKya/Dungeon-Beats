@@ -10,6 +10,7 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField] Animator characterAnimator;
     [SerializeField] PlayableDirector ultDirector;
+    [SerializeField] GameEvent ultStart;
 
     public Animator weaponAnimation;
     public VisualEffect weaponVFX;

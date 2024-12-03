@@ -13,6 +13,11 @@ public class CameraShake : MonoBehaviour
         initialPos = transform.position;
     }
 
+    private void OnEnable()
+    {
+        initialPos = transform.position;
+    }
+
     // Update is called once per frame
     void Update()
     {

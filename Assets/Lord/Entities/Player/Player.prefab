@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 3950871804963596721}
   - component: {fileID: 2295327143765168508}
   - component: {fileID: 1663486390351825757}
+  - component: {fileID: 3078211783900897960}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -580,8 +581,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerModel: {fileID: 423961839764219762}
+  awakeningModels:
+  - {fileID: 4770906387675328098}
+  - {fileID: 8745106663189325117}
   characterAnimator: {fileID: 1501548029823397905}
   ultDirector: {fileID: 990076715194011146}
+  ultStart: {fileID: 0}
   weaponAnimation: {fileID: 0}
   weaponVFX: {fileID: 0}
 --- !u!114 &5215574941628167269
@@ -704,6 +709,34 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &3078211783900897960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674940282733693231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab96e66a8f6b8ac48aa9628860513206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: dcc5fdc9a6d67de4996a271633e01776, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6328572566403138830}
+        m_TargetAssemblyTypeName: PlayerEntity, Assembly-CSharp
+        m_MethodName: EnterAwakenMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 3
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7832926568531127010
 GameObject:
@@ -959,6 +992,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2087134166604695194, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6937819786067264725, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
         type: 3}
       propertyPath: m_Name
@@ -987,9 +1025,21 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 7325704415665513383}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4770906387675328098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2855153861793369541, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7325704415665513383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8076497350354183354 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1567071074216986397, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7325704415665513383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8745106663189325117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2087134166604695194, guid: dcd2345da8d7391458ff2b1dc0ad35ee,
     type: 3}
   m_PrefabInstance: {fileID: 7325704415665513383}
   m_PrefabAsset: {fileID: 0}

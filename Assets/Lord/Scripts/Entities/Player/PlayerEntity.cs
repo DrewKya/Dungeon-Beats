@@ -29,6 +29,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     public float nextAttackTime; //determines the next Time.time the player can attack
     public bool isCharging; //determines if player is charging an attack
+    private bool isImmune = false;
 
     private void Start()
     {
@@ -211,6 +212,23 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         playerAnimation.PlayUltimateAnimation();
     }
 
+    public IEnumerator AwakenModeCoroutine()
+    {
+        isImmune = true;
+        playerAnimation.AwakenAnimation(true);
+
+        yield return new WaitForSeconds(3f);
+
+        isImmune = false;
+
+        yield return new WaitForSeconds(7f);
+
+        playerAnimation.AwakenAnimation(false);
+    }
+    public void EnterAwakenMode()
+    {
+        StartCoroutine(AwakenModeCoroutine());
+    }
     private bool CheckAttackCooldown()
     {
         return (Time.time >= nextAttackTime) ? true : false;
@@ -291,6 +309,11 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     private int CalculateDamageTaken(int damage)
     {
+        if (isImmune)
+        {
+            return 0;
+        }
+
         return Math.Max(1, damage - stats.defense);
     }
 

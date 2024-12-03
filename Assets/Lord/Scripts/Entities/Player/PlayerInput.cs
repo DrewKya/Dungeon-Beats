@@ -151,7 +151,7 @@ public class PlayerInput : MonoBehaviour
 
     private void CheckUltimateInput()
     {
-        if (Input.GetKeyUp(KeyCode.Mouse2))
+        if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             playerEntity.TestUltimate();
         }

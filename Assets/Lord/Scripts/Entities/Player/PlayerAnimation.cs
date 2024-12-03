@@ -7,6 +7,7 @@ using UnityEngine.VFX;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] GameObject playerModel;
+    [SerializeField] List<GameObject> awakeningModels = new List<GameObject>();
 
     [SerializeField] Animator characterAnimator;
     [SerializeField] PlayableDirector ultDirector;
@@ -71,6 +72,14 @@ public class PlayerAnimation : MonoBehaviour
     public void PlayUltimateAnimation()
     {
         ultDirector.Play();
+    }
+
+    public void AwakenAnimation(bool _bool)
+    {
+        foreach(GameObject model in awakeningModels)
+        {
+            model.SetActive(_bool);
+        }
     }
 
     public void SetAnimationType(Weapon.AnimationType type)

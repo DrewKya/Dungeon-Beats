@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Test loot table
   m_EditorClassIdentifier: 
   loots:
-  - item: {fileID: 11400000, guid: 9a552d52de640454e912b9982b4829cf, type: 2}
+  - item: {fileID: 11400000, guid: 4bfe52df23aee084690d3d89f4025494, type: 2}
+    probability: 0.2
+  - item: {fileID: 11400000, guid: 00d087a8a802422429a555961a317288, type: 2}
     probability: 1
-  - item: {fileID: 11400000, guid: 3a9a8ca92ce1a94459c3bfb22edcfd4d, type: 2}
+  - item: {fileID: 11400000, guid: 57a7c763a152a63479369455182b2919, type: 2}
     probability: 1
-  - item: {fileID: 11400000, guid: b34ad5b0f8a3ea648a2227b7f58c5cbe, type: 2}
-    probability: 1
-  - item: {fileID: 11400000, guid: 29846d2ffe91d134ea5f98ed8d05b94c, type: 2}
+  - item: {fileID: 11400000, guid: 577ef7efa3d704546ac10d9790da843c, type: 2}
     probability: 1
   - item: {fileID: 11400000, guid: 8fb9c957a3b3ad244b745c5271f1852e, type: 2}
     probability: 0.5

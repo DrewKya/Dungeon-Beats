@@ -26,7 +26,7 @@ public class Chest : MonoBehaviour
     {
         if(loot == null)
         {
-            loot = MapManager.instance?.GetRandomItem();
+            loot = MapManager.instance?.lootTable.GetRandomItem();
         }
 
 

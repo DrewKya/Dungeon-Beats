@@ -35,7 +35,7 @@ public class MapManager : MonoBehaviour
     public int maxEnemy = 15;
 
     [Header("Loot Settings")]
-    [SerializeField] private List<WeightedItem> lootList = new List<WeightedItem>();
+    [SerializeField] public LootTable lootTable;
 
 
     private void Start()
@@ -48,6 +48,7 @@ public class MapManager : MonoBehaviour
         }
 
         SetPlayerSpawn();
+        lootTable.CalculateTotalWeight();
 
         StartCoroutine(SpawnEnemyCoroutine(3f));
         StartCoroutine(DespawnEnemyCoroutine(10f));
@@ -173,36 +174,8 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-
-    public Item GetRandomItem()
-    {
-        float total = lootList.Sum(lootList => lootList.probability);
-        Debug.Log(total);
-
-        float random = UnityEngine.Random.Range(0f, total);
-        float cumulative = 0;
-
-        foreach (WeightedItem weightedItem in lootList)
-        {
-            cumulative += weightedItem.probability;
-            if(random <= cumulative)
-            {
-                return weightedItem.item;
-            }
-        }
-
-        return lootList[0].item;
-    }
-
     private void OnDisable()
     {
         StopAllCoroutines();
     }
-}
-
-[System.Serializable]
-public class WeightedItem
-{
-    public Item item;
-    public float probability;
 }

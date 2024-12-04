@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d05bd0045df804fa0a05cb187a585c, type: 3}
+  m_Name: Magma boots
+  m_EditorClassIdentifier: 
+  itemName: Magma Boots
+  itemDescription: An fire-enchanted boots that grants great strength. Though wearing
+    one burns you a bit...
+  itemPrice: 50
+  icon: {fileID: -1863172647, guid: 2909dc091f11d3644b8a8fa81dbeb6ab, type: 3}
+  equipmentType: 3
+  stats:
+    attackModifier: 5
+    healthModifier: -20
+    defenseModifier: 0
+    critRateModifier: 10

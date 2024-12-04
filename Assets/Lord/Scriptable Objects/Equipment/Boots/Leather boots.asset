@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01d05bd0045df804fa0a05cb187a585c, type: 3}
-  m_Name: Test leg
+  m_Name: Leather boots
   m_EditorClassIdentifier: 
-  itemName: Test leg
-  itemDescription: New description
-  itemPrice: 1
-  icon: {fileID: 966684040, guid: 2909dc091f11d3644b8a8fa81dbeb6ab, type: 3}
-  equipmentType: 2
+  itemName: Leather boots
+  itemDescription: Lightweight boots worn by hunters in the forest.
+  itemPrice: 10
+  icon: {fileID: -461876948, guid: 2909dc091f11d3644b8a8fa81dbeb6ab, type: 3}
+  equipmentType: 3
   stats:
     attackModifier: 0
-    healthModifier: 0
-    defenseModifier: 1
-    critRateModifier: 0
+    healthModifier: 5
+    defenseModifier: 0
+    critRateModifier: 3

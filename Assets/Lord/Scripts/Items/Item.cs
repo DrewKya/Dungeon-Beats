@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
 public abstract class Item : ScriptableObject
 {
     public string itemName = "Item Name";
-    public string itemDescription = "New description";
+    [TextArea (1, 5)] public string itemDescription = "New description";
     public int itemPrice = 1;
     public Sprite icon = null;
 

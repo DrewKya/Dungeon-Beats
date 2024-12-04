@@ -216,7 +216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  damageScaling: 1
   isCrit: 0
+  hitSFX: {fileID: 0}
 --- !u!1 &7893582725714474450
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,9 +321,9 @@ MonoBehaviour:
   model: {fileID: 6144254301842478757}
   animator: {fileID: 5772338370489290771}
   groundCheck: {fileID: 4171737713669964882}
-  maxHealthPoint: 5
+  maxHealthPoint: 80
   healthPoint: 0
-  attack: 1
+  attack: 10
   coinDropped: 2
   attackIndicator: {fileID: 2725343584985073791}
   hitbox: {fileID: 4867937423030340415}

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01d05bd0045df804fa0a05cb187a585c, type: 3}
-  m_Name: Test helm
+  m_Name: Steel Greaves
   m_EditorClassIdentifier: 
-  itemName: Test helm
-  itemDescription: New description
-  itemPrice: 1
-  icon: {fileID: 1726771791, guid: 2909dc091f11d3644b8a8fa81dbeb6ab, type: 3}
-  equipmentType: 0
+  itemName: Steel Greaves
+  itemDescription: Made out of high quality steel, it provides superior defense.
+  itemPrice: 15
+  icon: {fileID: -2127647999, guid: 93426f7022b4bfd40a8346dbbec1e063, type: 3}
+  equipmentType: 3
   stats:
     attackModifier: 0
-    healthModifier: 0
-    defenseModifier: 1
+    healthModifier: 10
+    defenseModifier: 2
     critRateModifier: 0

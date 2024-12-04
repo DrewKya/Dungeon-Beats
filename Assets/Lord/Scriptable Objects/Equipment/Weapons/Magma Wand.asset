@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a1a261682b15ec4ba42dd6c41c445ff, type: 3}
-  m_Name: Test wand
+  m_Name: Magma Wand
   m_EditorClassIdentifier: 
-  itemName: Test wand
-  itemDescription: New description
+  itemName: Magma Wand
+  itemDescription: An enchanted wand capable of controlling the essence of fire.
+  itemPrice: 1
   icon: {fileID: 21300000, guid: 76c43ab6740480244bfcc075beec440e, type: 3}
   weaponModel: {fileID: 844062147802165681, guid: 66d09250404dc6546859eba6c422f793,
     type: 3}
   offhandModel: {fileID: 844062147802165681, guid: 374da508c1e058d41a79f8c0e6bd4038,
     type: 3}
   stats:
-    attackModifier: 2
+    attackModifier: 20
     healthModifier: 0
     defenseModifier: 0
     critRateModifier: 0

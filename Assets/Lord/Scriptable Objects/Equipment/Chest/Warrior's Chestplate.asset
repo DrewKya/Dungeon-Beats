@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01d05bd0045df804fa0a05cb187a585c, type: 3}
-  m_Name: Test chest
+  m_Name: Warrior's Chestplate
   m_EditorClassIdentifier: 
-  itemName: Test chest
-  itemDescription: New description
-  itemPrice: 1
-  icon: {fileID: -1679159275, guid: 2909dc091f11d3644b8a8fa81dbeb6ab, type: 3}
+  itemName: Warrior's Chestplate
+  itemDescription: An armor suited for warriors on the battlefield. Allows easier
+    movement compared to heavier armors.
+  itemPrice: 20
+  icon: {fileID: -1609320966, guid: 2909dc091f11d3644b8a8fa81dbeb6ab, type: 3}
   equipmentType: 1
   stats:
-    attackModifier: 0
-    healthModifier: 10
-    defenseModifier: 1
-    critRateModifier: 0
+    attackModifier: 5
+    healthModifier: 0
+    defenseModifier: 0
+    critRateModifier: 3

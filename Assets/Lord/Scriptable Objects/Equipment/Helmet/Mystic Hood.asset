@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01d05bd0045df804fa0a05cb187a585c, type: 3}
-  m_Name: Test boot
+  m_Name: Mystic Hood
   m_EditorClassIdentifier: 
-  itemName: Test boot
-  itemDescription: New description
-  itemPrice: 1
-  icon: {fileID: -712209982, guid: 2909dc091f11d3644b8a8fa81dbeb6ab, type: 3}
-  equipmentType: 3
+  itemName: Mystic Hood
+  itemDescription: A ceremonial hood used by the mystics of the old.
+  itemPrice: 5
+  icon: {fileID: -2102480351, guid: 93426f7022b4bfd40a8346dbbec1e063, type: 3}
+  equipmentType: 0
   stats:
     attackModifier: 0
     healthModifier: 5
     defenseModifier: 0
-    critRateModifier: 0
+    critRateModifier: 3

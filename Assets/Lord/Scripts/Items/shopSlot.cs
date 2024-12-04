@@ -12,6 +12,8 @@ public class shopSlot : MonoBehaviour
 
     public GameEvent onBuyOrSellItem;
 
+    [SerializeField] private AudioClip transactionSFX;
+
     private void Start()
     {
         button = GetComponent<Button>();
@@ -49,6 +51,7 @@ public class shopSlot : MonoBehaviour
             Debug.Log($"{item.itemName} bought for {item.itemPrice} coins");
 
             onBuyOrSellItem.TriggerEvent();
+            SFXManager.instance.PlaySFX(transactionSFX, transform.position);    
         }
         else
         {
@@ -67,6 +70,7 @@ public class shopSlot : MonoBehaviour
         Debug.Log($"{item.itemName} sold for {item.itemPrice} coins");
 
         onBuyOrSellItem.TriggerEvent();
+        SFXManager.instance.PlaySFX(transactionSFX, transform.position);
     }
 
     public void ClearAllButtonListeners()

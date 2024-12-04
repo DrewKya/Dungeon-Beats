@@ -13042,18 +13042,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1780058855}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1787557487 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 341853990219280374, guid: 13c78777328653744bde7ff418d1965d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1505399388480452184}
+--- !u!1 &1794728800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794728802}
+  - component: {fileID: 1794728801}
+  m_Layer: 0
+  m_Name: SFX Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1794728801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794728800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81d4a659153cb76408acf02642e4aa17, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d5150568430a3a47b609563682b5478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixerGroup: {fileID: -1255188764359481665, guid: ff0e1585ff500584eadd8531cb8bec34,
+    type: 2}
+  audioSourcePoolSize: 15
+--- !u!4 &1794728802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794728800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8407108, y: 5.1454525, z: -1.3151945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1794745517 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6877251967799855366, guid: aa865dd447d901045b958361bd87527e,
@@ -15987,23 +16022,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 275582009721084462, guid: 13c78777328653744bde7ff418d1965d,
         type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 275582009721084462, guid: 13c78777328653744bde7ff418d1965d,
-        type: 3}
-      propertyPath: m_SceneBindings.Array.data[15].key
-      value: 
-      objectReference: {fileID: 2432788208962128198, guid: 3a806018919f5e04781433c525fee4db,
-        type: 2}
-    - target: {fileID: 275582009721084462, guid: 13c78777328653744bde7ff418d1965d,
-        type: 3}
-      propertyPath: m_SceneBindings.Array.data[16].key
-      value: 
-      objectReference: {fileID: -5821965459772324789, guid: 3a806018919f5e04781433c525fee4db,
-        type: 2}
-    - target: {fileID: 275582009721084462, guid: 13c78777328653744bde7ff418d1965d,
-        type: 3}
       propertyPath: m_SceneBindings.Array.data[15].value
       value: 
       objectReference: {fileID: 330585543}
@@ -16012,21 +16030,6 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[16].value
       value: 
       objectReference: {fileID: 330585543}
-    - target: {fileID: 581932186135603438, guid: 13c78777328653744bde7ff418d1965d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086661001957281716, guid: 13c78777328653744bde7ff418d1965d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1381395767452704055, guid: 13c78777328653744bde7ff418d1965d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3014836034228122364, guid: 13c78777328653744bde7ff418d1965d,
         type: 3}
       propertyPath: m_Camera
@@ -16084,9 +16087,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6328572566403138830, guid: 13c78777328653744bde7ff418d1965d,
         type: 3}
-      propertyPath: BaseUltimate
+      propertyPath: damageSFX
       value: 
-      objectReference: {fileID: 1787557487}
+      objectReference: {fileID: 8300000, guid: 5dfc35e65a7c9f64cb6d98d8c826b52a, type: 3}
     - target: {fileID: 6328572566403138830, guid: 13c78777328653744bde7ff418d1965d,
         type: 3}
       propertyPath: VFX_AttachPoint
@@ -16096,16 +16099,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7206787326110982396, guid: 13c78777328653744bde7ff418d1965d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9034105472000336301, guid: 13c78777328653744bde7ff418d1965d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17648,6 +17641,7 @@ SceneRoots:
   - {fileID: 5603445538372238091}
   - {fileID: 136417264}
   - {fileID: 1607564026}
+  - {fileID: 1794728802}
   - {fileID: 816143737}
   - {fileID: 1419530460}
   - {fileID: 453252525}

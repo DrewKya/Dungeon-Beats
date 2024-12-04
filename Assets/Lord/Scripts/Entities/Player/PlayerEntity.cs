@@ -35,6 +35,8 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     private bool isAwakened = false;
     private bool isImmune = false;
 
+    [SerializeField] AudioClip damageSFX; //play on player taking damage
+
     private void Start()
     {
         if(VFX_AttachPoint== null)
@@ -321,6 +323,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         currentHP -= totalDamage;
 
         onPlayerTakeDamage.TriggerEvent();
+        SFXManager.instance.PlaySFX(damageSFX, transform.position);
 
         parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
 

@@ -7,4 +7,6 @@ public abstract class HitboxTrigger : MonoBehaviour
     public int damage;
     public float damageScaling = 1f;
     public bool isCrit = false;
+
+    [SerializeField] internal AudioClip hitSFX;
 }

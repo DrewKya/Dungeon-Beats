@@ -10,6 +10,7 @@ public class RangedHitboxTrigger : HitboxTrigger
     private void OnTriggerEnter(Collider collider)
     {
         hitsRemaining--;
+        SFXManager.instance.PlaySFX(hitSFX, transform.position);
 
         IDamageable damageable = collider.GetComponent<IDamageable>();
         if (damageable != null)

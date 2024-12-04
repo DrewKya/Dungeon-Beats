@@ -11,6 +11,7 @@ public class MeleeHitboxTrigger : HitboxTrigger
         {
             damageable.TakeDamage(Mathf.RoundToInt((float)damage * damageScaling), isCrit);
             CinemachineShake.instance.ShakeCamera(3f, 0.2f);
+            SFXManager.instance.PlaySFX(hitSFX, transform.position);
         }
     }
 }

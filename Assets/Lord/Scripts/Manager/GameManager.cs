@@ -25,11 +25,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-        
-    }
-
     public void InitializeNewData()
     {
         playerManager = PlayerManager.instance;

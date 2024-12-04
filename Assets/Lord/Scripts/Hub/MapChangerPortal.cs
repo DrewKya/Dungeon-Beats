@@ -23,16 +23,16 @@ public class MapChangerPortal : MonoBehaviour
 
     public void ActivatePortal()
     {
-        inactiveModel.SetActive(false);
-        activeModel.SetActive(true);
+        inactiveModel?.SetActive(false);
+        activeModel?.SetActive(true);
 
         GetComponent<Collider>().enabled = true;
     }
 
     public void DisablePortal()
     {
-        inactiveModel.SetActive(true);
-        activeModel.SetActive(false);
+        inactiveModel?.SetActive(true);
+        activeModel?.SetActive(false);
 
         GetComponent<Collider>().enabled = false;
     }

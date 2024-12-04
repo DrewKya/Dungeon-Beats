@@ -207,6 +207,15 @@ public class MapManager : MonoBehaviour
             }
         }
     }
+
+    public void RemoveEnemyFromList(Enemy enemy)
+    {
+        if (activeEnemy.Contains(enemy))
+        {
+            activeEnemy.Remove(enemy);
+        }
+    }
+
     private void OnDisable()
     {
         StopAllCoroutines();

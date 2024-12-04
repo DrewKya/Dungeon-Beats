@@ -15,6 +15,8 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
 
     public int coinDropped = 1;
 
+    bool isDead;
+
     private void Start()
     {
         if (animator == null) animator = GetComponentInChildren<Animator>();
@@ -173,6 +175,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     {
         GetComponent<Collider>().enabled = false;
         EntityManager.instance.RemoveEntity(this);
+        MapManager.instance?.RemoveEnemyFromList(this);
         PlayerManager.instance.AddCoin(coinDropped);
         animator.SetTrigger("Die");
         Destroy(gameObject, 2f);

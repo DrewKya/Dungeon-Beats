@@ -19,9 +19,15 @@ public class MapManager : MonoBehaviour
         instance = this;
     }
 
+    [SerializeField] float timeLimitInSeconds;
+    [SerializeField] GameEvent onStartingDungeonCollapse;
+    [SerializeField] GameEvent onTimeout;
+
+
     [Header("References")]
     [SerializeField] private Transform player;
     [SerializeField] private Transform enemyContainer;
+    [SerializeField] private List<MapChangerPortal> returnPortals = new List<MapChangerPortal>();
 
     [Header("Player settings")]
     [SerializeField] private List<Transform> spawnList = new List<Transform>();
@@ -50,8 +56,24 @@ public class MapManager : MonoBehaviour
         SetPlayerSpawn();
         lootTable.CalculateTotalWeight();
 
+        StartCoroutine(CountdownCoroutine());
         StartCoroutine(SpawnEnemyCoroutine(3f));
         StartCoroutine(DespawnEnemyCoroutine(10f));
+    }
+
+    private IEnumerator CountdownCoroutine()
+    {
+        SetPortals(false); //disable return portals
+
+        yield return new WaitForSeconds(timeLimitInSeconds - 60f);
+
+        SetPortals(true);
+        onStartingDungeonCollapse.TriggerEvent();
+        NotificationUI.instance.TextNotification("Return portals have been activated.");
+
+        yield return new WaitForSeconds(60f);
+
+        onTimeout.TriggerEvent();
     }
 
     private void SetPlayerSpawn()
@@ -61,6 +83,17 @@ public class MapManager : MonoBehaviour
             Transform spawnPos = spawnList[UnityEngine.Random.Range(0, spawnList.Count)];
 
             player.position = new Vector3(spawnPos.position.x, 0f, spawnPos.position.z);
+        }
+    }
+
+    private void SetPortals(bool active)
+    {
+        foreach (MapChangerPortal portal in returnPortals)
+        {
+            if (active)
+                portal.ActivatePortal();
+            else
+                portal.DisablePortal();
         }
     }
 
@@ -177,5 +210,13 @@ public class MapManager : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
+    }
+
+    private void OnValidate()
+    {
+        if(timeLimitInSeconds < 70f)
+        {
+            timeLimitInSeconds = 70f;
+        }
     }
 }

@@ -19,12 +19,10 @@ public class PlayerInput : MonoBehaviour
     PlayerEntity playerEntity;
     PlayerAnimation playerAnimation;
 
+    bool ultimateEnabled = false;
     bool inputEnabled = true;
 
-    //this is to store in which beat the player last inputted an action
-    int lastInputBeat = -1;
-
-
+    int lastInputBeat = -1; //this is to store in which beat the player last inputted an action
 
     private void Start()
     {
@@ -35,6 +33,8 @@ public class PlayerInput : MonoBehaviour
         musicPlayer = MusicPlayer.Instance;
         timingText = musicPlayer.timingText;
         timingText.text = "";
+
+        EnableUltimate(false);
 
         CheckGround(groundCheck.position);
     }
@@ -53,6 +53,12 @@ public class PlayerInput : MonoBehaviour
     public void EnableInput(bool boolean)
     {
         inputEnabled = boolean;
+    }
+
+    public void EnableUltimate(bool boolean)
+    {
+        ultimateEnabled = boolean;
+        IngameParametersUI.instance.SetUltimateIcon(boolean);
     }
 
     private void CheckPauseInput()
@@ -151,6 +157,8 @@ public class PlayerInput : MonoBehaviour
 
     private void CheckUltimateInput()
     {
+        if (!ultimateEnabled) return;
+
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             playerEntity.PreviewUltimate();

@@ -351,7 +351,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         return Math.Max(1, damage - stats.defense);
     }
 
-    private void PlayerDie()
+    public void PlayerDie()
     {
         Debug.Log("Player died!");
     }

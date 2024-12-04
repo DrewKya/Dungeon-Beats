@@ -83,9 +83,10 @@ public class SettingsManager : MonoBehaviour
 
     private void SetVolume(string parameterName, float value)
     {
-        if (value == 0f)
+        if (value <= 0.05f)
         {
             audioMixer.SetFloat(parameterName, -80f);
+            return;
         }
 
         audioMixer.SetFloat(parameterName, Mathf.Log10(value) * 20);

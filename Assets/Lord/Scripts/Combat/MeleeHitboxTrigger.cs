@@ -9,7 +9,7 @@ public class MeleeHitboxTrigger : HitboxTrigger
         IDamageable damageable = collider.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            damageable.TakeDamage(damage, isCrit);
+            damageable.TakeDamage(Mathf.RoundToInt((float)damage * damageScaling), isCrit);
             CinemachineShake.instance.ShakeCamera(3f, 0.2f);
         }
     }

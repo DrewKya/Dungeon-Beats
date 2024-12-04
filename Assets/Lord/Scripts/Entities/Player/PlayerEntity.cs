@@ -19,6 +19,9 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     [SerializeField] private GameEvent onPlayerTakeDamage;
 
+    public UltimateData BaseUltimate;
+    public UltimateData AwakeningUltimate;
+
     private Weapon selectedWeapon;
     public GameObject hitboxRangeIndicator;
     public MeleeHitboxTrigger meleeHitbox;
@@ -29,6 +32,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     public float nextAttackTime; //determines the next Time.time the player can attack
     public bool isCharging; //determines if player is charging an attack
+    private bool isAwakened = false;
     private bool isImmune = false;
 
     private void Start()
@@ -205,16 +209,42 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         playerManager.currentConsumable.UseConsumable(this);
         playerManager.ConsumeItem();
     }
-
-    public void TestUltimate() //this is only for testing player ult
+    public void PreviewUltimate()
     {
-        Debug.Log("test");
-        playerAnimation.PlayUltimateAnimation();
+        if (!isAwakened)
+        {
+            CheckHitboxRange(BaseUltimate.hitboxPreviewData);
+
+        }
+        else
+        {
+            CheckHitboxRange(AwakeningUltimate.hitboxPreviewData);
+        }
+        isCharging = true;
+        hitboxRangeIndicator.SetActive(true);
+    }
+
+    public void UltimateAttack()
+    {
+        isCharging = false;
+        hitboxRangeIndicator.SetActive(false);
+
+        if (!isAwakened)
+        {
+            CalculateDamageDealt(BaseUltimate.hitboxTrigger);
+            BaseUltimate.PlayUltimate();
+        }
+        else
+        {
+            CalculateDamageDealt(AwakeningUltimate.hitboxTrigger);
+            AwakeningUltimate.PlayUltimate();
+        }
     }
 
     public IEnumerator AwakenModeCoroutine()
     {
         isImmune = true;
+        isAwakened = true;
         playerAnimation.AwakenAnimation(true);
 
         yield return new WaitForSeconds(3f);
@@ -223,6 +253,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
         yield return new WaitForSeconds(7f);
 
+        isAwakened = false;
         playerAnimation.AwakenAnimation(false);
     }
     public void EnterAwakenMode()

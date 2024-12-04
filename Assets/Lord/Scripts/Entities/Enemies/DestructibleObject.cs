@@ -12,7 +12,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(int damage, bool isCrit)
     {
-        PopupPool.instance.ShowDamage(transform.position, 1, isCrit);
+        PopupPool.instance.ShowDamage(transform.position, damage, isCrit);
         hitsRemaining -= 1;
         if (hitsRemaining <= 0)
         {

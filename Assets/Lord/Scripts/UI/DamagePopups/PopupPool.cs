@@ -10,7 +10,6 @@ public class PopupPool : MonoBehaviour
     public int poolSize;
 
     public DamagePopup popupPrefab;
-
     private void Awake()
     {
         instance = this;
@@ -47,8 +46,7 @@ public class PopupPool : MonoBehaviour
         {
             popup.gameObject.SetActive(true);
             popup.transform.position = position + (Random.insideUnitSphere * 0.5f);
-            popup.SetDamage(damage, isCrit);
-            StartCoroutine(popup.DisablePopupAfterDelay());
+            popup.SetDamage(damage, isCrit, CameraTracker.CurrentCamera);
         }
     }
 }

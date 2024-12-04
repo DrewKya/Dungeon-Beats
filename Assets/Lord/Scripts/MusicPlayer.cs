@@ -43,7 +43,10 @@ public class MusicPlayer : MonoBehaviour
         songPositionInBeats = audioSource.timeSamples / (audioSource.clip.frequency * intervalLength);
         if (interval.CheckNewInterval(songPositionInBeats))
         {
-            interval.trigger.Invoke();
+            if (triggerIsEnabled)
+            {
+                interval.trigger.Invoke();
+            }
         }
     }
 

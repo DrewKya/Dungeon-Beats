@@ -151,9 +151,17 @@ public class PlayerInput : MonoBehaviour
 
     private void CheckUltimateInput()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            playerEntity.PreviewUltimate();
+        }
+        if (Input.GetKey(KeyCode.Mouse1) && playerEntity.isCharging)
+        {
+            playerAnimation.RotatePlayer(CheckPlayerDirectionByMouse());
+        }
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-            playerEntity.TestUltimate();
+            playerEntity.UltimateAttack();
         }
     }
 

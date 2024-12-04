@@ -29,6 +29,7 @@ public class GameStateManager : MonoBehaviour
     private void Start()
     {
         if (playerPreviewCamera == null) Debug.LogError("Player camera not assigned!");
+        playerPreviewCamera.enabled = false;
 
         SetState(GameState.inGame);
     }

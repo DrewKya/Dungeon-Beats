@@ -50,7 +50,7 @@ public class MapChangerPortal : MonoBehaviour
                 Debug.Log("Could not find a scene loader instance");
                 SceneManager.LoadScene(sceneName);
             }
-            
+            GetComponent<Collider>().enabled = false;
         }
     }
 }

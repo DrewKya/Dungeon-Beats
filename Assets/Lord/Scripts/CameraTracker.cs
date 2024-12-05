@@ -15,4 +15,9 @@ public class CameraTracker : MonoBehaviour
     {
         currentCamera = GetComponent<Camera>();
     }
+
+    public void RefreshCurrentCamera()
+    {
+        currentCamera = GetComponent<Camera>();
+    }
 }

@@ -42,6 +42,8 @@ public class SettingsManager : MonoBehaviour
 
         resolutions = new Resolution[]
         {
+            new Resolution { width = 3840, height = 2160 },
+            new Resolution { width = 2560, height = 1440 },
             new Resolution { width = 1920, height = 1080 },
             new Resolution { width = 1600, height = 900 },
             new Resolution { width = 1280, height = 720 }
@@ -56,7 +58,7 @@ public class SettingsManager : MonoBehaviour
         SetBGMVolume(PlayerPrefs.GetFloat("BGMVolume", 0.8f));
         SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 0.8f));
 
-        currentResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", 0);
+        currentResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", 2);
         isFullscreen = PlayerPrefs.GetInt("Fullscreen", 1) == 1; //convert int to boolean
 
         SetResolution(currentResolutionIndex);

@@ -240,7 +240,7 @@ public class PlayerInput : MonoBehaviour
         {
             timingText.text = "Miss";
             timingText.color = Color.gray;
-            playerEntity.TakeDamage(Mathf.RoundToInt(playerEntity.stats.healthPoint * 0.05f));
+            playerEntity.TakeDamage(Mathf.RoundToInt(playerEntity.stats.healthPoint * 0.02f));
             lastInputBeat = Mathf.RoundToInt(closestBeat);
             return false;
         }

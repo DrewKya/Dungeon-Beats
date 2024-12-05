@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5784ce44f9a63d41af7af7ded074df8, type: 3}
+  m_Name: Demo loot table
+  m_EditorClassIdentifier: 
+  loots:
+  - item: {fileID: 11400000, guid: 18bdf40ff349fb443aa732b7d8c6bf68, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 8fb9c957a3b3ad244b745c5271f1852e, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: a8325583028932a4bb6845f7acdca8b5, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: 555e1756f08f5c94d814b01398bce6a0, type: 2}
+    probability: 0.2
+  - item: {fileID: 11400000, guid: 6bc0b9d07b17e7c49be26d86a2f40bed, type: 2}
+    probability: 0.2
+  - item: {fileID: 11400000, guid: 00d087a8a802422429a555961a317288, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 1bf62cabdc39211479915e831bf198d0, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: b7e453163201f2147bc4f0131032340c, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: 5bb942cb963c3754a9348d440319c6c5, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: dcccedb7ea5421945851783b9f053580, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: 577ef7efa3d704546ac10d9790da843c, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 4bfe52df23aee084690d3d89f4025494, type: 2}
+    probability: 0.2
+  - item: {fileID: 11400000, guid: 94ededc39e46ef84797713250c7d2b27, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: 57a7c763a152a63479369455182b2919, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 8ed93a118808b9c4fb3b40ef52a26ae7, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 84c473ab4d9e7b849936f57c95e205ab, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: b317cfd025182374b83b258809f297b7, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: 5ad700dd9c0e1364da29f71997f01777, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 98c241abac5f494409639ce6a7918c4d, type: 2}
+    probability: 0.2
+  - item: {fileID: 11400000, guid: 975af1bfb0c223c439577ea78c6f2ffa, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: b77162449c0aa794d9e22cd26ba2bb32, type: 2}
+    probability: 1

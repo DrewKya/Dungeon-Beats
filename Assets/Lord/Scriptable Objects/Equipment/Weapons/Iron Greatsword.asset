@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364f513771d6dce4097de5da22cd2718, type: 3}
+  m_Name: Iron Greatsword
+  m_EditorClassIdentifier: 
+  itemName: Iron Greatsword
+  itemDescription: An old greatsword that has seen its use on the battlefield. A
+    dependable weapon.
+  itemPrice: 10
+  icon: {fileID: 21300000, guid: b909b5bf2534d674386428f07a897927, type: 3}
+  weaponModel: {fileID: 844062147802165681, guid: eda8b07043001de42bd9ab4686228a64,
+    type: 3}
+  offhandModel: {fileID: 0}
+  stats:
+    attackModifier: 20
+    healthModifier: 0
+    defenseModifier: 0
+    critRateModifier: 0
+  attackCooldownInSeconds: 4
+  animationType: 2
+  hitbox: {fileID: 11400000, guid: d8afac0d7b79c90408c1820b1c39811a, type: 2}
+  attackVFX: {fileID: 4060117804001197792, guid: f29b53daee46ae24fbb33aa8ef4e2d4a,
+    type: 3}

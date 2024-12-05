@@ -24,6 +24,7 @@ public class LootTable : ScriptableObject
     public void CalculateTotalWeight()
     {
         totalWeight = loots.Sum(loot => loot.probability);
+        Debug.Log($"Total wieght of loot table : {totalWeight}");
     }
 
     public Item GetRandomItem()

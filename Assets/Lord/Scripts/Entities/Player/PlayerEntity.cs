@@ -18,6 +18,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public int currentHP;
 
     [SerializeField] private GameEvent onPlayerTakeDamage;
+    [SerializeField] private GameEvent onGameOver;
 
     public UltimateData BaseUltimate;
     public UltimateData AwakeningUltimate;
@@ -354,5 +355,6 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public void PlayerDie()
     {
         Debug.Log("Player died!");
+        onGameOver.TriggerEvent();
     }
 }

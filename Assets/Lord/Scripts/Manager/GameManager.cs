@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public PlayerManager playerManager;
     public int loadedSlotIndex = -1;
 
+    [SerializeField] DataSO starterData; //game data used when player is reset
+
     [HideInInspector] public bool isAppFirstTimeOpen = true; //if this is the first time application is open (eg. to determine if main menu animation should be played)
 
     private void Awake()
@@ -25,6 +27,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        SetGameData(starterData, PlayerManager.instance, InventoryManager.instance);
+    }
+
     public void InitializeNewData()
     {
         playerManager = PlayerManager.instance;
@@ -36,6 +43,37 @@ public class GameManager : MonoBehaviour
         InitializeNewData();
         SaveData(slot);
         Debug.Log("Created save data at slot " + slot);
+    }
+
+    public void ResetDataOnDeath()
+    {
+        SetGameData(starterData, PlayerManager.instance, InventoryManager.instance);
+    }
+
+    private void SetGameData(DataSO data, PlayerManager playerManager, InventoryManager inventory)
+    {
+        playerManager.playerStats = new PlayerStats(data.playerStats);
+        playerManager.coin = data.coin;
+
+        playerManager.currentEquipment[0] = data.currentHelm;
+        playerManager.currentEquipment[1] = data.currentChest;
+        playerManager.currentEquipment[2] = data.currentLeg;
+        playerManager.currentEquipment[3] = data.currentBoots;
+        
+        playerManager.currentWeapon = data.currentWeapon;
+        playerManager.currentConsumable = data.currentConsumable;
+
+        inventory.items.Clear();
+
+        int numberOfItemsToAdd = Math.Min(data.itemsInInventory.Count, inventory.maxSlot);
+        Debug.Log(numberOfItemsToAdd);
+        for(int i = 0; i < numberOfItemsToAdd; i++)
+        {
+            if(data.itemsInInventory[i] != null)
+            {
+                inventory.AddItemToInventory(data.itemsInInventory[i]);
+            }
+        }
     }
 
     public void SaveData()

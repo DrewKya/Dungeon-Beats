@@ -226,4 +226,13 @@ public class PlayerStats
     public int attack = 1;
     public int defense = 0;
     public int critRate = 5;
+
+    public PlayerStats(PlayerStats newStats) //use this to copy playerStats
+    {
+        level = newStats.level;
+        healthPoint = newStats.healthPoint;
+        attack = newStats.attack;
+        defense = newStats.defense;
+        critRate = newStats.critRate;
+    }
 }

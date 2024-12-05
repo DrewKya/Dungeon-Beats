@@ -52,6 +52,7 @@ public class MusicPlayer : MonoBehaviour
 
     public void EnableTrigger(bool boolean)
     {
+        Debug.Log($"Interval trigger is enabled : {boolean}");
         triggerIsEnabled = boolean;
     }
 }

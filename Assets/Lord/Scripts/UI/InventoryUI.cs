@@ -37,10 +37,14 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
+        Debug.Log(inventoryManager.items.Count);
+
         for(int i = 0; i < slots.Length; i++)
         {
-            if (i < inventoryManager.items.Count)
+            //Debug.Log($"Adding {inventoryManager.items[i].name}");
+            if (i < inventoryManager.items.Count && inventoryManager.items[i] != null)
             {
+                
                 slots[i].AddItemToSlot(inventoryManager.items[i]);
             }
             else

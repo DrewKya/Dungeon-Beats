@@ -65,6 +65,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if(GameStateManager.instance.currentState == GameStateManager.GameState.gameOver)
+            {
+                return;
+            }
+
             if (GameStateManager.instance.ToggleGameState(GameStateManager.GameState.inMenu))
             {
                 inputEnabled = false;

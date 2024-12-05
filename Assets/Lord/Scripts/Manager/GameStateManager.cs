@@ -8,11 +8,12 @@ public class GameStateManager : MonoBehaviour
 
     public enum GameState
     {
-        inGame, inMenu, inShop
+        inGame, inMenu, inShop, gameOver
     }
     public GameState currentState;
 
-    [SerializeField] private GameObject MenuUI;
+    [SerializeField] private GameObject menuUI;
+    [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Camera playerPreviewCamera;
 
     private void Awake()
@@ -66,7 +67,7 @@ public class GameStateManager : MonoBehaviour
         }
         else if (previousState == GameState.inMenu)
         {
-            MenuUI.SetActive(false);
+            menuUI.SetActive(false);
             playerPreviewCamera.enabled = false;
         }
         Debug.Log("Game state set to InGame.");
@@ -76,7 +77,7 @@ public class GameStateManager : MonoBehaviour
     {
         //Time.timeScale = 0f;
 
-        MenuUI.SetActive(true);
+        menuUI.SetActive(true);
         playerPreviewCamera.enabled = true;
 
         Debug.Log("Game state set to InMenu.");
@@ -89,6 +90,15 @@ public class GameStateManager : MonoBehaviour
         ShopUI.instance?.gameObject.SetActive(true);
 
         Debug.Log("Game state set to InShop.");
+    }
+
+    public void EnterGameOverState()
+    {
+        currentState = GameState.gameOver;
+
+        gameOverUI.SetActive(true);
+        GameManager.instance.ResetDataOnDeath();
+        Debug.Log("Game state set to GameOver.");
     }
 
     public bool ToggleGameState(GameState targetState)

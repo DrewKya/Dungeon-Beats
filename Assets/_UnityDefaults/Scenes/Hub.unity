@@ -6088,7 +6088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722631630}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0017812855, y: -0.22797199, z: -0.00041706619, w: 0.973666}
+  m_LocalRotation: {x: -0.001781195, y: -0.22822425, z: -0.00041753193, w: 0.9736069}
   m_LocalPosition: {x: 7.7888064, y: 0.75460345, z: -7.9704876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9279,8 +9279,8 @@ MonoBehaviour:
   playerName: 
   playerStats:
     level: 1
-    healthPoint: 10
-    attack: 1
+    healthPoint: 100
+    attack: 10
     defense: 0
     critRate: 5
   coin: 10
@@ -10033,19 +10033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1564ae9d31eaafa44a66d47636be6121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: b34ad5b0f8a3ea648a2227b7f58c5cbe, type: 2}
-  - {fileID: 11400000, guid: 9a552d52de640454e912b9982b4829cf, type: 2}
-  - {fileID: 11400000, guid: 3a9a8ca92ce1a94459c3bfb22edcfd4d, type: 2}
-  - {fileID: 11400000, guid: 29846d2ffe91d134ea5f98ed8d05b94c, type: 2}
-  - {fileID: 11400000, guid: 555e1756f08f5c94d814b01398bce6a0, type: 2}
-  - {fileID: 11400000, guid: 6bc0b9d07b17e7c49be26d86a2f40bed, type: 2}
-  - {fileID: 11400000, guid: 8fb9c957a3b3ad244b745c5271f1852e, type: 2}
-  - {fileID: 11400000, guid: a8325583028932a4bb6845f7acdca8b5, type: 2}
-  - {fileID: 11400000, guid: 5c19998e17a21f3429a1d21bef287eb5, type: 2}
-  - {fileID: 11400000, guid: 2de96887681b500448d8b466afdbd8f2, type: 2}
-  - {fileID: 11400000, guid: 7eccff451b5c58f4ab8e642c966bf26e, type: 2}
-  - {fileID: 11400000, guid: 7eccff451b5c58f4ab8e642c966bf26e, type: 2}
+  items: []
   maxSlot: 15
   OnInventoryChanged: {fileID: 11400000, guid: 15528d032b55fd84fb28a21d0fa5d3b4, type: 2}
 --- !u!4 &1337737266
@@ -11386,7 +11374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  MenuUI: {fileID: 596165490}
+  menuUI: {fileID: 596165490}
+  gameOverUI: {fileID: 0}
   playerPreviewCamera: {fileID: 1480791814}
 --- !u!4 &1485155116
 Transform:
@@ -11657,6 +11646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
   loadedSlotIndex: -1
+  starterData: {fileID: 11400000, guid: 639191f148853fc4da52f2a20ffcd1bb, type: 2}
   isAppFirstTimeOpen: 1
 --- !u!4 &1515130936
 Transform:
@@ -15381,7 +15371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110277771}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.27006236, y: -0.3682547, z: 0.11120079, w: 0.8826603}
+  m_LocalRotation: {x: -0.27003318, y: -0.36848366, z: 0.11126993, w: 0.88256496}
   m_LocalPosition: {x: 0.20000012, y: -0.000000044703484, z: -0.00000006519258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

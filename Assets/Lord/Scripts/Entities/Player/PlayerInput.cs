@@ -88,23 +88,31 @@ public class PlayerInput : MonoBehaviour
         Vector3 positionIncrement = new Vector3(0, 0, 0);
         if (Input.GetKeyDown(KeyCode.W)) //move up
         {
-            CheckTiming(musicPlayer.songPositionInBeats);
-            positionIncrement = new Vector3(0, 0, 1);
+            if (CheckTiming(musicPlayer.songPositionInBeats))
+            {
+                positionIncrement = new Vector3(0, 0, 1);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.S)) //move down
         {
-            CheckTiming(musicPlayer.songPositionInBeats);
-            positionIncrement = new Vector3(0, 0, -1);
+            if (CheckTiming(musicPlayer.songPositionInBeats))
+            {
+                positionIncrement = new Vector3(0, 0, -1);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.D)) //move right
         {
-            CheckTiming(musicPlayer.songPositionInBeats);
-            positionIncrement = new Vector3(1, 0, 0);
+            if (CheckTiming(musicPlayer.songPositionInBeats))
+            {
+                positionIncrement = new Vector3(1, 0, 0);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.A)) //move left
         {
-            CheckTiming(musicPlayer.songPositionInBeats);
-            positionIncrement = new Vector3(-1, 0, 0);
+            if (CheckTiming(musicPlayer.songPositionInBeats))
+            {
+                positionIncrement = new Vector3(-1, 0, 0);
+            }
         }
 
         if (positionIncrement.magnitude > 0) //if a movement input is detected and allowed
@@ -213,22 +221,28 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    public void CheckTiming(float inputTime)
+    public bool CheckTiming(float inputTime)
     {
         float closestBeat = Mathf.Round(inputTime);
+        Debug.Log(closestBeat);
 
         float timeDifference = Mathf.Abs(closestBeat - inputTime); //time difference in beats
 
         //Debug.Log(timeDifference);
-        if (timeDifference <= 0.3f)
+        if (timeDifference <= 0.33f && closestBeat != lastInputBeat)
         {
             timingText.text = "Great!";
             timingText.color = Color.yellow;
+            lastInputBeat = Mathf.RoundToInt(closestBeat);
+            return true;
         }
         else
         {
             timingText.text = "Miss";
             timingText.color = Color.gray;
+            playerEntity.TakeDamage(Mathf.RoundToInt(playerEntity.stats.healthPoint * 0.05f));
+            lastInputBeat = Mathf.RoundToInt(closestBeat);
+            return false;
         }
 
     }

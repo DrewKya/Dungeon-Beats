@@ -38,8 +38,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _noisePower: 0.72
+    - _alpha: 1
+    - _alphaPower: 2.38
+    - _noisePower: 0.13
     - _noiseSpeed: 2.62
-    m_Colors: []
+    - _noiseValue: 60
+    m_Colors:
+    - _noiseSpeed: {r: 0.05, g: 0.02, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

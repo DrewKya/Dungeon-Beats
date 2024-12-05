@@ -32,6 +32,9 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public Transform VFX_AttachPoint;
 
     public float nextAttackTime; //determines the next Time.time the player can attack
+    public float nextUltTime;
+    public float ultCooldown = 45f;
+
     public bool isCharging; //determines if player is charging an attack
     private bool isAwakened = false;
     private bool isImmune = false;
@@ -214,6 +217,8 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     }
     public void PreviewUltimate()
     {
+        if (Time.time < nextUltTime) return;
+
         if (!isAwakened)
         {
             CheckHitboxRange(BaseUltimate.hitboxPreviewData);
@@ -229,6 +234,8 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     public void UltimateAttack()
     {
+        if (!isCharging && Time.time < nextUltTime) return;
+
         isCharging = false;
         hitboxRangeIndicator.SetActive(false);
 
@@ -258,6 +265,9 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
         isAwakened = false;
         playerAnimation.AwakenAnimation(false);
+
+        StartCoroutine(parametersUI.ultimateIcon.StartCooldown(ultCooldown));
+        nextUltTime = Time.time + ultCooldown;
     }
     public void EnterAwakenMode()
     {

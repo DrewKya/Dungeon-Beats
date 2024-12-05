@@ -170,7 +170,7 @@ public class PlayerInput : MonoBehaviour
 
     private void CheckUltimateInput()
     {
-        if (!ultimateEnabled) return;
+        //if (!ultimateEnabled) return;
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {

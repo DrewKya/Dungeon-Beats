@@ -74,6 +74,7 @@ public class ItemTooltip : MonoBehaviour
         if (stats.attackModifier != 0) result += $"Attack : {stats.attackModifier}\n";
         if (stats.healthModifier != 0) result += $"Health : {stats.healthModifier}\n";
         if (stats.defenseModifier != 0) result += $"Defense : {stats.defenseModifier}\n";
+        if (stats.critRateModifier != 0) result += $"Crit rate : {stats.critRateModifier}\n";
 
         return result;
 

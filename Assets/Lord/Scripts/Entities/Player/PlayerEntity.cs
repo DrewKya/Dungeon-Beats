@@ -300,7 +300,15 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     private bool CheckAttackCooldown()
     {
-        return (attackCooldown <= 0) ? true : false;
+        if (attackCooldown <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            NotificationUI.instance?.TextNotification("Weapon is in cooldown!");
+            return false;
+        }
     }
 
     private void CheckHitboxRange(HitboxData hitboxData)

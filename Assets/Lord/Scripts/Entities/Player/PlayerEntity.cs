@@ -31,7 +31,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     public Transform offhandAttachPoint;
     public Transform VFX_AttachPoint;
 
-    public float nextAttackTime; //determines the next Time.time the player can attack
+    public int attackCooldown; //determines the next time the player can attack
     public float nextUltTime;
     public float ultCooldown = 45f;
 
@@ -181,8 +181,11 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
         playerAnimation.PlayAttackAnimation();
 
-        StartCoroutine(parametersUI.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInSeconds));
-        nextAttackTime = Time.time + selectedWeapon.attackCooldownInSeconds;
+        //StartCoroutine(parametersUI.weaponIcon.StartCooldown(selectedWeapon.attackCooldownInBeats));
+        attackCooldown = selectedWeapon.attackCooldownInBeats;
+        parametersUI.weaponIcon.SetCooldown(attackCooldown);
+        StartCoroutine(AttackCooldownCoroutine());
+
         hitboxRangeIndicator.SetActive(false);
         isCharging = false;
     }
@@ -273,9 +276,31 @@ public class PlayerEntity : MonoBehaviour, IDamageable
     {
         StartCoroutine(AwakenModeCoroutine());
     }
+
+    private IEnumerator AttackCooldownCoroutine()
+    {
+        while (attackCooldown > 0)
+        {
+            var interval = MusicPlayer.Instance.intervalLength;
+
+            yield return new WaitForSeconds(interval);
+
+            ReduceAttackCooldown(); // Reduce cooldown by 1.
+        }
+    }
+
+    public void ReduceAttackCooldown()
+    {
+        if(attackCooldown > 0)
+        {
+            attackCooldown--;
+            parametersUI.weaponIcon.SetCooldown(attackCooldown);
+        }
+    } 
+
     private bool CheckAttackCooldown()
     {
-        return (Time.time >= nextAttackTime) ? true : false;
+        return (attackCooldown <= 0) ? true : false;
     }
 
     private void CheckHitboxRange(HitboxData hitboxData)

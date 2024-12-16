@@ -8,7 +8,7 @@ public abstract class Weapon : Item
     public GameObject offhandModel;
 
     public StatModifiers stats;
-    public float attackCooldownInSeconds;
+    public int attackCooldownInBeats;
 
     public enum AnimationType
     {

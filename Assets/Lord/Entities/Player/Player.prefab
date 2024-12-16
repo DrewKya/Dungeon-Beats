@@ -700,7 +700,9 @@ MonoBehaviour:
   weaponAttachPoint: {fileID: 1413783537279966748}
   offhandAttachPoint: {fileID: 8076497350354183354}
   VFX_AttachPoint: {fileID: 0}
-  nextAttackTime: 0
+  attackCooldown: 0
+  nextUltTime: 0
+  ultCooldown: 45
   isCharging: 0
   damageSFX: {fileID: 8300000, guid: 5dfc35e65a7c9f64cb6d98d8c826b52a, type: 3}
 --- !u!114 &3245062274353414719

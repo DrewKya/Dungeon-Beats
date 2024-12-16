@@ -25,6 +25,21 @@ public class WeaponIcon : MonoBehaviour
         
     }
 
+    public void SetCooldown(int currentCooldown)
+    {
+        if(currentCooldown > 0)
+        {
+            cooldownRemaining.text = currentCooldown.ToString();
+        }
+        else
+        {
+            cooldownRemaining.text = "<sprite=56>";
+            backgroundFill.fillAmount = 1;
+        }
+        
+
+    }
+
     public IEnumerator StartCooldown(float cooldown)
     {
         float time = cooldown;

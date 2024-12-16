@@ -331,14 +331,14 @@ public class PlayerEntity : MonoBehaviour, IDamageable
         int totalDamage = CalculateDamageTaken(damage);
 
         PopupPool.instance.ShowDamage(transform.position, totalDamage, isCrit);
-        currentHP -= totalDamage;
+        currentHP = math.max(currentHP - totalDamage, 0);
 
         onPlayerTakeDamage.TriggerEvent();
         SFXManager.instance.PlaySFX(damageSFX, transform.position);
 
         parametersUI.UpdateHealthPointsUI(currentHP, stats.healthPoint);
 
-        if(currentHP < 0)
+        if(currentHP <= 0)
         {
             PlayerDie();
         }

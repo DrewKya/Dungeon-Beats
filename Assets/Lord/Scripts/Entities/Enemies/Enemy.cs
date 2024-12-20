@@ -180,4 +180,9 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
         animator.SetTrigger("Die");
         Destroy(gameObject, 2f);
     }
+
+    private void OnDestroy()
+    {
+        MapManager.instance?.RemoveEnemyFromList(this);
+    }
 }

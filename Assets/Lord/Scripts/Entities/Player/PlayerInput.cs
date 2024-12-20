@@ -224,7 +224,7 @@ public class PlayerInput : MonoBehaviour
     public bool CheckTiming(float inputTime)
     {
         float closestBeat = Mathf.Round(inputTime);
-        Debug.Log(closestBeat);
+        //Debug.Log(closestBeat);
 
         float timeDifference = Mathf.Abs(closestBeat - inputTime); //time difference in beats
 

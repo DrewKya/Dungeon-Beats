@@ -100,7 +100,7 @@ public class MapManager : MonoBehaviour
     public void NotifyAllEnemyToTakeAction()
     {
         //Debug.Log(activeEnemy.Count);
-        for(int i = activeEnemy.Count - 1 ; i > 0 ; i--)
+        for(int i = activeEnemy.Count - 1; i >= 0 ; i--)
         {
             var enemy = activeEnemy[i];
             if(enemy != null && enemy.isActiveAndEnabled)

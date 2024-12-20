@@ -16,7 +16,7 @@ public class PlayerAnimation : MonoBehaviour
     public Animator weaponAnimation;
     public VisualEffect weaponVFX;
 
-    private Weapon.AnimationType currentAnimationType = 0;
+    [SerializeField] private Weapon.AnimationType currentAnimationType = 0;
 
     public void RotatePlayer(Vector3 direction)
     {
@@ -82,6 +82,12 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    public void SetAnimationType()
+    {
+        characterAnimator.SetInteger("WeaponType", (int)currentAnimationType);
+        characterAnimator.SetTrigger("ChangeWeapon");
+    }
+
     public void SetAnimationType(Weapon.AnimationType type)
     {
         if(currentAnimationType == type)
@@ -90,7 +96,7 @@ public class PlayerAnimation : MonoBehaviour
         }
 
         currentAnimationType = type;
-        characterAnimator.SetInteger("WeaponType", (int)currentAnimationType);
-        characterAnimator.SetTrigger("ChangeWeapon");
+
+        SetAnimationType();
     }
 }

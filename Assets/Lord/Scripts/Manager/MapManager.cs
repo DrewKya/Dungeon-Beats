@@ -216,6 +216,11 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    public float GetTimeLimit()
+    {
+        return timeLimitInSeconds;
+    }
+
     private void OnDisable()
     {
         StopAllCoroutines();

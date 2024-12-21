@@ -237,7 +237,7 @@ public class PlayerEntity : MonoBehaviour, IDamageable
 
     public void UltimateAttack()
     {
-        if (!isCharging && Time.time < nextUltTime) return;
+        if (!isCharging || Time.time < nextUltTime) return;
 
         isCharging = false;
         hitboxRangeIndicator.SetActive(false);

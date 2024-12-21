@@ -5,15 +5,18 @@ using UnityEngine;
 
 // This script is for showing map timer on the UI
 
-[RequireComponent(typeof(TMP_Text))]
 public class TimerText : MonoBehaviour
 {
-    private TMP_Text text;
+    [SerializeField] private TMP_Text text;
+    [SerializeField] private TMP_Text collapseText;
+
+    [SerializeField] private GameObject collapsePanel;
     private float remainingTime;
 
     private void Start()
     {
-        text = GetComponent<TMP_Text>();
+        collapsePanel.SetActive(false);
+
         remainingTime = MapManager.instance.GetTimeLimit();
 
         StartCoroutine(CountdownCoroutine());
@@ -23,22 +26,30 @@ public class TimerText : MonoBehaviour
     {
         while (remainingTime > 0)
         {
-            int minutes = Mathf.FloorToInt(remainingTime / 60);
-            int seconds = Mathf.FloorToInt(remainingTime % 60);
+            if(remainingTime <= 60)
+            {
+                if(remainingTime > 55)
+                {
+                    text.gameObject.SetActive(false);
+                    collapsePanel.SetActive(true);
+                }
 
-            text.text = string.Format("{0:D2}:{1:D2}", minutes, seconds);
+                collapseText.text = remainingTime.ToString("F0");
+            }
+            else
+            {
+                int minutes = Mathf.FloorToInt(remainingTime / 60);
+                int seconds = Mathf.FloorToInt(remainingTime % 60);
+
+                text.text = string.Format("{0:D2}:{1:D2}", minutes, seconds);
+            }
 
             yield return new WaitForSeconds(1f);
 
             remainingTime -= 1f;
         }
 
-        text.text = "00:00";
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
+        text.text = "0";
     }
 }
 

@@ -642,6 +642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105e5aeffd288ab4184f835bc4eb6a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  collapseText: {fileID: 0}
+  collapsePanel: {fileID: 0}
 --- !u!114 &5322415523928908507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,7 +2281,6 @@ GameObject:
   - component: {fileID: 8809248969098764943}
   - component: {fileID: 5722544164701846913}
   - component: {fileID: 5430414219409057992}
-  - component: {fileID: 1761318677946197516}
   m_Layer: 5
   m_Name: Ingame Canvas
   m_TagString: Untagged
@@ -2471,46 +2473,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
---- !u!114 &1761318677946197516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6278237672248953911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab96e66a8f6b8ac48aa9628860513206, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: a4c5e086305f78249a4e7c48818db1bf, type: 2}
-  onEventTriggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1029807132150731606}
-        m_TargetAssemblyTypeName: IngameParametersUI, Assembly-CSharp
-        m_MethodName: StartCountdown
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 60
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1029807132150731606}
-        m_TargetAssemblyTypeName: IngameParametersUI, Assembly-CSharp
-        m_MethodName: StartCountdown
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 60
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7010397316842619174
 GameObject:

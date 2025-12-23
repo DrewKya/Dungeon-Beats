@@ -175,6 +175,7 @@ public abstract class Enemy : MonoBehaviour, IActionable, IDamageable
     {
         GetComponent<Collider>().enabled = false;
         EntityManager.instance.RemoveEntity(this);
+        MapManager.instance?.OnDefeatEnemy(this);
         MapManager.instance?.RemoveEnemyFromList(this);
         PlayerManager.instance.AddCoin(coinDropped);
         animator.SetTrigger("Die");

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class MapManager : MonoBehaviour
     [SerializeField] GameEvent onStartingDungeonCollapse;
     [SerializeField] GameEvent onTimeout;
 
+    public UnityEvent<int> onDefeatEnemies; //notify how many enemies are defeated currently
+
 
     [Header("References")]
     [SerializeField] private Transform player;
@@ -35,10 +39,16 @@ public class MapManager : MonoBehaviour
     [Header("Enemy Settings")]
     [SerializeField] private List<GameObject> enemyPrefabList = new List<GameObject>();
     private List<Enemy> activeEnemy = new List<Enemy>();
+
     public float minSpawnDistance = 10f;
     public float maxSpawnDistance = 20f;
     public float despawnDistance = 25f;
     public int maxEnemy = 15;
+
+    public int enemyRequirements = 20; //required enemy to be defeated
+    private int enemiesDefeated = 0;
+
+    public int EnemiesDefeated => enemiesDefeated;
 
     [Header("Loot Settings")]
     [SerializeField] public LootTable lootTable;
@@ -56,6 +66,8 @@ public class MapManager : MonoBehaviour
         SetPlayerSpawn();
         lootTable.CalculateTotalWeight();
 
+        enemiesDefeated = 0;
+
         StartCoroutine(CountdownCoroutine());
         StartCoroutine(SpawnEnemyCoroutine(3f));
         StartCoroutine(DespawnEnemyCoroutine(10f));
@@ -67,9 +79,9 @@ public class MapManager : MonoBehaviour
 
         yield return new WaitForSeconds(timeLimitInSeconds - 60f);
 
-        SetPortals(true);
+        //SetPortals(true);
         onStartingDungeonCollapse.TriggerEvent();
-        NotificationUI.instance.TextNotification("Return portals have been activated.");
+        //NotificationUI.instance.TextNotification("Return portals have been activated.");
 
         yield return new WaitForSeconds(60f);
 
@@ -213,6 +225,28 @@ public class MapManager : MonoBehaviour
         if (activeEnemy.Contains(enemy))
         {
             activeEnemy.Remove(enemy);
+        }
+    }
+
+    public void OnDefeatEnemy(Enemy enemy)
+    {
+        if (enemy == null) return;
+
+        enemiesDefeated++;
+        onDefeatEnemies?.Invoke(enemiesDefeated);
+
+        if (enemiesDefeated >= enemyRequirements)
+        {
+            if (SceneLoader.instance != null)
+            {
+                NotificationUI.instance.TextNotification("Enemy requirement fulfilled, returning to hub");
+                SceneLoader.instance.LoadScene("Hub");
+            }
+            else
+            {
+                Debug.Log("Could not find a scene loader instance");
+                SceneManager.LoadScene("Hub");
+            }
         }
     }
 
